@@ -5,6 +5,7 @@ import { searchOrganizations } from "./places";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import "dotenv/config";
 import { createAgent, createMiddleware } from "langchain";
+import { TavilySearch } from "./tavily";
 import { z } from "zod";
 
 dotenv.config();
@@ -13,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ai agent begins
+// ai analysis agent begins
 const contextSchema = z.object({
   user_name: z.string(),
   systemPrompt: z.string().optional(),
@@ -99,11 +100,41 @@ CRITICAL INSTRUCTIONS:
     const agentSummary = getSummary(agentResponse);
     console.log("Claude Response:", agentSummary);
 
-    return res.json({ 
-      ok: true, 
-      received: { mission, location, timestamp },
-      agentResponse: agentSummary 
-    });
+    // Search for volunteer organizations using Tavily
+    console.log("\n=== Searching for Volunteer Organizations ===");
+    
+    try {
+      const searchResults = await TavilySearch({ 
+        mission, 
+        location: location || undefined 
+      });
+
+      console.log(`\nFound ${searchResults.length} resources:\n`);
+      
+      searchResults.forEach((result, index) => {
+        console.log(`--- Resource ${index + 1} ---`);
+        console.log("Name:", result.title);
+        console.log("URL:", result.url);
+        console.log("Description:", result.content);
+        console.log("Relevance Score:", result.score);
+        console.log("");
+      });
+
+      return res.json({
+        ok: true,
+        received: { mission, location, timestamp },
+        agentResponse: agentSummary,
+        searchResults,
+      });
+    } catch (tavilyError: any) {
+      console.error("Tavily search error:", tavilyError?.message || tavilyError);
+      return res.json({
+        ok: true,
+        received: { mission, location, timestamp },
+        agentResponse: agentSummary,
+        tavilyError: "Search failed"
+      });
+    }
   } catch (err: any) {
     console.error("refine error", err?.message || err);
     return res.status(500).json({ error: "internal_error" });

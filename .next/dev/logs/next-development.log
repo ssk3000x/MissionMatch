@@ -1,13 +1,7 @@
-[00:00:13.859] Server  LOG      ✓ Ready in 7.5s
-[00:00:14.064] Browser LOG     === Operation Parameters ===
-[00:00:14.064] Browser LOG     Location: 95120
-[00:00:14.064] Browser LOG     Mission: Tutor or mentor students at
-[00:00:14.064] Browser LOG     Timestamp: 2026-01-31T03:33:52.086Z
-[00:00:14.064] Browser LOG     Full Data: {"location":"95120","mission":"Tutor or mentor students at","timestamp":"2026-01-31T03:33:52.086Z"}
-[00:00:14.064] Browser ERROR   Failed to send data to server: {}
-[00:00:17.157] Server  LOG      ○ Compiling / ...
-[00:00:33.573] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:34.585] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:06.091] Server  LOG      ✓ Ready in 3.5s
+[00:00:10.681] Server  LOG      ○ Compiling / ...
+[00:00:36.939] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:38.624] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -45,11 +39,11 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:00:34.869] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:34.869] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:34.870] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769830462546}
-[00:00:36.799] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:36.800] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:39.198] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:39.198] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:39.198] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769832022474}
+[00:00:42.126] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:42.877] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -86,7 +80,7 @@ It can also happen if the client has a browser extension installed which messes 
                                   placeholder="Enter your city or zip code"
                                   value=""
                                   onChange={function onChange}
--                                 fdprocessedid="vpsp4"
+-                                 fdprocessedid="j1rmqo"
                                 >
                           <Button type="button" variant="outline" className="w-full h-1..." ...>
                             <button
@@ -95,28 +89,34 @@ It can also happen if the client has a browser extension installed which messes 
                               type="button"
                               onClick={function handleDetectLocation}
                               disabled={false}
--                             fdprocessedid="8kbrwx"
+-                             fdprocessedid="lodsee"
                             >
                           ...
     ...
 
-[00:00:36.800] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:36.800] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:36.800] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769830464872}
-[00:01:08.146] Browser LOG     === Operation Parameters ===
-[00:01:08.146] Browser LOG     Location: 95120
-[00:01:08.146] Browser LOG     Mission: i wanna get food for homeless people
-[00:01:08.146] Browser LOG     Timestamp: 2026-01-31T03:34:56.077Z
-[00:01:08.146] Browser LOG     Full Data: {"location":"95120","mission":"i wanna get food for homeless people","timestamp":"2026-01-31T03:34:56.077Z"}
-[00:01:08.385] Browser LOG     === Operation Parameters ===
-[00:01:08.386] Browser LOG     Location: 95120
-[00:01:08.386] Browser LOG     Mission: i wanna get food for homeless people
-[00:01:08.386] Browser LOG     Timestamp: 2026-01-31T03:34:56.453Z
-[00:01:08.386] Browser LOG     Full Data: {"location":"95120","mission":"i wanna get food for homeless people","timestamp":"2026-01-31T03:34:56.453Z"}
-[00:01:18.495] Browser LOG     Server response: {"agentResponse":"That's wonderful that you want to help provide food for homeless people! Your compassion can make a real difference in your San Jose community (95120).\n\n## Understanding Your Goals\nTo help you find the best volunteer opportunities, let me ask a few questions:\n\n**What type of food-related volunteer work interests you most?**\n- Preparing/cooking meals at shelters or soup kitchens\n- Distributing food directly to homeless individuals on the streets\n- Collecting and sorting food donations at food banks\n- Serving meals at community centers or faith-based organizations\n- Helping with mobile food programs\n\n**Your availability:**\n- How often would you like to volunteer? (weekly, monthly, occasionally)\n- What days/times work best for you?\n- Are you looking for one-time events or ongoing commitments?\n\n## Relevant Volunteer Categories for Your Area:\n1. **Food banks and pantries** (Second Harvest, Sacred Heart)\n2. **Homeless shelters** (The Jungle site cleanups, Bill Wilson Center)\n3. **Soup kitchens** (Often run by churches and community centers)\n4. **Mobile outreach programs** (Food trucks, street outreach teams)\n5. **Community meal programs** (Free dinner programs at various venues)\n\n## Organizations to Consider in San Jose:\n- Second Harvest of Silicon Valley\n- Sacred Heart Community Service\n- Bill Wilson Center\n- HomeFirst Services\n- Local churches with meal programs\n\nWould you like me to help you narrow down which type of food assistance volunteer work appeals to you most? This will help me provide more specific guidance on finding opportunities in your area.","ok":true,"received":{"location":"95120","mission":"i wanna get food for homeless people","timestamp":"2026-01-31T03:34:56.453Z"}}
-[00:01:19.445] Browser LOG     Server response: {"agentResponse":"That's a wonderful way to make a direct impact in your community! Helping provide food for homeless individuals is both meaningful and necessary work. Let me help you explore the best volunteer opportunities in the San Jose area (95120).\n\n## Understanding Your Goals\n\nBased on your mission, here are some ways you might want to get involved:\n\n**Direct Food Distribution:**\n- Serving meals at soup kitchens or shelters\n- Participating in mobile food outreach programs\n- Helping with street feeding initiatives\n\n**Food Collection & Preparation:**\n- Food drives and collection events\n- Meal preparation in shelter kitchens\n- Food sorting and packaging at food banks\n\n## Relevant Categories to Explore\n\n- **Homeless Services** - Direct support for unhoused individuals\n- **Hunger Relief/Food Banks** - Food distribution programs\n- **Community Kitchens** - Meal preparation and serving\n- **Faith-based Organizations** - Many run feeding programs\n- **Emergency Services** - Often coordinate food assistance\n\n## Local Organizations to Consider\n\nIn the San Jose/South Bay area, look into:\n- Second Harvest Food Bank of Silicon Valley\n- Sacred Heart Community Service\n- St. Joseph's Family Center\n- Downtown Streets Team\n- City Team San Jose\n\n## Questions to Help You Focus\n\n1. Do you prefer hands-on serving (direct interaction) or behind-the-scenes work (food prep, sorting)?\n2. Are you looking for regular weekly commitments or occasional volunteer events?\n3. Do you have any food handling experience or interest in learning?\n\nWould you like help finding specific contact information for any of these organizations or exploring particular types of food-related volunteer work?","ok":true,"received":{"location":"95120","mission":"i wanna get food for homeless people","timestamp":"2026-01-31T03:34:56.077Z"}}
-[00:02:38.642] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:38.643] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:42.877] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:42.878] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:42.878] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769832026242}
+[00:03:04.403] Browser LOG     === Operation Parameters ===
+[00:03:04.403] Browser LOG     Location: 95120
+[00:03:04.403] Browser LOG     Mission: black lives matter
+[00:03:04.403] Browser LOG     Timestamp: 2026-01-31T04:02:47.666Z
+[00:03:04.403] Browser LOG     Full Data: {"location":"95120","mission":"black lives matter","timestamp":"2026-01-31T04:02:47.666Z"}
+[00:03:05.155] Browser ERROR   Server error: 500
+[00:05:52.880] Browser LOG     === Operation Parameters ===
+[00:05:52.880] Browser LOG     Location: 95120
+[00:05:52.881] Browser LOG     Mission: black lives matter help organization
+[00:05:52.881] Browser LOG     Timestamp: 2026-01-31T04:05:36.145Z
+[00:05:52.881] Browser LOG     Full Data: {"location":"95120","mission":"black lives matter help organization","timestamp":"2026-01-31T04:05:36.145Z"}
+[00:05:59.056] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"Black Lives Matter volunteer opportunities San Jose CA 95120\" OR \"racial justice advocacy volunteer Silicon Valley\"\n\n**Places to search:**\n• VolunteerMatch.org - filter by cause and zip code\n• JustServe.org - search \"civil rights\" + location\n• San Jose City volunteer portal\n• Local NAACP Silicon Valley chapter\n• Black Lives Matter Bay Area social media pages\n• Community centers in San Jose/Santa Clara County","ok":true,"received":{"location":"95120","mission":"black lives matter help organization","timestamp":"2026-01-31T04:05:36.145Z"},"tavilyError":"Search failed"}
+[00:08:40.882] Browser LOG     === Operation Parameters ===
+[00:08:40.883] Browser LOG     Location: 95120
+[00:08:40.883] Browser LOG     Mission: black lives matter help
+[00:08:40.884] Browser LOG     Timestamp: 2026-01-31T04:08:24.130Z
+[00:08:40.884] Browser LOG     Full Data: {"location":"95120","mission":"black lives matter help","timestamp":"2026-01-31T04:08:24.130Z"}
+[00:08:47.536] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"Black Lives Matter volunteer opportunities San Jose 95120\" OR \"racial justice organizations South Bay California\"\n\n**Places to search:**\n• VolunteerMatch.org - filter by \"Civil Rights\" and zip code 95120\n• Idealist.org - search \"racial equity\" + San Jose\n• NAACP San Jose branch website\n• Black Lives Matter Bay Area chapter\n• San Jose city volunteer portal - social justice section\n• United Way of Silicon Valley - equity programs","ok":true,"received":{"location":"95120","mission":"black lives matter help","timestamp":"2026-01-31T04:08:24.130Z"},"tavilyError":"Search failed"}
+[00:11:27.072] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:28.089] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -129,117 +129,98 @@ It can also happen if the client has a browser extension installed which messes 
 %s%s https://react.dev/link/hydration-mismatch 
 
   ...
-    <SegmentViewNode type="page" pagePath="/Downloads...">
-      <SegmentTrieNode>
-      <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
-        <Home params={Promise} searchParams={Promise}>
-          <main className="min-h-scre...">
-            <AnimatePresence mode="wait">
-              <PresenceChild isPresent={true} initial={undefined} custom={undefined} presenceAffectsLayout={true} ...>
-                <LocationStep onComplete={function handleLocationComplete}>
-                  <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-20}} ...>
-                    <div className="flex min-h..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                      <div className="w-full max...">
-                        <div>
-                        <form onSubmit={function handleSubmit} className="space-y-4">
-                          <div className="relative r...">
-                            <GlowingEffect>
-                            <div className="relative">
-                              <Input type="text" placeholder="Enter your..." value="" onChange={function onChange} ...>
-                                <input
-                                  type="text"
-                                  data-slot="input"
-                                  className="file:text-foreground selection:bg-primary selection:text-primary-foregrou..."
-                                  placeholder="Enter your city or zip code"
-                                  value=""
-                                  onChange={function onChange}
--                                 fdprocessedid="js1fje"
-                                >
-                          <Button type="button" variant="outline" className="w-full h-1..." ...>
-                            <button
-                              data-slot="button"
-                              className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md ..."}
-                              type="button"
-                              onClick={function handleDetectLocation}
-                              disabled={false}
--                             fdprocessedid="i91o7o"
-                            >
-                          ...
-    ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/Downloads...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="font-sans antialiased"
+-                           data-new-gr-c-s-check-loaded="14.1271.0"
+-                           data-gr-ext-installed=""
+-                           data-gr-ext-disabled="forever"
+                          >
+                  ...
 
-[00:02:38.643] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:02:38.643] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:02:38.643] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769830586531}
-[00:02:46.808] Browser LOG     === Operation Parameters ===
-[00:02:46.808] Browser LOG     Location: 95120
-[00:02:46.808] Browser LOG     Mission: i wanna create great food resources
-[00:02:46.808] Browser LOG     Timestamp: 2026-01-31T03:36:34.888Z
-[00:02:46.808] Browser LOG     Full Data: {"location":"95120","mission":"i wanna create great food resources","timestamp":"2026-01-31T03:36:34.888Z"}
-[00:02:52.594] Browser LOG     Server response: {"agentResponse":"**1) Refined search query:**\n\"food pantry OR community kitchen OR food distribution OR food bank OR nutrition education volunteer 95120 San Jose\"\n\n**2) Top 3 relevant categories:**\n• Food banks/pantries\n• Community kitchens/meal programs\n• Nutrition education/food access advocacy","ok":true,"received":{"location":"95120","mission":"i wanna create great food resources","timestamp":"2026-01-31T03:36:34.888Z"}}
-[00:04:11.984] Browser LOG     === Operation Parameters ===
-[00:04:11.984] Browser LOG     Location: 95121
-[00:04:11.984] Browser LOG     Mission: Environmental cleanup and conservation
-[00:04:11.984] Browser LOG     Timestamp: 2026-01-31T03:37:59.654Z
-[00:04:11.984] Browser LOG     Full Data: {"location":"95121","mission":"Environmental cleanup and conservation","timestamp":"2026-01-31T03:37:59.654Z"}
-[00:04:14.834] Browser LOG     Server response: {"agentResponse":"**1) Refined Search Query:**\n\"environmental cleanup volunteer 95121 San Jose California conservation restoration\"\n\n**2) Top 3 Relevant Categories:**\n• Environmental restoration/cleanup\n• Parks and recreation conservation  \n• Community sustainability projects","ok":true,"received":{"location":"95121","mission":"Environmental cleanup and conservation","timestamp":"2026-01-31T03:37:59.654Z"}}
-[00:07:12.108] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:12.108] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <SegmentViewNode type="page" pagePath="/Downloads...">
-      <SegmentTrieNode>
-      <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
-        <Home params={Promise} searchParams={Promise}>
-          <main className="min-h-scre...">
-            <AnimatePresence mode="wait">
-              <PresenceChild isPresent={true} initial={undefined} custom={undefined} presenceAffectsLayout={true} ...>
-                <LocationStep onComplete={function handleLocationComplete}>
-                  <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-20}} ...>
-                    <div className="flex min-h..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
-                      <div className="w-full max...">
-                        <div>
-                        <form onSubmit={function handleSubmit} className="space-y-4">
-                          <div className="relative r...">
-                            <GlowingEffect>
-                            <div className="relative">
-                              <Input type="text" placeholder="Enter your..." value="" onChange={function onChange} ...>
-                                <input
-                                  type="text"
-                                  data-slot="input"
-                                  className="file:text-foreground selection:bg-primary selection:text-primary-foregrou..."
-                                  placeholder="Enter your city or zip code"
-                                  value=""
-                                  onChange={function onChange}
--                                 fdprocessedid="x6do5"
-                                >
-                          <Button type="button" variant="outline" className="w-full h-1..." ...>
-                            <button
-                              data-slot="button"
-                              className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md ..."}
-                              type="button"
-                              onClick={function handleDetectLocation}
-                              disabled={false}
--                             fdprocessedid="hx1hhl"
-                            >
-                          ...
-    ...
-
-[00:07:12.108] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:07:12.108] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:07:12.108] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769830860059}
-[00:07:18.450] Browser LOG     === Operation Parameters ===
-[00:07:18.450] Browser LOG     Location: 95120
-[00:07:18.450] Browser LOG     Mission: Environmental cleanup and conservation
-[00:07:18.450] Browser LOG     Timestamp: 2026-01-31T03:41:06.479Z
-[00:07:18.450] Browser LOG     Full Data: {"location":"95120","mission":"Environmental cleanup and conservation","timestamp":"2026-01-31T03:41:06.479Z"}
-[00:07:25.593] Browser LOG     Server response: {"agentResponse":"**Refined search query:**\n\"Environmental cleanup volunteer opportunities San Jose California 95120\" OR \"Conservation volunteer Santa Clara County\"\n\n**Places to look:**\n• VolunteerMatch.org and JustServe.org\n• Santa Clara County Parks Department volunteer program\n• Keep Coyote Creek Beautiful\n• Silicon Valley at Home environmental initiatives\n• Local city websites (San Jose, Campbell) volunteer sections\n• Meetup.com environmental groups in South Bay area","ok":true,"received":{"location":"95120","mission":"Environmental cleanup and conservation","timestamp":"2026-01-31T03:41:06.479Z"}}
+[00:11:28.783] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:28.783] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:28.783] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769832672157}
+[00:12:44.219] Browser LOG     === Operation Parameters ===
+[00:12:44.219] Browser LOG     Location: 95120
+[00:12:44.219] Browser LOG     Mission: black lives matter help
+[00:12:44.219] Browser LOG     Timestamp: 2026-01-31T04:12:27.588Z
+[00:12:44.219] Browser LOG     Full Data: {"location":"95120","mission":"black lives matter help","timestamp":"2026-01-31T04:12:27.588Z"}
+[00:12:49.788] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"Black Lives Matter volunteer opportunities San Jose CA 95120\" + \"racial justice advocacy volunteers Santa Clara County\"\n\n**Places to look:**\n• Black Lives Matter San Jose chapter\n• NAACP Silicon Valley branch\n• Sacred Heart Community Service\n• Law Foundation of Silicon Valley\n• Local churches with social justice programs\n• San Jose State University community centers\n• VolunteerMatch.org filtered by location + social justice","ok":true,"received":{"location":"95120","mission":"black lives matter help","timestamp":"2026-01-31T04:12:27.588Z"},"tavilyError":"Search failed"}
+[00:14:04.719] Browser LOG     === Operation Parameters ===
+[00:14:04.720] Browser LOG     Location: 95102
+[00:14:04.720] Browser LOG     Mission: black lives matter help
+[00:14:04.720] Browser LOG     Timestamp: 2026-01-31T04:13:48.090Z
+[00:14:04.720] Browser LOG     Full Data: {"location":"95102","mission":"black lives matter help","timestamp":"2026-01-31T04:13:48.090Z"}
+[00:14:06.370] Browser LOG     === Operation Parameters ===
+[00:14:06.370] Browser LOG     Location: 95102
+[00:14:06.370] Browser LOG     Mission: black lives matter help
+[00:14:06.370] Browser LOG     Timestamp: 2026-01-31T04:13:49.739Z
+[00:14:06.370] Browser LOG     Full Data: {"location":"95102","mission":"black lives matter help","timestamp":"2026-01-31T04:13:49.739Z"}
+[00:14:11.241] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"Black Lives Matter volunteer opportunities San Jose 95102\" OR \"racial justice advocacy volunteer San Jose downtown\"\n\n**Places to search:**\n• San Jose Black Lives Matter chapter social media/website\n• VolunteerMatch.org filtered for racial justice/civil rights\n• United Way of Silicon Valley\n• NAACP San Jose chapter\n• San Jose community centers (Roosevelt, Emma Prusch)\n• Local churches with social justice programs\n• Silicon Valley organizations like SV Rising or Working Partnerships USA","ok":true,"received":{"location":"95102","mission":"black lives matter help","timestamp":"2026-01-31T04:13:48.090Z"},"tavilyError":"Search failed"}
+[00:14:11.729] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"Black Lives Matter volunteer opportunities San Jose 95102\" + \"racial justice organizations Silicon Valley\"\n\n**Places to look:**\n• NAACP San Jose/Silicon Valley chapter\n• Black Lives Matter Bay Area local chapters\n• Community organizations in East San Jose/downtown area\n• San Jose State University diversity/equity centers\n• Local churches with social justice programs\n• Nextdoor, VolunteerMatch, JustServe for hyperlocal opportunities","ok":true,"received":{"location":"95102","mission":"black lives matter help","timestamp":"2026-01-31T04:13:49.739Z"},"tavilyError":"Search failed"}
+[00:16:54.089] Browser LOG     === Operation Parameters ===
+[00:16:54.090] Browser LOG     Location: 95120
+[00:16:54.090] Browser LOG     Mission: Help with food banks and meal distribution
+[00:16:54.090] Browser LOG     Timestamp: 2026-01-31T04:16:37.456Z
+[00:16:54.091] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:16:37.456Z"}
+[00:17:00.578] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"food bank volunteer San Jose 95120\" OR \"meal distribution volunteer Santa Clara County\"\n\n**Places to search:**\n• Second Harvest of Silicon Valley\n• Sacred Heart Community Service\n• Local churches and community centers in San Jose\n• VolunteerMatch.org\n• United Way of Silicon Valley\n• San Jose city volunteer portal","ok":true,"received":{"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:16:37.456Z"},"tavilyError":"Search failed"}
+[00:18:14.151] Browser LOG     === Operation Parameters ===
+[00:18:14.153] Browser LOG     Location: 95120
+[00:18:14.154] Browser LOG     Mission: Work with animals at local shelters
+[00:18:14.154] Browser LOG     Timestamp: 2026-01-31T04:17:57.520Z
+[00:18:14.154] Browser LOG     Full Data: {"location":"95120","mission":"Work with animals at local shelters","timestamp":"2026-01-31T04:17:57.520Z"}
+[00:18:29.888] Browser LOG     Server response: {"agentResponse":"**Search Query:** \"animal shelter volunteer opportunities 95120 San Jose California\"\n\n**Places to Find Opportunities:**\n• VolunteerMatch.org - filter by location and animal care\n• Petco Foundation website - local shelter partnerships\n• Santa Clara County Animal Services - direct volunteer programs\n• Silicon Valley Animal Control Authority\n• Humane Society Silicon Valley\n• City of San Jose Animal Care Center","ok":true,"received":{"location":"95120","mission":"Work with animals at local shelters","timestamp":"2026-01-31T04:17:57.520Z"},"tavilyError":"Search failed"}
+[00:24:50.141] Server  LOG      ✓ Compiled in 925ms
+[00:29:27.455] Browser LOG     === Operation Parameters ===
+[00:29:27.456] Browser LOG     Location: 95120
+[00:29:27.456] Browser LOG     Mission: Help with food banks and meal distribution
+[00:29:27.456] Browser LOG     Timestamp: 2026-01-31T04:29:10.829Z
+[00:29:27.456] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:29:10.829Z"}
+[00:29:42.997] Browser LOG     Server response: {"agentResponse":"**Refined search query:** \"food bank volunteer San Jose 95120\" OR \"meal distribution volunteer San Jose California\"\n\n**Places to look:**\n• Second Harvest Food Bank Silicon Valley\n• Sacred Heart Community Service\n• St. Joseph's Family Center\n• VolunteerMatch.org\n• JustServe.org\n• Local churches and community centers in San Jose","ok":true,"received":{"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:29:10.829Z"},"tavilyError":"Search failed"}
+[00:31:17.859] Browser LOG     === Operation Parameters ===
+[00:31:17.859] Browser LOG     Location: 95120
+[00:31:17.859] Browser LOG     Mission: Help with food banks and meal distribution
+[00:31:17.859] Browser LOG     Timestamp: 2026-01-31T04:31:01.216Z
+[00:31:17.859] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:31:01.216Z"}
+[00:31:18.824] Browser LOG     === Operation Parameters ===
+[00:31:18.824] Browser LOG     Location: 95120
+[00:31:18.824] Browser LOG     Mission: Help with food banks and meal distribution
+[00:31:18.824] Browser LOG     Timestamp: 2026-01-31T04:31:02.197Z
+[00:31:18.825] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:31:02.197Z"}
+[00:32:18.928] Browser LOG     === Operation Parameters ===
+[00:32:18.928] Browser LOG     Location: 95120
+[00:32:18.928] Browser LOG     Mission: Help with food banks and meal distribution
+[00:32:18.928] Browser LOG     Timestamp: 2026-01-31T04:32:02.300Z
+[00:32:18.928] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:32:02.300Z"}
+[00:35:55.293] Browser ERROR   Failed to send data to server: {}
+[00:35:55.294] Browser ERROR   Failed to send data to server: {}
+[00:35:55.294] Browser ERROR   Failed to send data to server: {}
+[00:39:38.952] Browser LOG     === Operation Parameters ===
+[00:39:38.953] Browser LOG     Location: 95120
+[00:39:38.953] Browser LOG     Mission: Help with food banks and meal distribution
+[00:39:38.954] Browser LOG     Timestamp: 2026-01-31T04:39:22.315Z
+[00:39:38.954] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:39:22.315Z"}
+[00:39:57.959] Browser ERROR   Failed to send data to server: {}
+[00:41:57.732] Browser LOG     === Operation Parameters ===
+[00:41:57.732] Browser LOG     Location: 95120
+[00:41:57.732] Browser LOG     Mission: Help with food banks and meal distribution
+[00:41:57.732] Browser LOG     Timestamp: 2026-01-31T04:41:41.093Z
+[00:41:57.732] Browser LOG     Full Data: {"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:41:41.093Z"}
+[00:42:03.937] Browser LOG     Server response: {"agentResponse":"**Refined Search Query:** \"food bank volunteer San Jose 95120\" OR \"meal distribution volunteer Santa Clara County\"\n\n**Places to Look:**\n• Second Harvest of Silicon Valley - main food bank serving area\n• Catholic Charities of Santa Clara County \n• Salvation Army San Jose locations\n• Local churches and community centers in Almaden Valley\n• VolunteerMatch.org and JustServe.org\n• City of San Jose volunteer portal","ok":true,"received":{"location":"95120","mission":"Help with food banks and meal distribution","timestamp":"2026-01-31T04:41:41.093Z"},"searchResults":[{"content":"Volunteers help load groceries, and place them into awaiting vehicles. ... Our Food Distribution Center Helps Families in Santa Clara County. We welcome","score":0.3569626,"title":"Reaching Out, Inc.","url":"https://reachingoutcenter.org/"},{"content":"# Volunteer. Join us to help prep and serve our daily hot nutritious meal to our neighbors experiencing homelessness, or help clean up the neighborhood surrounding CityTeam SF. Volunteers at Night Strike will help provide services to unhoused guests and provide a supportive community under the Burnside Bridge. Volunteers will help with food distribution at various locations. Volunteers will help with food distribution at various locations. Volunteers are needed to help sort, organize, distribute essential groceries and clothing to the community. Volunteers will help with food distribution at various locations. CityTeam has many seasonal volunteer opportunities throughout the year. View all of our volunteer opportunities on one sign-up calendar. Volunteers will decorate the dining room, provide a multi-course meal service, and build companionship with our guests. See calendar view of all Volunteer Opportunities for your city. ### **How do I volunteer?**. For most volunteer opportunities, no other forms are needed. Please see our CityTeam Volunteer Policies.","score":0.27944782,"title":"Volunteer - CityTeam","url":"https://www.cityteam.org/volunteer"},{"content":"Our volunteers, donors and supporters help us provide food to families, multi-generational households, seniors and college students. We offer more than just","score":0.2682632,"title":"Second Harvest Food Bank","url":"https://www.shfb.org/"},{"content":"Food Distribution Locations · St. Leo's Parish. 88 Race St. · Christ The King Parish. 5284 Monterey Rd, San Jose, CA 95111. Every Friday from 4:00 pm – 5:30 pm.","score":0.26476258,"title":"Free Food Distribution - Catholic Charities of Santa Clara County","url":"https://www.ccscc.org/free-food-distribution"},{"content":"To date, Hunger at Home has donated 12.6 million meals locally and helped distribute much needed goods like towels, blankets, kitchen items, and hygiene kits.","score":0.15870851,"title":"Hunger at Home","url":"https://hungerathome.org/"}]}
