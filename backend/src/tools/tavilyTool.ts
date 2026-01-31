@@ -1,28 +1,30 @@
-import { tavilySearch } from "../tavily";
+import { DynamicTool } from "@langchain/core/tools";
+import { TavilySearch } from "./tavily";
 
-export const tavilyTool = {
-  name: "mcp_tavily_search",
-  description:
-    "Search Tavily for organizations. Input: JSON string { mission, locationText, lat, lng, radius }. Returns JSON array of top results.",
-  call: async (input: string) => {
+export const tavilyTool = new DynamicTool({
+  name: "tavily_search",
+  description: "Searches for volunteer organizations. Input must be a valid JSON string with a 'mission' and optional 'location'. Example: { \"mission\": \"help animals\", \"location\": \"San Francisco\" }",
+  func: async (input: string) => {
     try {
-      const params = JSON.parse(input || "{}");
-      const results = await tavilySearch(params);
-      const items = Array.isArray(results) ? results : (results?.results || []);
+      console.log("🛠️ Agent calling Tavily Tool with:", input);
+      
+      let params;
+      try {
+        params = JSON.parse(input);
+      } catch (e) {
+        // If agent sends raw text instead of JSON, handle gracefully
+        params = { mission: input };
+      }
 
-      const top = (items || []).slice(0, 8).map((r: any) => ({
-        id: r.id || r.place_id || r.orgId || null,
-        name: r.name || r.title || null,
-        address: r.address || r.vicinity || null,
-        phone: r.phone || r.telephone || null,
-        categories: r.categories || r.types || [],
-        snippet: r.description || r.summary || r.snippet || "",
-        raw: r,
-      }));
+      const results = await TavilySearch({
+        mission: params.mission,
+        location: params.location
+      });
 
-      return JSON.stringify(top);
-    } catch (err: any) {
-      return JSON.stringify({ error: String(err?.message || err) });
+      return JSON.stringify(results);
+    } catch (error: any) {
+      console.error("Tool execution error:", error);
+      return "Error searching Tavily. Please make sure input is valid JSON.";
     }
   },
-};
+});

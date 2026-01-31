@@ -63,7 +63,7 @@ export async function TavilySearch(params: TavilySearchParams): Promise<TavilyRe
       {
         api_key: TAVILY_API_KEY,
         query: searchQuery,
-        max_results: 30,
+        max_results: 15,
         search_depth: "advanced",
         include_domains: [],
         exclude_domains: []
@@ -93,7 +93,7 @@ export async function TavilySearch(params: TavilySearchParams): Promise<TavilyRe
           };
         })
         .filter((result: any) => result.phone !== undefined)
-        .slice(0, 9);
+        .slice(0, 5);
       
       return resultsWithPhone;
     }

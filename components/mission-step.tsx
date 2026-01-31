@@ -22,6 +22,9 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (mission.trim()) {
+      // Trigger navigation immediately
+      onComplete(mission.trim())
+
       // Aggregate user input data
       const operationData = {
         location: location,
@@ -55,8 +58,6 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
       } catch (error) {
         console.error("Failed to send data to server:", error)
       }
-      
-      onComplete(mission.trim())
     }
   }
 

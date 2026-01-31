@@ -581,6 +581,8 @@ function MissionStep({ location, onComplete, onBack }) {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         if (mission.trim()) {
+            // Trigger navigation immediately
+            onComplete(mission.trim());
             // Aggregate user input data
             const operationData = {
                 location: location,
@@ -611,7 +613,6 @@ function MissionStep({ location, onComplete, onBack }) {
             } catch (error) {
                 console.error("Failed to send data to server:", error);
             }
-            onComplete(mission.trim());
         }
     };
     const suggestions = [
@@ -651,14 +652,14 @@ function MissionStep({ location, onComplete, onBack }) {
                                     className: "mr-1 h-4 w-4"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 87,
                                     columnNumber: 13
                                 }, this),
                                 "Back"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 80,
+                            lineNumber: 81,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -681,12 +682,12 @@ function MissionStep({ location, onComplete, onBack }) {
                                         className: "h-8 w-8 text-secondary"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 98,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 92,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -694,7 +695,7 @@ function MissionStep({ location, onComplete, onBack }) {
                                     children: "Describe your volunteering project!"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 99,
+                                    lineNumber: 100,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -706,25 +707,25 @@ function MissionStep({ location, onComplete, onBack }) {
                                             children: location
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                            lineNumber: 103,
+                                            lineNumber: 104,
                                             columnNumber: 28
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 90,
+                            lineNumber: 91,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                    lineNumber: 79,
+                    lineNumber: 80,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -743,7 +744,7 @@ function MissionStep({ location, onComplete, onBack }) {
                                     borderWidth: 3
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 111,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -755,18 +756,18 @@ function MissionStep({ location, onComplete, onBack }) {
                                         className: "min-h-32 bg-background border-none text-lg placeholder:text-muted-foreground/60 resize-none focus-visible:ring-0"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 120,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 119,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 109,
+                            lineNumber: 110,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -777,7 +778,7 @@ function MissionStep({ location, onComplete, onBack }) {
                                     children: "Quick suggestions:"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 131,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -789,18 +790,18 @@ function MissionStep({ location, onComplete, onBack }) {
                                             children: suggestion
                                         }, suggestion, false, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                            lineNumber: 133,
+                                            lineNumber: 134,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 131,
+                                    lineNumber: 132,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 129,
+                            lineNumber: 130,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -810,24 +811,24 @@ function MissionStep({ location, onComplete, onBack }) {
                             children: "Find Organizations"
                         }, void 0, false, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 145,
+                            lineNumber: 146,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                    lineNumber: 108,
+                    lineNumber: 109,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-            lineNumber: 78,
+            lineNumber: 79,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-        lineNumber: 72,
+        lineNumber: 73,
         columnNumber: 5
     }, this);
 }
