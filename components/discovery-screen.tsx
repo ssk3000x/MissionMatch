@@ -33,13 +33,13 @@ const discoverySteps: DiscoveryStep[] = [
     id: "web",
     label: "Tailoring searches to your needs",
     icon: <Globe className="h-5 w-5" />,
-    duration: 2500,
+    duration: 4000,
   },
   {
     id: "orgs",
     label: "Deploying AI Agents to find relevant resources",
     icon: <Building2 className="h-5 w-5" />,
-    duration: 2000,
+    duration: 4000,
   },
 ]
 

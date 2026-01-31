@@ -7,6 +7,7 @@ import { createAgent, createMiddleware } from "langchain";
 import { TavilySearch } from "./tools/tavily";
 import { tavilyTool } from "./tools/tavilyTool";
 import { makeAICall, waitForCallEnd } from "./tools/voiceagent";
+import { getCallSummary } from "./tools/callSummary";
 import { z } from "zod";
 
 dotenv.config();
@@ -233,9 +234,9 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
         url: "N/A",
         content: "Featured organization",
         score: 1.0,
-        phone: "+16692229163",
+        phone: "+16693313021",
         address: "123 Story Road, San Jose",
-        description: "They can help with your volunteer organization's efforts greatly.",
+        description: "They can it help with your volunteer organization's efforts greatly.",
         rawContent: "Featured organization",
         isInArea: true,
         isRealOrg: true
@@ -267,10 +268,8 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
   }
 });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Backend listening on http://localhost:${PORT}`);
-});
+// In-memory store for completed calls (will reset on server restart)
+const completedCalls = new Map<string, any>();
 
 // Voice + Telephony routes using VAPI
 app.post("/api/voice/call", async (req, res) => {
@@ -291,16 +290,19 @@ app.post("/api/voice/call", async (req, res) => {
 
     console.log('/api/voice/call created', { callId });
     
-    // Start monitoring call status in background (don't await)
+    // Start monitoring call status in background and wait for completion
     waitForCallEnd(callId)
       .then((result: any) => {
-        console.log(`Call ${callId} ended:`, result.status);
+        console.log(`✓ Call ${callId} ended:`, result.status);
         if (result.analysis) {
           console.log('Summary:', result.analysis.summary);
         }
+        // Store completed call result
+        completedCalls.set(callId, result);
       })
       .catch((err: any) => {
-        console.error(`Error monitoring call ${callId}:`, err.message);
+        console.error(`❌ Error monitoring call ${callId}:`, err.message);
+        completedCalls.set(callId, { status: 'error', error: err.message });
       });
 
     return res.json({ ok: true, callId: callId });
@@ -310,24 +312,108 @@ app.post("/api/voice/call", async (req, res) => {
   }
 });
 
-// Get call status endpoint (optional - for checking call progress)
+// Get call status endpoint - returns current status (non-blocking)
 app.get('/api/voice/call/:callId', async (req, res) => {
   try {
     const { callId } = req.params;
-    const result = await waitForCallEnd(callId);
-    res.json({
-      ok: true,
-      status: result.status,
-      summary: result.analysis?.summary,
-      transcript: result.transcript
-    });
+    
+    // Check if already completed in our store
+    if (completedCalls.has(callId)) {
+      const result = completedCalls.get(callId);
+      console.log(`[Status] Call ${callId} already completed:`, result.status);
+      return res.json({
+        ok: true,
+        completed: true,
+        status: result.status,
+        summary: result.analysis?.summary || result.analysis?.structuredData?.summary,
+        transcript: result.transcript
+      });
+    }
+    
+    // Not completed yet - check VAPI directly for current status
+    try {
+      const response = await fetch(`https://api.vapi.ai/call/${callId}`, {
+        headers: { 'Authorization': `Bearer ${process.env.VAPI_API_KEY}` }
+      });
+      if (!response.ok) throw new Error(`VAPI API error: ${response.status}`);
+      const call: any = await response.json();
+      const status = call?.status || 'unknown';
+      console.log(`[Status] Call ${callId} current status: ${status}`);
+      
+      // If call ended, store it and return completed
+      if (['ended', 'completed', 'failed', 'no-answer', 'busy', 'canceled'].includes(status)) {
+        const summary = call?.analysis?.summary || call?.analysis?.structuredData?.summary || 'Call completed.';
+        const result = {
+          status,
+          analysis: call?.analysis,
+          transcript: call?.transcript
+        };
+        completedCalls.set(callId, result);
+        
+        // Also save to file for persistence
+        try {
+          const { saveCallSummary } = await import('./tools/callSummary');
+          const key = call?.customer?.number || callId;
+          await saveCallSummary(key, {
+            callId,
+            vapiSummary: {
+              summary: summary,
+              vapiAnalysis: call?.analysis
+            },
+            vapiRaw: call,
+            status
+          });
+          console.log(`[Status] Saved summary for ${key}`);
+        } catch (saveErr) {
+          console.error('Error saving summary:', saveErr);
+        }
+        
+        return res.json({
+          ok: true,
+          completed: true,
+          status: status,
+          summary: summary,
+          transcript: call?.transcript
+        });
+      }
+      
+      // Still in progress
+      return res.json({
+        ok: true,
+        completed: false,
+        status: status
+      });
+    } catch (vapiErr: any) {
+      console.error('VAPI status check error:', vapiErr.message);
+      return res.json({ ok: true, completed: false, status: 'checking' });
+    }
   } catch (err: any) {
     console.error('call status error', err?.message || err);
     return res.status(500).json({ error: 'status_check_failed', details: err?.message });
   }
 });
 
+// Fetch stored call summary by key (phone number or callId)
+app.get('/api/call-summaries', (req, res) => {
+  try {
+    const key = String(req.query.key || '');
+    if (!key) return res.status(400).json({ error: 'missing key query param' });
+    const data = getCallSummary(key);
+    if (!data) return res.status(404).json({ error: 'not found' });
+    return res.json({ ok: true, data });
+  } catch (err: any) {
+    console.error('call-summaries error', err?.message || err);
+    return res.status(500).json({ error: 'internal_error' });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Start server - MUST be at the end after all routes are defined
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Backend listening on http://localhost:${PORT}`);
 });

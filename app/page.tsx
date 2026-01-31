@@ -151,6 +151,18 @@ export default function Home() {
   }, [])
 
   const handleCall = async (orgId: string, scheduledTime?: string) => {
+    // If scheduledTime is explicitly undefined (cancel action), revert to ready status
+    if (scheduledTime === undefined && organizations.find(o => o.id === orgId)?.status === "scheduled") {
+      setOrganizations((prev) =>
+        prev.map((org) =>
+          org.id === orgId 
+            ? { ...org, status: "ready" as const, scheduledTime: undefined } 
+            : org
+        )
+      )
+      return
+    }
+
     // If scheduled, set to scheduled status
     if (scheduledTime) {
       setOrganizations((prev) =>
@@ -196,27 +208,76 @@ export default function Home() {
       const result = await response.json()
       
       if (response.ok && result.ok) {
-        console.log("Call initiated:", result)
-        
-        // Mark call as completed after a delay
-        setTimeout(() => {
-          setOrganizations((prev) =>
-            prev.map((org) =>
-              org.id === orgId
-                ? {
-                    ...org,
-                    status: "completed" as const,
-                    scheduledTime: undefined,
-                    callNotes: mockCallNotes[orgId as keyof typeof mockCallNotes] || {
-                      summary: "Call completed successfully. AI agent left a message about volunteer interest.",
-                      availability: "Awaiting callback",
-                      nextSteps: ["Wait for organization to return call", "Follow up via email if no response"],
-                    },
+        console.log("✓ Call initiated:", result)
+        const callId = result.callId;
+
+        // Poll for call completion every 3 seconds
+        const pollForCompletion = async () => {
+          const maxPolls = 120; // 6 minutes max (120 * 3s)
+          let polls = 0;
+          
+          while (polls < maxPolls) {
+            try {
+              console.log(`⏳ [Poll ${polls + 1}] Checking call ${callId} status...`);
+              const statusRes = await fetch(`http://localhost:4000/api/voice/call/${callId}`);
+              const statusJson = await statusRes.json();
+              console.log(`📊 Status response:`, statusJson);
+              
+              if (statusRes.ok && statusJson.ok && statusJson.completed) {
+                console.log('✓ Call completed!');
+                
+                // Fetch persisted summary
+                let summaryData = null;
+                try {
+                  console.log(`📋 Fetching summary for key: ${org.phone || callId}`);
+                  const sumRes = await fetch(`http://localhost:4000/api/call-summaries?key=${encodeURIComponent(org.phone || callId)}`);
+                  if (sumRes.ok) {
+                    summaryData = await sumRes.json();
+                    console.log('✓ Summary fetched:', summaryData);
                   }
-                : org
-            )
-          )
-        }, 8000)
+                } catch (e) {
+                  console.error('❌ Error fetching summary:', e);
+                }
+
+                // Update organization with completed status
+                setOrganizations((prev) =>
+                  prev.map((o) =>
+                    o.id === orgId
+                      ? {
+                          ...o,
+                          status: 'completed' as const,
+                          scheduledTime: undefined,
+                          callNotes: summaryData?.data?.vapiSummary || {
+                            summary: statusJson?.summary || 'Call completed.',
+                            availability: null,
+                            nextSteps: [],
+                          },
+                        }
+                      : o
+                  )
+                );
+                console.log('✓ UI updated to completed');
+                return; // Done polling
+              }
+              
+              // Still in progress, wait and poll again
+              await new Promise(r => setTimeout(r, 3000));
+              polls++;
+            } catch (e) {
+              console.error('❌ Poll error:', e);
+              await new Promise(r => setTimeout(r, 3000));
+              polls++;
+            }
+          }
+          
+          // Timeout - reset to ready
+          console.error('❌ Polling timeout');
+          setOrganizations((prev) =>
+            prev.map((o) => (o.id === orgId ? { ...o, status: 'ready' as const } : o))
+          );
+        };
+
+        pollForCompletion();
       } else {
         console.error("Call failed:", result)
         // Reset to ready status on failure

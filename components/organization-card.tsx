@@ -37,8 +37,15 @@ interface OrganizationCardProps {
 export function OrganizationCard({ organization, onCall, onViewNotes }: OrganizationCardProps) {
   const [callProgress, setCallProgress] = useState(0)
   const [showScheduleDialog, setShowScheduleDialog] = useState(false)
+  const [showCancelDialog, setShowCancelDialog] = useState(false)
   const [scheduleDate, setScheduleDate] = useState("")
   const [scheduleTime, setScheduleTime] = useState("")
+
+  // Format phone number: remove +1 prefix and any non-digits
+  const formatPhoneNumber = (phone: string | undefined) => {
+    if (!phone) return ""
+    return phone.replace(/^\+1/, "").replace(/\D/g, "")
+  }
 
   const handleCallNow = () => {
     setShowScheduleDialog(false)
@@ -60,6 +67,16 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
       onCall(organization.id, scheduledDateTime)
       setShowScheduleDialog(false)
     }
+  }
+
+  const handleCancelSchedule = () => {
+    setShowCancelDialog(true)
+  }
+
+  const confirmCancelSchedule = () => {
+    // Revert to ready status by calling with undefined scheduled time
+    onCall(organization.id, undefined)
+    setShowCancelDialog(false)
   }
 
   return (
@@ -93,7 +110,7 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
               {organization.phone && (
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Phone className="h-3.5 w-3.5 shrink-0" />
-                  <span className="font-mono">{organization.phone}</span>
+                  <span className="font-mono">{formatPhoneNumber(organization.phone)}</span>
                 </div>
               )}
               {organization.url && (
@@ -215,11 +232,11 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
               {organization.status === "scheduled" && (
                 <Button
                   variant="outline"
-                  className="flex-1 bg-transparent"
-                  onClick={handleCallNow}
+                  className="flex-1 bg-muted/50 text-muted-foreground border-border hover:bg-muted"
+                  onClick={handleCancelSchedule}
                 >
-                  <Phone className="mr-2 h-4 w-4" />
-                  Call Now Instead
+                  <X className="mr-2 h-4 w-4" />
+                  Scheduled Call - Click to Cancel
                 </Button>
               )}
               {organization.status === "completed" && (
@@ -238,6 +255,53 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
       </Card>
 
 
+
+      {/* Cancel Confirmation Dialog */}
+      <AnimatePresence>
+        {
+          showCancelDialog && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4"
+              onClick={() => setShowCancelDialog(false)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-md rounded-xl border border-border bg-card p-6 shadow-xl"
+              >
+                <div className="mb-4">
+                  <h2 className="text-lg font-semibold">Cancel Scheduled Call?</h2>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Are you sure you want to cancel the scheduled call to {organization.name}?
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowCancelDialog(false)}
+                    className="flex-1 bg-transparent"
+                  >
+                    No, Keep It
+                  </Button>
+                  <Button
+                    variant="destructive"
+                    onClick={confirmCancelSchedule}
+                    className="flex-1"
+                  >
+                    Yes, Cancel
+                  </Button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )
+        }
+      </AnimatePresence>
 
       {/* Schedule Dialog */}
       <AnimatePresence>

@@ -1,5 +1,6 @@
 import { VapiClient } from '@vapi-ai/server-sdk';
 import dotenv from 'dotenv';
+import { saveCallSummary } from './callSummary';
 
 dotenv.config();
 
@@ -71,39 +72,43 @@ If they can help, gather detailed information about how the project organizer sh
   try {
     console.log(`Making VAPI call to ${organizationName} (${to})...`);
 
-    const vapi = getVapiClient();
-    const response = await vapi.calls.create({
-      phoneNumberId: VAPI_PHONE_NUMBER_ID,
-      customer: { number: to },
-      assistant: {
-        name: "VolunteerConnect Assistant",
-        firstMessage: `Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support. I'm reaching out on behalf of someone who needs help with: ${mission}. Would ${organizationName} be able to assist with this?`,
-        model: {
-          provider: 'openai',
-          model: 'gpt-4o',
-          messages: [
-            { 
-              role: 'system', 
-              content: systemPrompt
-            }
-          ]
-        },
-    voice: {
-         voiceId: "Elliot",
-         provider: "vapi"
-    },
-      }
-    }) as any;
+    // Use REST API directly (SDK has UUID parsing issues)
+    const response = await fetch('https://api.vapi.ai/call/phone', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${VAPI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phoneNumberId: VAPI_PHONE_NUMBER_ID,
+        customer: { number: to },
+        assistant: {
+          name: "VolunteerConnect Assistant",
+          firstMessage: `Hi, this is VolunteerConnect. I'm reaching out on ${mission}. Would ${organizationName} be able to assist?`,
+          model: {
+            provider: 'openai',
+            model: 'gpt-4o',
+            messages: [{ role: 'system', content: systemPrompt }]
+          },
+          voice: {
+            voiceId: "Elliot",
+            provider: "vapi"
+          },
+        }
+      }),
+    });
 
-    // Extract call ID from response (handle different response formats)
-    const callId = response?.id || response?.data?.id || 'unknown';
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`VAPI API error: ${response.status} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    const callId = data?.id || 'unknown';
     console.log(`✓ VAPI call initiated to ${organizationName} (${to}), Call ID: ${callId}`);
     return callId;
   } catch (error: any) {
     console.error('Error initiating VAPI call:', error.message);
-    if (error.response) {
-      console.error('VAPI error details:', JSON.stringify(error.response.data, null, 2));
-    }
     throw error;
   }
 }
@@ -121,33 +126,73 @@ export async function waitForCallEnd(callId: string): Promise<CallStatusResponse
 
   while (attempts < maxAttempts) {
     try {
-      const vapi = getVapiClient();
-      const call: any = await vapi.calls.get(callId as any);
+      // Use REST API directly (SDK has UUID parsing issues)
+      const response = await fetch(`https://api.vapi.ai/call/${callId}`, {
+        headers: { 'Authorization': `Bearer ${VAPI_API_KEY}` }
+      });
+      if (!response.ok) throw new Error(`VAPI API error: ${response.status}`);
+      const call: any = await response.json();
       
       const status = call?.status || 'unknown';
+      console.log(`[Poll ${attempts + 1}/${maxAttempts}] Call ${callId} status: ${status}`);
       
-      // Check if call has ended (VAPI statuses: queued, ringing, in-progress, forwarding, ended)
-      if (status === 'ended' || status === 'completed' || status === 'failed' || status === 'no-answer') {
+      // Check if call has ended (VAPI statuses: queued, ringing, in-progress, forwarding, ended, busy, no-answer, canceled)
+      if (status === 'ended' || status === 'completed' || status === 'failed' || status === 'no-answer' || status === 'busy' || status === 'canceled') {
         console.log(`✓ Call ${callId} completed with status: ${status}`);
         
-        return {
+        // Extract and log VAPI call summary from structuredData
+        const callSummary = call?.analysis?.structuredData?.summary || call?.analysis?.summary || 'No summary available';
+        const callTranscript = call?.transcript || 'No transcript available';
+        
+        console.log('\n=== VAPI CALL SUMMARY ===');
+        console.log('Summary:', callSummary);
+        console.log('\n=== VAPI STRUCTURED DATA ===');
+        console.log(JSON.stringify(call?.analysis?.structuredData, null, 2));
+        console.log('\n=== VAPI CALL ANALYSIS ===');
+        console.log(JSON.stringify(call?.analysis, null, 2));
+        console.log('\n=== VAPI CALL TRANSCRIPT ===');
+        console.log(callTranscript);
+        console.log('========================\n');
+
+        const result: CallStatusResponse = {
           status: status,
           analysis: call?.analysis,
           transcript: call?.transcript
         };
+
+        // Use VAPI's auto-generated analysis summary and persist it
+        try {
+          const vapiSummary = {
+            summary: callSummary,
+            contactName: null,
+            interested: null,
+            nextSteps: [],
+            availability: null,
+            callbackDate: null,
+            vapiAnalysis: call?.analysis,
+          };
+          
+          const key = call?.customer?.number || callId;
+          await saveCallSummary(key, { callId, vapiSummary: vapiSummary, vapiRaw: call, status });
+          console.log(`✓ Saved VAPI analysis for ${key}: ${vapiSummary.summary}`);
+        } catch (err: any) {
+          console.error('Error persisting call summary:', err?.message || err);
+        }
+
+        return result;
       }
 
-      // Wait 5 seconds before next check
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      // Wait 3 seconds before next check (faster detection)
+      await new Promise(resolve => setTimeout(resolve, 3000));
       attempts++;
     } catch (error: any) {
       console.error(`Error checking call status (attempt ${attempts + 1}):`, error.message);
       
       if (attempts >= maxAttempts - 1) {
-        throw new Error(`Call monitoring timeout after ${maxAttempts * 5} seconds`);
+        throw new Error(`Call monitoring timeout after ${maxAttempts * 3} seconds`);
       }
       
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      await new Promise(resolve => setTimeout(resolve, 3000));
       attempts++;
     }
   }

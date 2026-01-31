@@ -1,0 +1,1740 @@
+{
+  "+16692229163": {
+    "callId": "019c1616-ffe5-7226-aa3f-64607a25b296",
+    "vapiSummary": {
+      "summary": "Volunteer Connect called Kulkarni Thomas Food Bank on behalf of a volunteer interested in assisting with food distribution. The food bank confirmed they could accommodate the volunteer and invited them to a meeting on February 5th at 9 PM to discuss opportunities.",
+      "contactName": null,
+      "interested": null,
+      "nextSteps": [],
+      "availability": null,
+      "callbackDate": null,
+      "vapiAnalysis": {
+        "summary": "Volunteer Connect called Kulkarni Thomas Food Bank on behalf of a volunteer interested in assisting with food distribution. The food bank confirmed they could accommodate the volunteer and invited them to a meeting on February 5th at 9 PM to discuss opportunities.",
+        "successEvaluation": "true"
+      }
+    },
+    "vapiRaw": {
+      "id": "019c1616-ffe5-7226-aa3f-64607a25b296",
+      "phoneNumberId": "198ac86d-2c64-48c9-a38c-113b279887fc",
+      "type": "outboundPhoneCall",
+      "startedAt": "2026-01-31T22:05:37.045Z",
+      "endedAt": "2026-01-31T22:06:13.921Z",
+      "transcript": "AI: Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Wood Kulkarni and Thomas Food Bank. Be able to assist?\nUser: Yes. We would be able to assist. We have a meeting on February fifth at 9 PM. Tell them they should attend.\nAI: Thank you, sir. Thank you very much for your response.\n",
+      "recordingUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-9e2d5e01-dcc2-49fe-9c70-6bb93cf18f04-mono.wav",
+      "summary": "Volunteer Connect called Kulkarni Thomas Food Bank on behalf of a volunteer interested in assisting with food distribution. The food bank confirmed they could accommodate the volunteer and invited them to a meeting on February 5th at 9 PM to discuss opportunities.",
+      "createdAt": "2026-01-31T22:05:32.006Z",
+      "updatedAt": "2026-01-31T22:06:18.499Z",
+      "orgId": "922eadcf-8fa7-4a96-a72a-b7e6d4c244ce",
+      "cost": 0.0885,
+      "assistant": {
+        "name": "VolunteerConnect Assistant",
+        "model": {
+          "model": "gpt-4o",
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support."
+            }
+          ],
+          "provider": "openai"
+        },
+        "voice": {
+          "voiceId": "Elliot",
+          "provider": "vapi"
+        },
+        "firstMessage": "Hi, this is VolunteerConnect. I'm reaching out on Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!. Would Kulkarni & Thomas Food Bank be able to assist?"
+      },
+      "customer": {
+        "number": "+16692229163"
+      },
+      "status": "ended",
+      "endedReason": "customer-ended-call",
+      "messages": [
+        {
+          "role": "system",
+          "time": 1769897136986,
+          "message": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support.",
+          "secondsFromStart": 0
+        },
+        {
+          "role": "bot",
+          "time": 1769897138215,
+          "source": "",
+          "endTime": 1769897164495,
+          "message": "Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Wood Kulkarni and Thomas Food Bank. Be able to assist?",
+          "duration": 21519.999755859375,
+          "secondsFromStart": 1.17
+        },
+        {
+          "role": "user",
+          "time": 1769897164835,
+          "endTime": 1769897170975,
+          "message": "Yes. We would be able to assist. We have a meeting on February fifth at 9 PM. Tell them they should attend.",
+          "duration": 5820,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 28.06,
+                "word": "yes",
+                "start": 27.74,
+                "confidence": 0.98291016,
+                "punctuated_word": "Yes."
+              },
+              {
+                "end": 28.220001,
+                "word": "we",
+                "start": 28.06,
+                "confidence": 0.97802734,
+                "punctuated_word": "We"
+              },
+              {
+                "end": 28.460001,
+                "word": "would",
+                "start": 28.220001,
+                "confidence": 0.99121094,
+                "punctuated_word": "would"
+              },
+              {
+                "end": 28.54,
+                "word": "be",
+                "start": 28.460001,
+                "confidence": 1,
+                "punctuated_word": "be"
+              },
+              {
+                "end": 28.78,
+                "word": "able",
+                "start": 28.54,
+                "confidence": 0.99902344,
+                "punctuated_word": "able"
+              },
+              {
+                "end": 28.94,
+                "word": "to",
+                "start": 28.78,
+                "confidence": 0.9970703,
+                "punctuated_word": "to"
+              },
+              {
+                "end": 29.26,
+                "word": "assist",
+                "start": 28.94,
+                "confidence": 0.9980469,
+                "punctuated_word": "assist."
+              },
+              {
+                "end": 29.42,
+                "word": "we",
+                "start": 29.26,
+                "confidence": 0.9614258,
+                "punctuated_word": "We"
+              },
+              {
+                "end": 29.58,
+                "word": "have",
+                "start": 29.42,
+                "confidence": 0.98291016,
+                "punctuated_word": "have"
+              },
+              {
+                "end": 29.66,
+                "word": "a",
+                "start": 29.58,
+                "confidence": 0.99902344,
+                "punctuated_word": "a"
+              },
+              {
+                "end": 29.9,
+                "word": "meeting",
+                "start": 29.66,
+                "confidence": 1,
+                "punctuated_word": "meeting"
+              },
+              {
+                "end": 30.14,
+                "word": "on",
+                "start": 29.9,
+                "confidence": 1,
+                "punctuated_word": "on"
+              },
+              {
+                "end": 30.62,
+                "word": "february",
+                "start": 30.14,
+                "confidence": 1,
+                "punctuated_word": "February"
+              },
+              {
+                "end": 31.07,
+                "word": "fifth",
+                "start": 30.62,
+                "confidence": 0.96435547,
+                "punctuated_word": "fifth"
+              }
+            ]
+          },
+          "secondsFromStart": 27.74
+        },
+        {
+          "role": "bot",
+          "time": 1769897170255,
+          "source": "",
+          "endTime": 1769897173235,
+          "message": "Thank you, sir. Thank you very much for your response.",
+          "duration": 2980,
+          "secondsFromStart": 33.16
+        }
+      ],
+      "stereoRecordingUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-591ca06a-b656-4d62-92b4-62942da97b2a-stereo.wav",
+      "costBreakdown": {
+        "transport": 0,
+        "stt": 0.0067,
+        "llm": 0.0099,
+        "tts": 0.0408,
+        "vapi": 0.0307,
+        "chat": 0,
+        "total": 0.0885,
+        "llmPromptTokens": 1506,
+        "llmCompletionTokens": 161,
+        "llmCachedPromptTokens": 0,
+        "ttsCharacters": 815,
+        "analysisCostBreakdown": {
+          "summary": 0.0002,
+          "structuredData": 0,
+          "structuredOutput": 0,
+          "successEvaluation": 0.0002,
+          "summaryPromptTokens": 193,
+          "summaryCompletionTokens": 49,
+          "summaryCachedPromptTokens": 0,
+          "structuredDataPromptTokens": 0,
+          "structuredOutputPromptTokens": 0,
+          "successEvaluationPromptTokens": 610,
+          "structuredDataCompletionTokens": 0,
+          "structuredDataCachedPromptTokens": 0,
+          "structuredOutputCompletionTokens": 0,
+          "successEvaluationCompletionTokens": 6,
+          "structuredOutputCachedPromptTokens": 0,
+          "successEvaluationCachedPromptTokens": 0
+        },
+        "knowledgeBaseCost": 0,
+        "voicemailDetectionCost": 0
+      },
+      "phoneCallProvider": "vapi",
+      "phoneCallProviderId": "35265e74-22a4-48ec-8ed7-7ada2fbc2af9",
+      "phoneCallTransport": "pstn",
+      "phoneCallProviderDetails": {
+        "sbcCallId": "ce7928ee-7993-123f-49ad-0eff2032c585"
+      },
+      "analysis": {
+        "summary": "Volunteer Connect called Kulkarni Thomas Food Bank on behalf of a volunteer interested in assisting with food distribution. The food bank confirmed they could accommodate the volunteer and invited them to a meeting on February 5th at 9 PM to discuss opportunities.",
+        "successEvaluation": "true"
+      },
+      "artifact": {
+        "recordingUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-9e2d5e01-dcc2-49fe-9c70-6bb93cf18f04-mono.wav",
+        "stereoRecordingUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-591ca06a-b656-4d62-92b4-62942da97b2a-stereo.wav",
+        "recording": {
+          "stereoUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-591ca06a-b656-4d62-92b4-62942da97b2a-stereo.wav",
+          "mono": {
+            "combinedUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-9e2d5e01-dcc2-49fe-9c70-6bb93cf18f04-mono.wav",
+            "assistantUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-6cebafb5-64fa-4644-843a-caa14f55ba03-mono.wav",
+            "customerUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176518-14429a33-d7cb-4dbc-86c0-5e28be1947ce-mono.wav"
+          }
+        },
+        "messages": [
+          {
+            "role": "system",
+            "time": 1769897136986,
+            "message": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support.",
+            "secondsFromStart": 0
+          },
+          {
+            "role": "bot",
+            "time": 1769897138215,
+            "source": "",
+            "endTime": 1769897164495,
+            "message": "Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Wood Kulkarni and Thomas Food Bank. Be able to assist?",
+            "duration": 21519.999755859375,
+            "secondsFromStart": 1.17
+          },
+          {
+            "role": "user",
+            "time": 1769897164835,
+            "endTime": 1769897170975,
+            "message": "Yes. We would be able to assist. We have a meeting on February fifth at 9 PM. Tell them they should attend.",
+            "duration": 5820,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 28.06,
+                  "word": "yes",
+                  "start": 27.74,
+                  "confidence": 0.98291016,
+                  "punctuated_word": "Yes."
+                },
+                {
+                  "end": 28.220001,
+                  "word": "we",
+                  "start": 28.06,
+                  "confidence": 0.97802734,
+                  "punctuated_word": "We"
+                },
+                {
+                  "end": 28.460001,
+                  "word": "would",
+                  "start": 28.220001,
+                  "confidence": 0.99121094,
+                  "punctuated_word": "would"
+                },
+                {
+                  "end": 28.54,
+                  "word": "be",
+                  "start": 28.460001,
+                  "confidence": 1,
+                  "punctuated_word": "be"
+                },
+                {
+                  "end": 28.78,
+                  "word": "able",
+                  "start": 28.54,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "able"
+                },
+                {
+                  "end": 28.94,
+                  "word": "to",
+                  "start": 28.78,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "to"
+                },
+                {
+                  "end": 29.26,
+                  "word": "assist",
+                  "start": 28.94,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "assist."
+                },
+                {
+                  "end": 29.42,
+                  "word": "we",
+                  "start": 29.26,
+                  "confidence": 0.9614258,
+                  "punctuated_word": "We"
+                },
+                {
+                  "end": 29.58,
+                  "word": "have",
+                  "start": 29.42,
+                  "confidence": 0.98291016,
+                  "punctuated_word": "have"
+                },
+                {
+                  "end": 29.66,
+                  "word": "a",
+                  "start": 29.58,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "a"
+                },
+                {
+                  "end": 29.9,
+                  "word": "meeting",
+                  "start": 29.66,
+                  "confidence": 1,
+                  "punctuated_word": "meeting"
+                },
+                {
+                  "end": 30.14,
+                  "word": "on",
+                  "start": 29.9,
+                  "confidence": 1,
+                  "punctuated_word": "on"
+                },
+                {
+                  "end": 30.62,
+                  "word": "february",
+                  "start": 30.14,
+                  "confidence": 1,
+                  "punctuated_word": "February"
+                },
+                {
+                  "end": 31.07,
+                  "word": "fifth",
+                  "start": 30.62,
+                  "confidence": 0.96435547,
+                  "punctuated_word": "fifth"
+                }
+              ]
+            },
+            "secondsFromStart": 27.74
+          },
+          {
+            "role": "bot",
+            "time": 1769897170255,
+            "source": "",
+            "endTime": 1769897173235,
+            "message": "Thank you, sir. Thank you very much for your response.",
+            "duration": 2980,
+            "secondsFromStart": 33.16
+          }
+        ],
+        "messagesOpenAIFormatted": [
+          {
+            "content": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support.",
+            "role": "system"
+          },
+          {
+            "content": "Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Wood Kulkarni and Thomas Food Bank. Be able to assist?",
+            "role": "assistant"
+          },
+          {
+            "content": "Yes. We would be able to assist. We have a meeting on February fifth at 9 PM. Tell them they should attend.",
+            "role": "user"
+          },
+          {
+            "content": "Thank you, sir. Thank you very much for your response.",
+            "role": "assistant"
+          }
+        ],
+        "transcript": "AI: Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Wood Kulkarni and Thomas Food Bank. Be able to assist?\nUser: Yes. We would be able to assist. We have a meeting on February fifth at 9 PM. Tell them they should attend.\nAI: Thank you, sir. Thank you very much for your response.\n",
+        "pcapUrl": "https://storage.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296-1769897176829-442c7ff3-0c01-4e65-8cfc-72595339bff0-sip.pcap",
+        "logUrl": "https://calllogs.vapi.ai/922eadcf-8fa7-4a96-a72a-b7e6d4c244ce/019c1616-ffe5-7226-aa3f-64607a25b296-60ec2460-f0f3-41b2-8001-5102c73461c5-1769897178069.jsonl.gz",
+        "nodes": [],
+        "variableValues": {
+          "day": "31",
+          "now": "Jan 31, 2026, 10:05 PM UTC",
+          "date": "Jan 31, 2026 UTC",
+          "time": "10:05 PM UTC",
+          "year": "2026",
+          "month": "January",
+          "customer": {
+            "number": "+16692229163"
+          },
+          "transport": {
+            "callSid": "35265e74-22a4-48ec-8ed7-7ada2fbc2af9",
+            "provider": "vapi.sip",
+            "sbcCallSid": "ce7928ee-7993-123f-49ad-0eff2032c585",
+            "conversationType": "voice"
+          },
+          "phoneNumber": {
+            "id": "198ac86d-2c64-48c9-a38c-113b279887fc",
+            "orgId": "922eadcf-8fa7-4a96-a72a-b7e6d4c244ce",
+            "number": "+14087312926",
+            "status": "active",
+            "provider": "vapi",
+            "createdAt": "2026-01-31T21:35:40.566Z",
+            "updatedAt": "2026-01-31T21:37:40.884Z",
+            "providerResourceId": "6b90e5bf-8c62-48b4-a94b-9cb8fd6d388c"
+          },
+          "currentDateTime": "Saturday, January 31, 2026 at 10:05 PM UTC"
+        },
+        "variables": {
+          "day": "31",
+          "now": "Jan 31, 2026, 10:05 PM UTC",
+          "date": "Jan 31, 2026 UTC",
+          "time": "10:05 PM UTC",
+          "year": "2026",
+          "month": "January",
+          "customer": {
+            "number": "+16692229163"
+          },
+          "transport": {
+            "callSid": "35265e74-22a4-48ec-8ed7-7ada2fbc2af9",
+            "provider": "vapi.sip",
+            "sbcCallSid": "ce7928ee-7993-123f-49ad-0eff2032c585",
+            "conversationType": "voice"
+          },
+          "phoneNumber": {
+            "id": "198ac86d-2c64-48c9-a38c-113b279887fc",
+            "orgId": "922eadcf-8fa7-4a96-a72a-b7e6d4c244ce",
+            "number": "+14087312926",
+            "status": "active",
+            "provider": "vapi",
+            "createdAt": "2026-01-31T21:35:40.566Z",
+            "updatedAt": "2026-01-31T21:37:40.884Z",
+            "providerResourceId": "6b90e5bf-8c62-48b4-a94b-9cb8fd6d388c"
+          },
+          "currentDateTime": "Saturday, January 31, 2026 at 10:05 PM UTC"
+        },
+        "performanceMetrics": {
+          "turnLatencies": [
+            {
+              "modelLatency": 205,
+              "voiceLatency": 220,
+              "transcriberLatency": 0,
+              "endpointingLatency": 101,
+              "turnLatency": 565
+            },
+            {
+              "modelLatency": 205,
+              "voiceLatency": 344,
+              "transcriberLatency": 560,
+              "endpointingLatency": 104,
+              "turnLatency": 1231
+            }
+          ],
+          "modelLatencyAverage": 205,
+          "voiceLatencyAverage": 282,
+          "transcriberLatencyAverage": 280,
+          "endpointingLatencyAverage": 102.5,
+          "turnLatencyAverage": 898,
+          "fromTransportLatencyAverage": 20,
+          "toTransportLatencyAverage": 20,
+          "numAssistantInterrupted": 1
+        },
+        "scorecards": {},
+        "transfers": []
+      },
+      "costs": [
+        {
+          "cost": 0.006720676666666666,
+          "type": "transcriber",
+          "minutes": 0.6866166666666668,
+          "transcriber": {
+            "model": "nova-2-phonecall",
+            "provider": "deepgram"
+          }
+        },
+        {
+          "cost": 0.009945,
+          "type": "model",
+          "model": {
+            "model": "gpt-4o",
+            "provider": "openai"
+          },
+          "promptTokens": 1506,
+          "completionTokens": 161,
+          "cachedPromptTokens": 0
+        },
+        {
+          "cost": 0.04075,
+          "type": "voice",
+          "voice": {
+            "model": "eleven_turbo_v2_5",
+            "voiceId": "dN8hviqdNrAsEcL57yFj",
+            "provider": "vapi"
+          },
+          "characters": 815
+        },
+        {
+          "cost": 0.03073,
+          "type": "vapi",
+          "minutes": 0.6146,
+          "subType": "normal"
+        },
+        {
+          "cost": 0.0001804,
+          "type": "analysis",
+          "model": {
+            "model": "gemini-2.5-flash",
+            "provider": "google"
+          },
+          "analysisType": "summary",
+          "promptTokens": 193,
+          "completionTokens": 49
+        },
+        {
+          "cost": 0.000198,
+          "type": "analysis",
+          "model": {
+            "model": "gemini-2.5-flash",
+            "provider": "google"
+          },
+          "analysisType": "successEvaluation",
+          "promptTokens": 610,
+          "completionTokens": 6
+        },
+        {
+          "cost": 0,
+          "type": "knowledge-base",
+          "model": {
+            "model": "gemini-2.0-flash",
+            "provider": "google"
+          },
+          "promptTokens": 0,
+          "completionTokens": 0
+        }
+      ],
+      "monitor": {
+        "listenUrl": "wss://phone-call-websocket.aws-us-west-2-backend-production3.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296/listen",
+        "controlUrl": "https://phone-call-websocket.aws-us-west-2-backend-production3.vapi.ai/019c1616-ffe5-7226-aa3f-64607a25b296/control"
+      },
+      "transport": {
+        "callSid": "35265e74-22a4-48ec-8ed7-7ada2fbc2af9",
+        "provider": "vapi.sip",
+        "sbcCallSid": "ce7928ee-7993-123f-49ad-0eff2032c585",
+        "conversationType": "voice"
+      }
+    },
+    "status": "ended",
+    "updatedAt": "2026-01-31T22:06:21.264Z"
+  },
+  "+16693313021": {
+    "callId": "019c161b-c41b-700e-91fe-73f267374bf5",
+    "vapiSummary": {
+      "summary": "Volunteer Connect called Kolkarni and Thomas Food Bank to connect a volunteer interested in food distribution. The food bank representative, unable to answer all questions immediately, directed the volunteer to contact them via email or Instagram. The call concluded with the food bank providing the email address noelthomas@gmail.com for direct communication.",
+      "contactName": null,
+      "interested": null,
+      "nextSteps": [],
+      "availability": null,
+      "callbackDate": null,
+      "vapiAnalysis": {
+        "summary": "Volunteer Connect called Kolkarni and Thomas Food Bank to connect a volunteer interested in food distribution. The food bank representative, unable to answer all questions immediately, directed the volunteer to contact them via email or Instagram. The call concluded with the food bank providing the email address noelthomas@gmail.com for direct communication.",
+        "successEvaluation": "true"
+      }
+    },
+    "vapiRaw": {
+      "id": "019c161b-c41b-700e-91fe-73f267374bf5",
+      "phoneNumberId": "198ac86d-2c64-48c9-a38c-113b279887fc",
+      "type": "outboundPhoneCall",
+      "startedAt": "2026-01-31T22:10:51.156Z",
+      "endedAt": "2026-01-31T22:13:25.444Z",
+      "transcript": "AI: Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kolkarni and Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Would Kulkarni and Thomas Food Bank be able to assist?\nUser: Yeah. Of course.\nAI: Thank you so much for your willingness to help. Could you please provide some information on how the project organizer can proceed to get support? From Kolkarni and Thomas Food Bank 1, can you great. Thank you.\nUser: Yeah.\nAI: To help the project organizer move forward, could I ask a few quick questions? 1, who would be the best person for the organizer to contact\nUser: Yeah. Sure.\nAI: about volunteering or partnering with your food bank? 2, what's the best way to reach them? Phone, email, or another method? 3, are there any specific requirements or steps the volunteer needs to follow? Before getting involved? Like an application, orientation or or or background check. 4, what kind of support can your organization offer? Volunteer opportunities, food donations, logistical help, etcetera? Once I have this information, I'll make sure the organizer reaches out to the right person. And follows your process. Thanks again for your time.\nUser: Yeah.\nAI: Great. Thank you.\nUser: Yeah. So I think I think they can they should definitely reach out to to us and let us know what they think. But I think you're asking a bit too many questions right now. I'm not sure if I can answer all of them. However, I think that if you reach out to us via email or our Instagram page, I can definitely help out.\nAI: Thank you so much. I really appreciate your openness and your time. That's completely understandable. And I don't wanna take up too much of it. I'll let the project organizer know know that they can reach out to you directly via email or Instagram to discuss how they can get involved and what support might be available. Just to confirm, is there a specific email address or Instagram handle they should use to contact you? That way, I can make sure they reach the right place.\nUser: Yes. It's called noel thomas at gmail dot com, and that's it. I have to go right now, but goodbye.\nAI: You so much for the information. Noll thomas at g mail dot com. I'll pass that along to the project organizer. I appreciate your time and assistance. And, um, hope you have a great day. Goodbye.\nUser: Yep. You too.\nAI: Thank you. Take\n",
+      "recordingUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-120801b4-da08-4d82-8111-1ed609b1c5df-mono.wav",
+      "summary": "Volunteer Connect called Kolkarni and Thomas Food Bank to connect a volunteer interested in food distribution. The food bank representative, unable to answer all questions immediately, directed the volunteer to contact them via email or Instagram. The call concluded with the food bank providing the email address noelthomas@gmail.com for direct communication.",
+      "createdAt": "2026-01-31T22:10:44.379Z",
+      "updatedAt": "2026-01-31T22:13:29.691Z",
+      "orgId": "922eadcf-8fa7-4a96-a72a-b7e6d4c244ce",
+      "cost": 0.3412,
+      "assistant": {
+        "name": "VolunteerConnect Assistant",
+        "model": {
+          "model": "gpt-4o",
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support."
+            }
+          ],
+          "provider": "openai"
+        },
+        "voice": {
+          "voiceId": "Elliot",
+          "provider": "vapi"
+        },
+        "firstMessage": "Hi, this is VolunteerConnect. I'm reaching out on Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!. Would Kulkarni & Thomas Food Bank be able to assist?"
+      },
+      "customer": {
+        "number": "+16693313021"
+      },
+      "status": "ended",
+      "endedReason": "customer-ended-call",
+      "messages": [
+        {
+          "role": "system",
+          "time": 1769897451100,
+          "message": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support.",
+          "secondsFromStart": 0
+        },
+        {
+          "role": "bot",
+          "time": 1769897452337,
+          "source": "",
+          "endTime": 1769897478477,
+          "message": "Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kolkarni and Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Would Kulkarni and Thomas Food Bank be able to assist?",
+          "duration": 22660.000732421875,
+          "secondsFromStart": 1.181
+        },
+        {
+          "role": "user",
+          "time": 1769897479297,
+          "endTime": 1769897480117,
+          "message": "Yeah. Of course.",
+          "duration": 820,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 28.32,
+                "word": "yeah",
+                "start": 28.08,
+                "confidence": 0.8378906,
+                "punctuated_word": "Yeah."
+              },
+              {
+                "end": 28.4,
+                "word": "of",
+                "start": 28.32,
+                "confidence": 0.9892578,
+                "punctuated_word": "Of"
+              },
+              {
+                "end": 28.9,
+                "word": "course",
+                "start": 28.4,
+                "confidence": 0.99902344,
+                "punctuated_word": "course."
+              }
+            ]
+          },
+          "secondsFromStart": 28.08
+        },
+        {
+          "role": "bot",
+          "time": 1769897480986.999,
+          "source": "",
+          "endTime": 1769897495207,
+          "message": "Thank you so much for your willingness to help. Could you please provide some information on how the project organizer can proceed to get support? From Kolkarni and Thomas Food Bank 1, can you great. Thank you.",
+          "duration": 11579.998046875,
+          "secondsFromStart": 29.8309990234375
+        },
+        {
+          "role": "user",
+          "time": 1769897492917,
+          "endTime": 1769897493417,
+          "message": "Yeah.",
+          "duration": 500,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 42.2,
+                "word": "yeah",
+                "start": 41.7,
+                "confidence": 0.80566406,
+                "punctuated_word": "Yeah."
+              }
+            ]
+          },
+          "secondsFromStart": 41.7
+        },
+        {
+          "role": "bot",
+          "time": 1769897495287.004,
+          "source": "",
+          "endTime": 1769897503417,
+          "message": "To help the project organizer move forward, could I ask a few quick questions? 1, who would be the best person for the organizer to contact",
+          "duration": 7399.9931640625,
+          "secondsFromStart": 44.13100390625
+        },
+        {
+          "role": "user",
+          "time": 1769897500276.998,
+          "endTime": 1769897500977,
+          "message": "Yeah. Sure.",
+          "duration": 700.001953125,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 49.3,
+                "word": "yeah",
+                "start": 49.059998,
+                "confidence": 0.99365234,
+                "punctuated_word": "Yeah."
+              },
+              {
+                "end": 49.76,
+                "word": "sure",
+                "start": 49.3,
+                "confidence": 0.99902344,
+                "punctuated_word": "Sure."
+              }
+            ]
+          },
+          "secondsFromStart": 49.059998046875
+        },
+        {
+          "role": "bot",
+          "time": 1769897503922,
+          "source": "",
+          "endTime": 1769897538417,
+          "message": "about volunteering or partnering with your food bank? 2, what's the best way to reach them? Phone, email, or another method? 3, are there any specific requirements or steps the volunteer needs to follow? Before getting involved? Like an application, orientation or or or background check. 4, what kind of support can your organization offer? Volunteer opportunities, food donations, logistical help, etcetera? Once I have this information, I'll make sure the organizer reaches out to the right person. And follows your process. Thanks again for your time.",
+          "duration": 28299.986083984375,
+          "secondsFromStart": 52.766
+        },
+        {
+          "role": "user",
+          "time": 1769897538016.995,
+          "endTime": 1769897538447,
+          "message": "Yeah.",
+          "duration": 430.0048828125,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 87.23,
+                "word": "yeah",
+                "start": 86.799995,
+                "confidence": 0.7281494,
+                "punctuated_word": "Yeah."
+              }
+            ]
+          },
+          "secondsFromStart": 86.7999951171875
+        },
+        {
+          "role": "bot",
+          "time": 1769897539296.994,
+          "source": "",
+          "endTime": 1769897540277,
+          "message": "Great. Thank you.",
+          "duration": 980.006103515625,
+          "secondsFromStart": 88.14099389648437
+        },
+        {
+          "role": "user",
+          "time": 1769897539327,
+          "endTime": 1769897554887,
+          "message": "Yeah. So I think I think they can they should definitely reach out to to us and let us know what they think. But I think you're asking a bit too many questions right now. I'm not sure if I can answer all of them. However, I think that if you reach out to us via email or our Instagram page, I can definitely help out.",
+          "duration": 15160,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 88.350006,
+                "word": "yeah",
+                "start": 88.11,
+                "confidence": 0.99853516,
+                "punctuated_word": "Yeah."
+              },
+              {
+                "end": 88.43001,
+                "word": "so",
+                "start": 88.350006,
+                "confidence": 0.9970703,
+                "punctuated_word": "So"
+              },
+              {
+                "end": 88.51,
+                "word": "i",
+                "start": 88.43001,
+                "confidence": 0.9980469,
+                "punctuated_word": "I"
+              },
+              {
+                "end": 88.75,
+                "word": "think",
+                "start": 88.51,
+                "confidence": 0.97998047,
+                "punctuated_word": "think"
+              },
+              {
+                "end": 88.83,
+                "word": "i",
+                "start": 88.75,
+                "confidence": 0.99902344,
+                "punctuated_word": "I"
+              },
+              {
+                "end": 88.990005,
+                "word": "think",
+                "start": 88.83,
+                "confidence": 1,
+                "punctuated_word": "think"
+              },
+              {
+                "end": 89.07001,
+                "word": "they",
+                "start": 88.990005,
+                "confidence": 0.9970703,
+                "punctuated_word": "they"
+              },
+              {
+                "end": 89.15,
+                "word": "can",
+                "start": 89.07001,
+                "confidence": 0.99902344,
+                "punctuated_word": "can"
+              },
+              {
+                "end": 89.55,
+                "word": "they",
+                "start": 89.39,
+                "confidence": 0.99902344,
+                "punctuated_word": "they"
+              },
+              {
+                "end": 89.630005,
+                "word": "should",
+                "start": 89.55,
+                "confidence": 1,
+                "punctuated_word": "should"
+              },
+              {
+                "end": 90.03001,
+                "word": "definitely",
+                "start": 89.630005,
+                "confidence": 0.8378906,
+                "punctuated_word": "definitely"
+              },
+              {
+                "end": 90.19,
+                "word": "reach",
+                "start": 90.03001,
+                "confidence": 1,
+                "punctuated_word": "reach"
+              },
+              {
+                "end": 90.350006,
+                "word": "out",
+                "start": 90.19,
+                "confidence": 1,
+                "punctuated_word": "out"
+              },
+              {
+                "end": 90.590004,
+                "word": "to",
+                "start": 90.350006,
+                "confidence": 1,
+                "punctuated_word": "to"
+              },
+              {
+                "end": 90.75,
+                "word": "to",
+                "start": 90.590004,
+                "confidence": 0.99902344,
+                "punctuated_word": "to"
+              },
+              {
+                "end": 90.91,
+                "word": "us",
+                "start": 90.75,
+                "confidence": 1,
+                "punctuated_word": "us"
+              },
+              {
+                "end": 91.07,
+                "word": "and",
+                "start": 90.91,
+                "confidence": 0.9863281,
+                "punctuated_word": "and"
+              },
+              {
+                "end": 91.310005,
+                "word": "let",
+                "start": 91.07,
+                "confidence": 1,
+                "punctuated_word": "let"
+              },
+              {
+                "end": 91.47,
+                "word": "us",
+                "start": 91.310005,
+                "confidence": 1,
+                "punctuated_word": "us"
+              },
+              {
+                "end": 91.630005,
+                "word": "know",
+                "start": 91.47,
+                "confidence": 1,
+                "punctuated_word": "know"
+              },
+              {
+                "end": 91.87,
+                "word": "what",
+                "start": 91.630005,
+                "confidence": 0.99902344,
+                "punctuated_word": "what"
+              },
+              {
+                "end": 92.2,
+                "word": "they",
+                "start": 91.87,
+                "confidence": 0.99316406,
+                "punctuated_word": "they"
+              }
+            ]
+          },
+          "secondsFromStart": 88.11
+        },
+        {
+          "role": "bot",
+          "time": 1769897555797,
+          "source": "",
+          "endTime": 1769897582947,
+          "message": "Thank you so much. I really appreciate your openness and your time. That's completely understandable. And I don't wanna take up too much of it. I'll let the project organizer know know that they can reach out to you directly via email or Instagram to discuss how they can get involved and what support might be available. Just to confirm, is there a specific email address or Instagram handle they should use to contact you? That way, I can make sure they reach the right place.",
+          "duration": 24509.985107421875,
+          "secondsFromStart": 104.641
+        },
+        {
+          "role": "user",
+          "time": 1769897583566.99,
+          "endTime": 1769897589227.01,
+          "message": "Yes. It's called noel thomas at gmail dot com, and that's it. I have to go right now, but goodbye.",
+          "duration": 4920.010009765625,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 132.83,
+                "word": "yes",
+                "start": 132.34999,
+                "confidence": 0.7266846,
+                "punctuated_word": "Yes."
+              },
+              {
+                "end": 133.06999,
+                "word": "it's",
+                "start": 132.83,
+                "confidence": 0.9970703,
+                "punctuated_word": "It's"
+              },
+              {
+                "end": 133.56999,
+                "word": "called",
+                "start": 133.06999,
+                "confidence": 0.99902344,
+                "punctuated_word": "called"
+              }
+            ]
+          },
+          "secondsFromStart": 132.34998999023438
+        },
+        {
+          "role": "bot",
+          "time": 1769897591547,
+          "source": "",
+          "endTime": 1769897602857,
+          "message": "You so much for the information. Noll thomas at g mail dot com. I'll pass that along to the project organizer. I appreciate your time and assistance. And, um, hope you have a great day. Goodbye.",
+          "duration": 10289.989990234375,
+          "secondsFromStart": 140.391
+        },
+        {
+          "role": "user",
+          "time": 1769897603267,
+          "endTime": 1769897604507,
+          "message": "Yep. You too.",
+          "duration": 1080,
+          "metadata": {
+            "wordLevelConfidence": [
+              {
+                "end": 152.39,
+                "word": "yep",
+                "start": 152.05,
+                "confidence": 0.8300781,
+                "punctuated_word": "Yep."
+              }
+            ]
+          },
+          "secondsFromStart": 152.05
+        },
+        {
+          "role": "bot",
+          "time": 1769897605467,
+          "source": "",
+          "endTime": 1769897606277,
+          "message": "Thank you. Take",
+          "duration": 810,
+          "secondsFromStart": 154.25
+        }
+      ],
+      "stereoRecordingUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-7f4b1eef-2eca-4d41-96fe-a100f402529f-stereo.wav",
+      "costBreakdown": {
+        "transport": 0,
+        "stt": 0.0258,
+        "llm": 0.0384,
+        "tts": 0.1477,
+        "vapi": 0.1286,
+        "chat": 0,
+        "total": 0.3412,
+        "llmPromptTokens": 7286,
+        "llmCompletionTokens": 605,
+        "llmCachedPromptTokens": 0,
+        "ttsCharacters": 2954,
+        "analysisCostBreakdown": {
+          "summary": 0.0004,
+          "structuredData": 0,
+          "structuredOutput": 0,
+          "successEvaluation": 0.0003,
+          "summaryPromptTokens": 662,
+          "summaryCompletionTokens": 64,
+          "summaryCachedPromptTokens": 0,
+          "structuredDataPromptTokens": 0,
+          "structuredOutputPromptTokens": 0,
+          "successEvaluationPromptTokens": 1079,
+          "structuredDataCompletionTokens": 0,
+          "structuredDataCachedPromptTokens": 0,
+          "structuredOutputCompletionTokens": 0,
+          "successEvaluationCompletionTokens": 10,
+          "structuredOutputCachedPromptTokens": 0,
+          "successEvaluationCachedPromptTokens": 0
+        },
+        "knowledgeBaseCost": 0,
+        "voicemailDetectionCost": 0
+      },
+      "phoneCallProvider": "vapi",
+      "phoneCallProviderId": "fa17cfa0-cb10-47c6-97a0-8634aa604ff6",
+      "phoneCallTransport": "pstn",
+      "phoneCallProviderDetails": {
+        "sbcCallId": "8826003e-7994-123f-7da3-06ce18bd6143"
+      },
+      "analysis": {
+        "summary": "Volunteer Connect called Kolkarni and Thomas Food Bank to connect a volunteer interested in food distribution. The food bank representative, unable to answer all questions immediately, directed the volunteer to contact them via email or Instagram. The call concluded with the food bank providing the email address noelthomas@gmail.com for direct communication.",
+        "successEvaluation": "true"
+      },
+      "artifact": {
+        "recordingUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-120801b4-da08-4d82-8111-1ed609b1c5df-mono.wav",
+        "stereoRecordingUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-7f4b1eef-2eca-4d41-96fe-a100f402529f-stereo.wav",
+        "recording": {
+          "stereoUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-7f4b1eef-2eca-4d41-96fe-a100f402529f-stereo.wav",
+          "mono": {
+            "combinedUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-120801b4-da08-4d82-8111-1ed609b1c5df-mono.wav",
+            "assistantUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-5b02317b-b19f-4db3-8c8a-4d27da3f54f0-mono.wav",
+            "customerUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897607989-63fc3889-53f6-4469-8b53-d43d7c7eec0b-mono.wav"
+          }
+        },
+        "messages": [
+          {
+            "role": "system",
+            "time": 1769897451100,
+            "message": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support.",
+            "secondsFromStart": 0
+          },
+          {
+            "role": "bot",
+            "time": 1769897452337,
+            "source": "",
+            "endTime": 1769897478477,
+            "message": "Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kolkarni and Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Would Kulkarni and Thomas Food Bank be able to assist?",
+            "duration": 22660.000732421875,
+            "secondsFromStart": 1.181
+          },
+          {
+            "role": "user",
+            "time": 1769897479297,
+            "endTime": 1769897480117,
+            "message": "Yeah. Of course.",
+            "duration": 820,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 28.32,
+                  "word": "yeah",
+                  "start": 28.08,
+                  "confidence": 0.8378906,
+                  "punctuated_word": "Yeah."
+                },
+                {
+                  "end": 28.4,
+                  "word": "of",
+                  "start": 28.32,
+                  "confidence": 0.9892578,
+                  "punctuated_word": "Of"
+                },
+                {
+                  "end": 28.9,
+                  "word": "course",
+                  "start": 28.4,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "course."
+                }
+              ]
+            },
+            "secondsFromStart": 28.08
+          },
+          {
+            "role": "bot",
+            "time": 1769897480986.999,
+            "source": "",
+            "endTime": 1769897495207,
+            "message": "Thank you so much for your willingness to help. Could you please provide some information on how the project organizer can proceed to get support? From Kolkarni and Thomas Food Bank 1, can you great. Thank you.",
+            "duration": 11579.998046875,
+            "secondsFromStart": 29.8309990234375
+          },
+          {
+            "role": "user",
+            "time": 1769897492917,
+            "endTime": 1769897493417,
+            "message": "Yeah.",
+            "duration": 500,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 42.2,
+                  "word": "yeah",
+                  "start": 41.7,
+                  "confidence": 0.80566406,
+                  "punctuated_word": "Yeah."
+                }
+              ]
+            },
+            "secondsFromStart": 41.7
+          },
+          {
+            "role": "bot",
+            "time": 1769897495287.004,
+            "source": "",
+            "endTime": 1769897503417,
+            "message": "To help the project organizer move forward, could I ask a few quick questions? 1, who would be the best person for the organizer to contact",
+            "duration": 7399.9931640625,
+            "secondsFromStart": 44.13100390625
+          },
+          {
+            "role": "user",
+            "time": 1769897500276.998,
+            "endTime": 1769897500977,
+            "message": "Yeah. Sure.",
+            "duration": 700.001953125,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 49.3,
+                  "word": "yeah",
+                  "start": 49.059998,
+                  "confidence": 0.99365234,
+                  "punctuated_word": "Yeah."
+                },
+                {
+                  "end": 49.76,
+                  "word": "sure",
+                  "start": 49.3,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "Sure."
+                }
+              ]
+            },
+            "secondsFromStart": 49.059998046875
+          },
+          {
+            "role": "bot",
+            "time": 1769897503922,
+            "source": "",
+            "endTime": 1769897538417,
+            "message": "about volunteering or partnering with your food bank? 2, what's the best way to reach them? Phone, email, or another method? 3, are there any specific requirements or steps the volunteer needs to follow? Before getting involved? Like an application, orientation or or or background check. 4, what kind of support can your organization offer? Volunteer opportunities, food donations, logistical help, etcetera? Once I have this information, I'll make sure the organizer reaches out to the right person. And follows your process. Thanks again for your time.",
+            "duration": 28299.986083984375,
+            "secondsFromStart": 52.766
+          },
+          {
+            "role": "user",
+            "time": 1769897538016.995,
+            "endTime": 1769897538447,
+            "message": "Yeah.",
+            "duration": 430.0048828125,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 87.23,
+                  "word": "yeah",
+                  "start": 86.799995,
+                  "confidence": 0.7281494,
+                  "punctuated_word": "Yeah."
+                }
+              ]
+            },
+            "secondsFromStart": 86.7999951171875
+          },
+          {
+            "role": "bot",
+            "time": 1769897539296.994,
+            "source": "",
+            "endTime": 1769897540277,
+            "message": "Great. Thank you.",
+            "duration": 980.006103515625,
+            "secondsFromStart": 88.14099389648437
+          },
+          {
+            "role": "user",
+            "time": 1769897539327,
+            "endTime": 1769897554887,
+            "message": "Yeah. So I think I think they can they should definitely reach out to to us and let us know what they think. But I think you're asking a bit too many questions right now. I'm not sure if I can answer all of them. However, I think that if you reach out to us via email or our Instagram page, I can definitely help out.",
+            "duration": 15160,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 88.350006,
+                  "word": "yeah",
+                  "start": 88.11,
+                  "confidence": 0.99853516,
+                  "punctuated_word": "Yeah."
+                },
+                {
+                  "end": 88.43001,
+                  "word": "so",
+                  "start": 88.350006,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "So"
+                },
+                {
+                  "end": 88.51,
+                  "word": "i",
+                  "start": 88.43001,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "I"
+                },
+                {
+                  "end": 88.75,
+                  "word": "think",
+                  "start": 88.51,
+                  "confidence": 0.97998047,
+                  "punctuated_word": "think"
+                },
+                {
+                  "end": 88.83,
+                  "word": "i",
+                  "start": 88.75,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "I"
+                },
+                {
+                  "end": 88.990005,
+                  "word": "think",
+                  "start": 88.83,
+                  "confidence": 1,
+                  "punctuated_word": "think"
+                },
+                {
+                  "end": 89.07001,
+                  "word": "they",
+                  "start": 88.990005,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "they"
+                },
+                {
+                  "end": 89.15,
+                  "word": "can",
+                  "start": 89.07001,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "can"
+                },
+                {
+                  "end": 89.55,
+                  "word": "they",
+                  "start": 89.39,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "they"
+                },
+                {
+                  "end": 89.630005,
+                  "word": "should",
+                  "start": 89.55,
+                  "confidence": 1,
+                  "punctuated_word": "should"
+                },
+                {
+                  "end": 90.03001,
+                  "word": "definitely",
+                  "start": 89.630005,
+                  "confidence": 0.8378906,
+                  "punctuated_word": "definitely"
+                },
+                {
+                  "end": 90.19,
+                  "word": "reach",
+                  "start": 90.03001,
+                  "confidence": 1,
+                  "punctuated_word": "reach"
+                },
+                {
+                  "end": 90.350006,
+                  "word": "out",
+                  "start": 90.19,
+                  "confidence": 1,
+                  "punctuated_word": "out"
+                },
+                {
+                  "end": 90.590004,
+                  "word": "to",
+                  "start": 90.350006,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "end": 90.75,
+                  "word": "to",
+                  "start": 90.590004,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "to"
+                },
+                {
+                  "end": 90.91,
+                  "word": "us",
+                  "start": 90.75,
+                  "confidence": 1,
+                  "punctuated_word": "us"
+                },
+                {
+                  "end": 91.07,
+                  "word": "and",
+                  "start": 90.91,
+                  "confidence": 0.9863281,
+                  "punctuated_word": "and"
+                },
+                {
+                  "end": 91.310005,
+                  "word": "let",
+                  "start": 91.07,
+                  "confidence": 1,
+                  "punctuated_word": "let"
+                },
+                {
+                  "end": 91.47,
+                  "word": "us",
+                  "start": 91.310005,
+                  "confidence": 1,
+                  "punctuated_word": "us"
+                },
+                {
+                  "end": 91.630005,
+                  "word": "know",
+                  "start": 91.47,
+                  "confidence": 1,
+                  "punctuated_word": "know"
+                },
+                {
+                  "end": 91.87,
+                  "word": "what",
+                  "start": 91.630005,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "what"
+                },
+                {
+                  "end": 92.2,
+                  "word": "they",
+                  "start": 91.87,
+                  "confidence": 0.99316406,
+                  "punctuated_word": "they"
+                }
+              ]
+            },
+            "secondsFromStart": 88.11
+          },
+          {
+            "role": "bot",
+            "time": 1769897555797,
+            "source": "",
+            "endTime": 1769897582947,
+            "message": "Thank you so much. I really appreciate your openness and your time. That's completely understandable. And I don't wanna take up too much of it. I'll let the project organizer know know that they can reach out to you directly via email or Instagram to discuss how they can get involved and what support might be available. Just to confirm, is there a specific email address or Instagram handle they should use to contact you? That way, I can make sure they reach the right place.",
+            "duration": 24509.985107421875,
+            "secondsFromStart": 104.641
+          },
+          {
+            "role": "user",
+            "time": 1769897583566.99,
+            "endTime": 1769897589227.01,
+            "message": "Yes. It's called noel thomas at gmail dot com, and that's it. I have to go right now, but goodbye.",
+            "duration": 4920.010009765625,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 132.83,
+                  "word": "yes",
+                  "start": 132.34999,
+                  "confidence": 0.7266846,
+                  "punctuated_word": "Yes."
+                },
+                {
+                  "end": 133.06999,
+                  "word": "it's",
+                  "start": 132.83,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "It's"
+                },
+                {
+                  "end": 133.56999,
+                  "word": "called",
+                  "start": 133.06999,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "called"
+                }
+              ]
+            },
+            "secondsFromStart": 132.34998999023438
+          },
+          {
+            "role": "bot",
+            "time": 1769897591547,
+            "source": "",
+            "endTime": 1769897602857,
+            "message": "You so much for the information. Noll thomas at g mail dot com. I'll pass that along to the project organizer. I appreciate your time and assistance. And, um, hope you have a great day. Goodbye.",
+            "duration": 10289.989990234375,
+            "secondsFromStart": 140.391
+          },
+          {
+            "role": "user",
+            "time": 1769897603267,
+            "endTime": 1769897604507,
+            "message": "Yep. You too.",
+            "duration": 1080,
+            "metadata": {
+              "wordLevelConfidence": [
+                {
+                  "end": 152.39,
+                  "word": "yep",
+                  "start": 152.05,
+                  "confidence": 0.8300781,
+                  "punctuated_word": "Yep."
+                }
+              ]
+            },
+            "secondsFromStart": 152.05
+          },
+          {
+            "role": "bot",
+            "time": 1769897605467,
+            "source": "",
+            "endTime": 1769897606277,
+            "message": "Thank you. Take",
+            "duration": 810,
+            "secondsFromStart": 154.25
+          }
+        ],
+        "messagesOpenAIFormatted": [
+          {
+            "content": "You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.\n\nYour goal:\n1. Introduce yourself: \"Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support.\"\n2. Explain the purpose: \"I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like Kulkarni & Thomas Food Bank.\"\n3. Describe their specific need: \"They need help with: Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting Kulkarni & Thomas Food Bank. They are looking to help with Help with food banks and meal distribution. Please call them back to discuss volunteer opportunities. Thank you!\"\n4. Ask if they can provide support: \"Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support.\"\n5. Gather information:\n   - Can they provide the specific help needed?\n   - What resources or support can they offer?\n   - Who should the project organizer contact?\n   - What's the next step to get this support?\n   - Are there any requirements or processes they need to follow?\n6. Be professional, friendly, and respectful of their time.\n7. Thank them for their time regardless of the outcome.\n\nIf they cannot help or are not available, politely thank them and end the call.\nIf they can help, gather detailed information about how the project organizer should proceed to get their support.",
+            "role": "system"
+          },
+          {
+            "content": "Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kolkarni and Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Would Kulkarni and Thomas Food Bank be able to assist?",
+            "role": "assistant"
+          },
+          {
+            "content": "Yeah. Of course.",
+            "role": "user"
+          },
+          {
+            "content": "Thank you so much for your willingness to help. Could you please provide some information on how the project organizer can proceed to get support? From Kolkarni and Thomas Food Bank 1, can you great. Thank you.",
+            "role": "assistant"
+          },
+          {
+            "content": "Yeah.",
+            "role": "user"
+          },
+          {
+            "content": "To help the project organizer move forward, could I ask a few quick questions? 1, who would be the best person for the organizer to contact",
+            "role": "assistant"
+          },
+          {
+            "content": "Yeah. Sure.",
+            "role": "user"
+          },
+          {
+            "content": "about volunteering or partnering with your food bank? 2, what's the best way to reach them? Phone, email, or another method? 3, are there any specific requirements or steps the volunteer needs to follow? Before getting involved? Like an application, orientation or or or background check. 4, what kind of support can your organization offer? Volunteer opportunities, food donations, logistical help, etcetera? Once I have this information, I'll make sure the organizer reaches out to the right person. And follows your process. Thanks again for your time.",
+            "role": "assistant"
+          },
+          {
+            "content": "Yeah.",
+            "role": "user"
+          },
+          {
+            "content": "Great. Thank you.",
+            "role": "assistant"
+          },
+          {
+            "content": "Yeah. So I think I think they can they should definitely reach out to to us and let us know what they think. But I think you're asking a bit too many questions right now. I'm not sure if I can answer all of them. However, I think that if you reach out to us via email or our Instagram page, I can definitely help out.",
+            "role": "user"
+          },
+          {
+            "content": "Thank you so much. I really appreciate your openness and your time. That's completely understandable. And I don't wanna take up too much of it. I'll let the project organizer know know that they can reach out to you directly via email or Instagram to discuss how they can get involved and what support might be available. Just to confirm, is there a specific email address or Instagram handle they should use to contact you? That way, I can make sure they reach the right place.",
+            "role": "assistant"
+          },
+          {
+            "content": "Yes. It's called noel thomas at gmail dot com, and that's it. I have to go right now, but goodbye.",
+            "role": "user"
+          },
+          {
+            "content": "You so much for the information. Noll thomas at g mail dot com. I'll pass that along to the project organizer. I appreciate your time and assistance. And, um, hope you have a great day. Goodbye.",
+            "role": "assistant"
+          },
+          {
+            "content": "Yep. You too.",
+            "role": "user"
+          },
+          {
+            "content": "Thank you. Take",
+            "role": "assistant"
+          }
+        ],
+        "transcript": "AI: Hi. This is Volunteer Connect. I'm reaching out on hello. This is an automated message from Volunteer Connect. We are reaching out on behalf of a volunteer interested in supporting Kolkarni and Thomas Food Bank. They are looking to help with help with food banks and meal distribution. Please call them back to to discuss volunteer opportunities. Thank you. Would Kulkarni and Thomas Food Bank be able to assist?\nUser: Yeah. Of course.\nAI: Thank you so much for your willingness to help. Could you please provide some information on how the project organizer can proceed to get support? From Kolkarni and Thomas Food Bank 1, can you great. Thank you.\nUser: Yeah.\nAI: To help the project organizer move forward, could I ask a few quick questions? 1, who would be the best person for the organizer to contact\nUser: Yeah. Sure.\nAI: about volunteering or partnering with your food bank? 2, what's the best way to reach them? Phone, email, or another method? 3, are there any specific requirements or steps the volunteer needs to follow? Before getting involved? Like an application, orientation or or or background check. 4, what kind of support can your organization offer? Volunteer opportunities, food donations, logistical help, etcetera? Once I have this information, I'll make sure the organizer reaches out to the right person. And follows your process. Thanks again for your time.\nUser: Yeah.\nAI: Great. Thank you.\nUser: Yeah. So I think I think they can they should definitely reach out to to us and let us know what they think. But I think you're asking a bit too many questions right now. I'm not sure if I can answer all of them. However, I think that if you reach out to us via email or our Instagram page, I can definitely help out.\nAI: Thank you so much. I really appreciate your openness and your time. That's completely understandable. And I don't wanna take up too much of it. I'll let the project organizer know know that they can reach out to you directly via email or Instagram to discuss how they can get involved and what support might be available. Just to confirm, is there a specific email address or Instagram handle they should use to contact you? That way, I can make sure they reach the right place.\nUser: Yes. It's called noel thomas at gmail dot com, and that's it. I have to go right now, but goodbye.\nAI: You so much for the information. Noll thomas at g mail dot com. I'll pass that along to the project organizer. I appreciate your time and assistance. And, um, hope you have a great day. Goodbye.\nUser: Yep. You too.\nAI: Thank you. Take\n",
+        "pcapUrl": "https://storage.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5-1769897608313-528e8167-215d-47da-b9ba-527a2f368b7b-sip.pcap",
+        "logUrl": "https://calllogs.vapi.ai/922eadcf-8fa7-4a96-a72a-b7e6d4c244ce/019c161b-c41b-700e-91fe-73f267374bf5-92a43eed-fe93-431f-a4e0-4d35708116e1-1769897609268.jsonl.gz",
+        "nodes": [],
+        "variableValues": {
+          "day": "31",
+          "now": "Jan 31, 2026, 10:10 PM UTC",
+          "date": "Jan 31, 2026 UTC",
+          "time": "10:10 PM UTC",
+          "year": "2026",
+          "month": "January",
+          "customer": {
+            "number": "+16693313021"
+          },
+          "transport": {
+            "callSid": "fa17cfa0-cb10-47c6-97a0-8634aa604ff6",
+            "provider": "vapi.sip",
+            "sbcCallSid": "8826003e-7994-123f-7da3-06ce18bd6143",
+            "conversationType": "voice"
+          },
+          "phoneNumber": {
+            "id": "198ac86d-2c64-48c9-a38c-113b279887fc",
+            "orgId": "922eadcf-8fa7-4a96-a72a-b7e6d4c244ce",
+            "number": "+14087312926",
+            "status": "active",
+            "provider": "vapi",
+            "createdAt": "2026-01-31T21:35:40.566Z",
+            "updatedAt": "2026-01-31T21:37:40.884Z",
+            "providerResourceId": "6b90e5bf-8c62-48b4-a94b-9cb8fd6d388c"
+          },
+          "currentDateTime": "Saturday, January 31, 2026 at 10:10 PM UTC"
+        },
+        "variables": {
+          "day": "31",
+          "now": "Jan 31, 2026, 10:10 PM UTC",
+          "date": "Jan 31, 2026 UTC",
+          "time": "10:10 PM UTC",
+          "year": "2026",
+          "month": "January",
+          "customer": {
+            "number": "+16693313021"
+          },
+          "transport": {
+            "callSid": "fa17cfa0-cb10-47c6-97a0-8634aa604ff6",
+            "provider": "vapi.sip",
+            "sbcCallSid": "8826003e-7994-123f-7da3-06ce18bd6143",
+            "conversationType": "voice"
+          },
+          "phoneNumber": {
+            "id": "198ac86d-2c64-48c9-a38c-113b279887fc",
+            "orgId": "922eadcf-8fa7-4a96-a72a-b7e6d4c244ce",
+            "number": "+14087312926",
+            "status": "active",
+            "provider": "vapi",
+            "createdAt": "2026-01-31T21:35:40.566Z",
+            "updatedAt": "2026-01-31T21:37:40.884Z",
+            "providerResourceId": "6b90e5bf-8c62-48b4-a94b-9cb8fd6d388c"
+          },
+          "currentDateTime": "Saturday, January 31, 2026 at 10:10 PM UTC"
+        },
+        "performanceMetrics": {
+          "turnLatencies": [
+            {
+              "modelLatency": 240,
+              "voiceLatency": 555,
+              "transcriberLatency": 639,
+              "endpointingLatency": 100,
+              "turnLatency": 1564
+            },
+            {
+              "modelLatency": 293,
+              "voiceLatency": 271,
+              "transcriberLatency": 134,
+              "endpointingLatency": 100,
+              "turnLatency": 1038
+            },
+            {
+              "modelLatency": 362,
+              "voiceLatency": 343,
+              "transcriberLatency": 163,
+              "endpointingLatency": 101,
+              "turnLatency": 987
+            },
+            {
+              "modelLatency": 365,
+              "voiceLatency": 388,
+              "transcriberLatency": 393,
+              "endpointingLatency": 100,
+              "turnLatency": 1250
+            },
+            {
+              "modelLatency": 1756,
+              "voiceLatency": 367,
+              "transcriberLatency": 0,
+              "endpointingLatency": 124,
+              "turnLatency": 2248
+            },
+            {
+              "modelLatency": 349,
+              "voiceLatency": 276,
+              "transcriberLatency": 0,
+              "endpointingLatency": 102,
+              "turnLatency": 876
+            },
+            {
+              "modelLatency": 294,
+              "voiceLatency": 224,
+              "transcriberLatency": 434,
+              "endpointingLatency": 101,
+              "turnLatency": 1442
+            }
+          ],
+          "modelLatencyAverage": 522.71,
+          "voiceLatencyAverage": 346.29,
+          "transcriberLatencyAverage": 251.86,
+          "endpointingLatencyAverage": 104,
+          "turnLatencyAverage": 1343.57,
+          "fromTransportLatencyAverage": 20,
+          "toTransportLatencyAverage": 20,
+          "numUserInterrupted": 1,
+          "numAssistantInterrupted": 4
+        },
+        "scorecards": {},
+        "transfers": []
+      },
+      "costs": [
+        {
+          "cost": 0.02584897,
+          "type": "transcriber",
+          "minutes": 2.6386666666666665,
+          "transcriber": {
+            "model": "nova-2-phonecall",
+            "provider": "deepgram"
+          }
+        },
+        {
+          "cost": 0.0384,
+          "type": "model",
+          "model": {
+            "model": "gpt-4o",
+            "provider": "openai"
+          },
+          "promptTokens": 7286,
+          "completionTokens": 605,
+          "cachedPromptTokens": 0
+        },
+        {
+          "cost": 0.1477,
+          "type": "voice",
+          "voice": {
+            "model": "eleven_turbo_v2_5",
+            "voiceId": "dN8hviqdNrAsEcL57yFj",
+            "provider": "vapi"
+          },
+          "characters": 2954
+        },
+        {
+          "cost": 0.128575,
+          "type": "vapi",
+          "minutes": 2.5715,
+          "subType": "normal"
+        },
+        {
+          "cost": 0.0003586,
+          "type": "analysis",
+          "model": {
+            "model": "gemini-2.5-flash",
+            "provider": "google"
+          },
+          "analysisType": "summary",
+          "promptTokens": 662,
+          "completionTokens": 64
+        },
+        {
+          "cost": 0.0003487,
+          "type": "analysis",
+          "model": {
+            "model": "gemini-2.5-flash",
+            "provider": "google"
+          },
+          "analysisType": "successEvaluation",
+          "promptTokens": 1079,
+          "completionTokens": 10
+        },
+        {
+          "cost": 0,
+          "type": "knowledge-base",
+          "model": {
+            "model": "gemini-2.0-flash",
+            "provider": "google"
+          },
+          "promptTokens": 0,
+          "completionTokens": 0
+        }
+      ],
+      "monitor": {
+        "listenUrl": "wss://phone-call-websocket.aws-us-west-2-backend-production3.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5/listen",
+        "controlUrl": "https://phone-call-websocket.aws-us-west-2-backend-production3.vapi.ai/019c161b-c41b-700e-91fe-73f267374bf5/control"
+      },
+      "transport": {
+        "callSid": "fa17cfa0-cb10-47c6-97a0-8634aa604ff6",
+        "provider": "vapi.sip",
+        "sbcCallSid": "8826003e-7994-123f-7da3-06ce18bd6143",
+        "conversationType": "voice"
+      }
+    },
+    "status": "ended",
+    "updatedAt": "2026-01-31T22:13:31.685Z"
+  }
+}
