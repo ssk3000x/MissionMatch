@@ -14,15 +14,24 @@ export async function saveCallSummary(callId: string, payload: any) {
   try {
     // Check if we are using Supabase (keys exist)
     if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      // Support either flat payload or nested { vapiSummary: { summary, contactName, ... } }
+      const vapi = payload.vapiSummary || payload.vapi_summary || {};
+      const summary = payload.summary ?? vapi.summary ?? vapi?.vapiSummary?.summary ?? null;
+      const contactName = payload.contactName ?? vapi.contactName ?? vapi.contact_name ?? null;
+      const interested = payload.interested ?? vapi.interested ?? null;
+      const nextSteps = payload.nextSteps ?? vapi.nextSteps ?? vapi.next_steps ?? null;
+      const availability = payload.availability ?? vapi.availability ?? null;
+      const vapiAnalysis = payload.vapiAnalysis ?? vapi.vapiAnalysis ?? vapi.vapi_analysis ?? payload.vapiRaw ?? null;
+
       const dbPayload = {
         call_id: callId,
-        summary: payload.summary,
-        contact_name: payload.contactName,
-        interested: payload.interested,
-        next_steps: payload.nextSteps,
-        availability: payload.availability,
-        vapi_analysis: payload.vapiAnalysis,
-        updated_at: new Date().toISOString()
+        summary,
+        contact_name: contactName,
+        interested,
+        next_steps: nextSteps,
+        availability,
+        vapi_analysis: vapiAnalysis,
+        updated_at: new Date().toISOString(),
       };
 
       const { data, error } = await supabase
@@ -47,12 +56,23 @@ export async function saveCallSummary(callId: string, payload: any) {
 }
 
 
-export function getCallSummary(key: string) {
+export async function getCallSummary(key: string) {
   try {
-    const raw = fs.existsSync(DB_FILE) ? fs.readFileSync(DB_FILE, 'utf8') : '{}';
-    const db = JSON.parse(raw || '{}');
-    return db[key] || null;
+    if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      const { data, error } = await supabase
+        .from('call_summaries')
+        .select('*')
+        .eq('call_id', key)
+        .single();
+      if (error) {
+        console.error('Error fetching call summary from Supabase:', error);
+        return null;
+      }
+      return data || null;
+    }
+    return null;
   } catch (e) {
+    console.error('getCallSummary failed:', e);
     return null;
   }
 }

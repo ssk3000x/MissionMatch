@@ -57,27 +57,32 @@ export function LocationStep({ onComplete }: LocationStepProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="flex min-h-screen flex-col items-center justify-center px-4"
+      className="flex min-h-screen flex-col items-center justify-center px-4 py-12"
     >
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center space-y-3">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10"
-          >
-            <MapPin className="h-8 w-8 text-primary" />
-          </motion.div>
-          <h1 className="text-3xl font-semibold tracking-tight text-balance">
-            Where are you located?
-          </h1>
-          <p className="text-muted-foreground text-balance">
-            We&apos;ll find volunteer opportunities near you
+      <div className="w-full max-w-lg space-y-8">
+        {/* App Title */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="text-center space-y-4"
+        >
+          <div className="flex items-center justify-center gap-4">
+            <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
+              VolunteerConnect
+            </h1>
+            <MapPin className="h-14 w-14 text-primary flex-shrink-0" />
+          </div>
+          <div className="h-[2px] w-40 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+        </motion.div>
+
+        <div className="text-center space-y-2">
+          <p className="text-lg text-muted-foreground">
+            We&apos;ll help transform your vision into an impactful reality.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5 pt-2">
           <div className="relative rounded-xl border border-border p-1 bg-card">
             <GlowingEffect
               spread={40}
@@ -90,7 +95,7 @@ export function LocationStep({ onComplete }: LocationStepProps) {
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Enter your city or zip code"
+                placeholder="Enter the city, zipcode, state, etc. of your volunteer work"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className="h-14 bg-background border-none pl-4 pr-4 text-lg placeholder:text-muted-foreground/60 focus-visible:ring-0"

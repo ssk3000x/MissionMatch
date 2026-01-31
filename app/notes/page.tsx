@@ -1,102 +1,39 @@
 "use client"
 
-import React from "react"
-
+import React, { useEffect, useState, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
-import { Suspense } from "react"
 import { motion } from "framer-motion"
 import { ArrowLeft, Building2, CheckCircle2, Clock, XCircle, Calendar, Phone, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-type OrgStatus = "interested" | "not_available" | "callback" | "pending"
+type OrgStatus = "onboarded" | "unsure" | "declined" | "callback" | "pending" | "interested" | "not_available"
 
 interface OrgNote {
   id: string
   orgName: string
   status: OrgStatus
-  contactName?: string
-  availability?: string
-  notes?: string
-  callbackDate?: string
-  calledAt: string
+  contactName?: string | null
+  availability?: string | null
+  notes?: string | null
+  callbackDate?: string | null
+  calledAt?: string | null
+  rawOrg?: any
+  rawCall?: any
 }
 
-const mockNotes: OrgNote[] = [
-  {
-    id: "1",
-    orgName: "Community Food Bank",
-    status: "interested",
-    contactName: "Sarah Johnson",
-    availability: "Weekdays 9am-5pm, Saturdays 8am-2pm",
-    notes: "Needs help with food sorting and distribution. Orientation every Saturday at 8:30am.",
-    calledAt: "Today at 2:34 PM",
-  },
-  {
-    id: "2",
-    orgName: "Animal Rescue Center",
-    status: "interested",
-    contactName: "Mike Chen",
-    availability: "Daily 7am-7pm",
-    notes: "Looking for dog walkers and cat socializers. 4+ hours/week commitment preferred.",
-    calledAt: "Today at 2:38 PM",
-  },
-  {
-    id: "3",
-    orgName: "Youth Tutoring Alliance",
-    status: "callback",
-    contactName: "Dr. Amanda Peters",
-    callbackDate: "Tomorrow at 10:00 AM",
-    notes: "Program director was in a meeting. Requested callback to discuss tutor positions.",
-    calledAt: "Today at 2:42 PM",
-  },
-  {
-    id: "4",
-    orgName: "Senior Care Center",
-    status: "not_available",
-    notes: "Currently at full volunteer capacity. Suggested checking back in 3 months.",
-    calledAt: "Today at 2:45 PM",
-  },
-  {
-    id: "5",
-    orgName: "Environmental Cleanup Crew",
-    status: "interested",
-    contactName: "Jake Williams",
-    availability: "Weekends only",
-    notes: "Monthly beach cleanups. Next event: Feb 15th. No experience needed.",
-    calledAt: "Today at 2:48 PM",
-  },
-  {
-    id: "6",
-    orgName: "Habitat for Humanity",
-    status: "pending",
-    notes: "Voicemail left. Waiting for callback.",
-    calledAt: "Today at 2:51 PM",
-  },
-]
+// Live notes state — populated from backend /api/notes
+const mockNotes: OrgNote[] = []
 
 const statusConfig: Record<OrgStatus, { label: string; color: string; icon: React.ReactNode }> = {
-  interested: {
-    label: "Interested",
-    color: "bg-secondary/10 text-secondary border-secondary/20",
-    icon: <CheckCircle2 className="h-3.5 w-3.5" />,
-  },
-  not_available: {
-    label: "Not Available",
-    color: "bg-muted text-muted-foreground border-border",
-    icon: <XCircle className="h-3.5 w-3.5" />,
-  },
-  callback: {
-    label: "Callback Scheduled",
-    color: "bg-primary/10 text-primary border-primary/20",
-    icon: <Calendar className="h-3.5 w-3.5" />,
-  },
-  pending: {
-    label: "Pending Response",
-    color: "bg-muted text-muted-foreground border-border",
-    icon: <Clock className="h-3.5 w-3.5" />,
-  },
+  onboarded: { label: 'Onboarded', color: 'bg-green-100 text-green-800 border-green-200', icon: <CheckCircle2 className="h-3.5 w-3.5" /> },
+  unsure: { label: 'Unsure', color: 'bg-yellow-100 text-yellow-800 border-yellow-200', icon: <Clock className="h-3.5 w-3.5" /> },
+  declined: { label: 'Declined', color: 'bg-red-100 text-red-800 border-red-200', icon: <XCircle className="h-3.5 w-3.5" /> },
+  callback: { label: 'Callback', color: 'bg-primary/10 text-primary border-primary/20', icon: <Calendar className="h-3.5 w-3.5" /> },
+  pending: { label: 'Pending', color: 'bg-muted text-muted-foreground border-border', icon: <Clock className="h-3.5 w-3.5" /> },
+  interested: { label: 'Interested', color: 'bg-secondary/10 text-secondary border-secondary/20', icon: <CheckCircle2 className="h-3.5 w-3.5" /> },
+  not_available: { label: 'Not Available', color: 'bg-muted text-muted-foreground border-border', icon: <XCircle className="h-3.5 w-3.5" /> },
 }
 
 function NotesContent() {
@@ -104,14 +41,35 @@ function NotesContent() {
   const router = useRouter()
   const filterStatus = searchParams.get("status") as OrgStatus | null
 
-  const filteredNotes = filterStatus 
-    ? mockNotes.filter((n) => n.status === filterStatus)
-    : mockNotes
+  const [notes, setNotes] = useState<OrgNote[]>([])
+  const [loading, setLoading] = useState(true)
 
-  const interestedCount = mockNotes.filter((n) => n.status === "interested").length
-  const callbackCount = mockNotes.filter((n) => n.status === "callback").length
-  const pendingCount = mockNotes.filter((n) => n.status === "pending").length
-  const notAvailableCount = mockNotes.filter((n) => n.status === "not_available").length
+  useEffect(() => {
+    let cancelled = false
+    async function load() {
+      setLoading(true)
+      try {
+        const res = await fetch('http://localhost:4000/api/notes')
+        const body = await res.json()
+        if (!cancelled && body?.ok) {
+          setNotes(body.notes || [])
+        }
+      } catch (e) {
+        console.error('Failed to load notes:', e)
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+    load()
+    return () => { cancelled = true }
+  }, [])
+
+  const filteredNotes = filterStatus ? notes.filter(n => n.status === filterStatus) : notes
+
+  const interestedCount = notes.filter((n) => n.status === "onboarded" || n.status === 'interested').length
+  const callbackCount = notes.filter((n) => n.status === "callback").length
+  const pendingCount = notes.filter((n) => n.status === "pending" || n.status === 'unsure').length
+  const notAvailableCount = notes.filter((n) => n.status === "declined" || n.status === 'not_available').length
 
   return (
     <div className="min-h-screen bg-background">
@@ -217,27 +175,30 @@ function NotesContent() {
 
         {/* Organizations List */}
         <div className="space-y-3">
-          {filteredNotes.map((note, index) => (
+          {loading && (
+            <div className="text-center py-12 text-muted-foreground">Loading notes…</div>
+          )}
+          {!loading && filteredNotes.map((note, index) => (
             <motion.div
               key={note.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + index * 0.05 }}
             >
-              <Card className="bg-card border-border">
+              <Card className="bg-card border-border shadow-sm">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <Building2 className="h-5 w-5 text-primary" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10">
+                      <Building2 className="h-6 w-6 text-primary" />
                     </div>
-                    
+
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <h3 className="font-medium">{note.orgName}</h3>
+                          <h3 className="font-medium text-lg">{note.orgName}</h3>
                           <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                             <Phone className="h-3.5 w-3.5" />
-                            {note.calledAt}
+                            {note.calledAt ? new Date(note.calledAt).toLocaleString() : 'No calls yet'}
                             {note.contactName && (
                               <>
                                 <span className="text-border">|</span>
@@ -255,7 +216,7 @@ function NotesContent() {
                       {note.notes && (
                         <div className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
                           <MessageSquare className="h-4 w-4 shrink-0 mt-0.5" />
-                          <p>{note.notes}</p>
+                          <p className="prose-sm max-w-none">{note.notes}</p>
                         </div>
                       )}
 
@@ -275,6 +236,15 @@ function NotesContent() {
                           )}
                         </div>
                       )}
+
+                      <div className="mt-3 flex gap-2">
+                        <Button size="sm" variant="ghost" onClick={() => router.push(`/`)}>
+                          View Organization
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => router.push(`/`)}>
+                          View Call Details
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </CardContent>

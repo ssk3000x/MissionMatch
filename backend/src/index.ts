@@ -6,8 +6,10 @@ import "dotenv/config";
 import { createAgent, createMiddleware } from "langchain";
 import { TavilySearch } from "./tools/tavily";
 import { tavilyTool } from "./tools/tavilyTool";
+import { saveOrganizations } from "./tools/organizations";
 import { makeAICall, waitForCallEnd } from "./tools/voiceagent";
 import { getCallSummary } from "./tools/callSummary";
+import { supabase } from './supabase';
 import { z } from "zod";
 
 dotenv.config();
@@ -163,7 +165,7 @@ ACCEPT only if:
 
 Output format:
 IS_REAL_ORG: [YES or NO]
-MISSION: [Max 10 words, proper punctuation. Must start with "They can help you with..." or "Their efforts in [area] can help with..." addressing the user's project: "${mission}"]
+DESCRIPTION: [2-3 sentences describing exactly what this organization does and how it relates to the user's need. Be professional and specific. Do NOT start with "They can help you with". Just describe the org.]
 ADDRESS: [physical street address only, or "Not available" if no valid address found]
 IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
                 }]
@@ -171,7 +173,7 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
               {
                 context: {
                   user_name: "Volunteer",
-                  systemPrompt: "You are a strict validator that filters out aggregate sites, PDFs, directories, and resource lists. Only accept real, direct service organizations. For MISSION field, use MAX 10 WORDS with proper punctuation. Start with 'They can help you with...' or 'Their efforts in [area] can help with...' to directly address the user's specific project needs."
+                  systemPrompt: "You are a strict validator that filters out aggregate sites, PDFs, directories, and resource lists. Only accept real, direct service organizations. Provide a high-quality 2-3 sentence DESCRIPTION of the organization based on the content."
                 }
               }
             );
@@ -180,12 +182,12 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
             
             // Parse the response
             const isRealOrgMatch = cleanData.match(/IS_REAL_ORG:\s*(YES|NO)/i);
-            const missionMatch = cleanData.match(/MISSION:\s*(.+?)(?=\n|ADDRESS:|IN_AREA:|$)/is);
+            const descriptionMatch = cleanData.match(/DESCRIPTION:\s*(.+?)(?=\n|ADDRESS:|IN_AREA:|$)/is);
             const addressMatch = cleanData.match(/ADDRESS:\s*(.+?)(?=\n|IN_AREA:|$)/is);
             const inAreaMatch = cleanData.match(/IN_AREA:\s*(YES|NO)/i);
             
             const isRealOrg = isRealOrgMatch?.[1]?.toUpperCase() === "YES";
-            const cleanDescription = missionMatch?.[1]?.trim() || result.content.substring(0, 200);
+            const cleanDescription = descriptionMatch?.[1]?.trim() || result.content.substring(0, 200);
             const cleanAddress = addressMatch?.[1]?.trim() || result.address || "Address not available";
             const isInArea = inAreaMatch?.[1]?.toUpperCase() !== "NO";
             
@@ -234,7 +236,7 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
         url: "N/A",
         content: "Featured organization",
         score: 1.0,
-        phone: "+16693313021",
+        phone: "+16692229163",
         address: "123 Story Road, San Jose",
         description: "They can it help with your volunteer organization's efforts greatly.",
         rawContent: "Featured organization",
@@ -247,11 +249,19 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
       const rejected = cleanedResults.length - realOrgs.length;
       console.log(`\n✓ Showing ${finalResults.length} real organizations (${rejected} aggregates/directories rejected)`);
 
+      // Save to Supabase
+      const savedOrgs = await saveOrganizations(finalResults);
+      
+      // If we saved successfully, we could return the saved objects which include the real DB IDs.
+      // For now, we return the searchResults as-is (frontend generates IDs on the fly currently),
+      // but the data is safely in the DB for the future.
+
       return res.json({
         ok: true,
         received: { mission, location, timestamp },
         agentResponse: agentSummary,
         searchResults: finalResults,
+        savedCount: savedOrgs?.length || 0
       });
     } catch (tavilyError: any) {
       console.error("Tavily search error:", tavilyError?.message || tavilyError);
@@ -342,28 +352,81 @@ app.get('/api/voice/call/:callId', async (req, res) => {
       
       // If call ended, store it and return completed
       if (['ended', 'completed', 'failed', 'no-answer', 'busy', 'canceled'].includes(status)) {
-        const summary = call?.analysis?.summary || call?.analysis?.structuredData?.summary || 'Call completed.';
+        
+        let structuredAnalysis: any = {};
+        
+        // Analyze transcript if available to get structured data using our Agent
+        if (call?.transcript) {
+          try {
+             console.log(`Analyzing transcript for call ${callId}...`);
+             const analysisResponse = await agent.invoke({
+                messages: [{
+                  role: "user", 
+                  content: `Analyze this call transcript between an AI assistant and a potential volunteer organization.
+                  
+                  Transcript: "${call.transcript}"
+                  
+                  Extract the following fields in specific JSON format:
+                  {
+                    "contactName": "Name of person spoken to (or null if not found)",
+                    "availability": "Specific availability/hours mentioned (or null)",
+                    "interested": true/false (or null if unsure),
+                    "nextSteps": ["step 1", "step 2"],
+                    "summary": "Professional 1-sentence summary of the outcome"
+                  }
+                  
+                  Output strictly valid JSON.`
+                }]
+             }, {
+                context: { user_name: "System", systemPrompt: "You are a precise data extraction specialist. Output only valid JSON." }
+             });
+             
+             const rawJson = getSummary(analysisResponse);
+             const jsonMatch = rawJson?.match(/\{[\s\S]*\}/);
+             if (jsonMatch) {
+               structuredAnalysis = JSON.parse(jsonMatch[0]);
+               console.log("✓ Transcript analysis successful:", structuredAnalysis);
+             }
+          } catch (analysisErr) {
+             console.error("Error analyzing transcript:", analysisErr);
+          }
+        }
+
+        const summary = structuredAnalysis.summary || call?.analysis?.summary || call?.analysis?.structuredData?.summary || 'Call completed.';
+        
         const result = {
           status,
           analysis: call?.analysis,
-          transcript: call?.transcript
+          transcript: call?.transcript,
+          structuredData: structuredAnalysis // Store our enhanced data
         };
         completedCalls.set(callId, result);
         
-        // Also save to file for persistence
+        // Also save to file/DB for persistence
         try {
           const { saveCallSummary } = await import('./tools/callSummary');
           const key = call?.customer?.number || callId;
+          
           await saveCallSummary(key, {
             callId,
+            contactName: structuredAnalysis.contactName,
+            availability: structuredAnalysis.availability,
+            interested: structuredAnalysis.interested,
+            nextSteps: structuredAnalysis.nextSteps,
+            summary: summary,
             vapiSummary: {
               summary: summary,
+              // Merge our extracted data into vapiSummary structure as fallback
+              contactName: structuredAnalysis.contactName,
+              availability: structuredAnalysis.availability,
+              interested: structuredAnalysis.interested,
+              nextSteps: structuredAnalysis.nextSteps,
               vapiAnalysis: call?.analysis
             },
             vapiRaw: call,
             status
           });
-          console.log(`[Status] Saved summary for ${key}`);
+          console.log(`[Status] Saved enhanced summary for ${key}`);
         } catch (saveErr) {
           console.error('Error saving summary:', saveErr);
         }
@@ -394,15 +457,58 @@ app.get('/api/voice/call/:callId', async (req, res) => {
 });
 
 // Fetch stored call summary by key (phone number or callId)
-app.get('/api/call-summaries', (req, res) => {
+app.get('/api/call-summaries', async (req, res) => {
   try {
     const key = String(req.query.key || '');
     if (!key) return res.status(400).json({ error: 'missing key query param' });
-    const data = getCallSummary(key);
+    const data = await getCallSummary(key);
     if (!data) return res.status(404).json({ error: 'not found' });
     return res.json({ ok: true, data });
   } catch (err: any) {
     console.error('call-summaries error', err?.message || err);
+    return res.status(500).json({ error: 'internal_error' });
+  }
+});
+
+// Aggregate notes endpoint: organizations joined with latest call summary where possible
+app.get('/api/notes', async (req, res) => {
+  try {
+    const { data: orgs, error: orgErr } = await supabase.from('organizations').select('*');
+    if (orgErr) {
+      console.error('Error fetching organizations for notes:', orgErr);
+      return res.status(500).json({ error: 'orgs_fetch_failed', details: orgErr.message });
+    }
+
+    const { data: calls, error: callErr } = await supabase.from('call_summaries').select('*');
+    if (callErr) {
+      console.error('Error fetching call summaries for notes:', callErr);
+      return res.status(500).json({ error: 'calls_fetch_failed', details: callErr.message });
+    }
+
+    const notes = (orgs || []).map((org: any) => {
+      const related = (calls || []).find((c: any) => (c.org_id && c.org_id === org.id) || (c.call_id && org.phone && c.call_id === org.phone));
+
+      const status = related
+        ? (related.interested === true ? 'onboarded' : (related.interested === false ? 'declined' : 'unsure'))
+        : 'unsure';
+
+      return {
+        id: org.id,
+        orgName: org.name,
+        status,
+        contactName: related?.contact_name || null,
+        availability: related?.availability || null,
+        notes: related?.summary || null,
+        callbackDate: related?.callback_date || null,
+        calledAt: related?.created_at || null,
+        rawOrg: org,
+        rawCall: related || null,
+      };
+    });
+
+    return res.json({ ok: true, notes });
+  } catch (err: any) {
+    console.error('notes endpoint error', err?.message || err);
     return res.status(500).json({ error: 'internal_error' });
   }
 });

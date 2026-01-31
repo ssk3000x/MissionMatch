@@ -8,6 +8,7 @@ import { MissionStep } from "@/components/mission-step"
 import { DiscoveryScreen } from "@/components/discovery-screen"
 import { ResultsView } from "@/components/results-view"
 import type { Organization } from "@/components/organization-card"
+import { OrganizationDetailsDialog } from "@/components/organization-details-dialog"
 
 type Step = "location" | "mission" | "discovery" | "results"
 
@@ -302,9 +303,14 @@ export default function Home() {
     if (orgId === "all") {
       router.push("/notes")
     } else {
-      router.push(`/notes?org=${orgId}`)
+      const org = organizations.find(o => o.id === orgId) || null
+      setSelectedOrg(org)
+      setShowOrgDialog(true)
     }
   }
+
+  const [selectedOrg, setSelectedOrg] = useState<Organization | null>(null)
+  const [showOrgDialog, setShowOrgDialog] = useState(false)
 
   const handleReset = () => {
     setStep("location")
@@ -348,6 +354,11 @@ export default function Home() {
           />
         )}
       </AnimatePresence>
+      <OrganizationDetailsDialog
+        organization={selectedOrg}
+        isOpen={showOrgDialog}
+        onClose={() => setShowOrgDialog(false)}
+      />
     </main>
   )
 }
