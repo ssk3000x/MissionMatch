@@ -32,49 +32,53 @@ Unlike traditional job boards, VolunteerConnect treats the user as a commander. 
 The `DiscoveryScreen` component provides a high-fidelity visual experience of the AI "scanning" for opportunities. It simulates:
 - Searching local databases.
 - Scanning community websites.
-- Finding matching organizations.
+# VolunteerConnect: Tactical Command Center (current)
 
-### 3. Tactical Overview (Results)
-The `ResultsView` displays matching organizations using a card-based layout. Each card represents an entity that can be "actioned."
-- **Organization Cards**: Display description, address, and categories (tags).
-- **Deployment Interface**: Allows the user to "Deploy AI Agent" immediately or schedule a call for later.
+## Overview
+VolunteerConnect treats volunteer search as a mission: the user provides a Location and a Mission prompt, an LLM refines that prompt, and a backend agent discovers and persists matching organizations. The frontend presents intake, discovery visuals, and results; the backend performs the heavy lifting (search, normalization, optional persistence).
 
-### 4. Agent Execution (Calling State)
-When an agent is deployed, the UI enters a "Calling" state via the `OrganizationCard`:
-- **Progress Tracking**: A visual progress bar indicates the AI agent is actively on the call.
-- **Post-Call Intelligence**: Once complete, the agent generates "Notes" including a summary of the conversation, contact names, and next steps.
+## Architecture (now)
 
-### 5. Intelligence Dashboard (Notes)
-Located at `/notes`, this view provides a centralized log of all agent activities:
-- **Status Filtering**: Filter by Interested, Callback Scheduled, Pending, or Not Available.
-- **Transcript Summaries**: Quick-read insights from the AI agent's conversations.
+Frontend
+- Next.js (App Router) + React 19. UI components live in `components/` and pages in `app/`.
+- UX flow: `LocationStep` → `MissionStep` → `DiscoveryScreen` → `ResultsView` → `OrganizationCard`.
+- Current behavior: mission text is captured in `MissionStep` and passed to the parent (`app/page.tsx`). Discovery and call flows are currently simulated client-side using `mockOrganizations` and timeouts.
 
----
+Backend (new)
+- A minimal Express + TypeScript service was added under `/backend`.
+- Key endpoints implemented:
+  - `GET /api/organizations/search?lat=&lng=&radius=&mission=` — queries Google Places (Nearby Search + Place Details), deduplicates, and returns normalized Organization objects.
+  - `POST /api/agents/refine` — debug endpoint that accepts `{ mission, location }`, logs and echoes it. Intended to be replaced/extended to call the Claude/LLM orchestration (LangChain) server-side.
+- Google Places integration in `backend/src/places.ts`. API key read from `backend/.env`.
 
-## Data Structures
+Storage & persistence
+- Currently the backend is stateless and returns results directly. The plan is to persist discovered organizations to Supabase (Service Role key in backend env) and to read them from the DB for the `ResultsView`/notes dashboard.
 
-### Organization (`components/organization-card.tsx`)
-```typescript
-interface Organization {
-  id: string;
+Security
+- API keys are kept server-side in `backend/.env` and `.gitignore` updated to ignore `.env` files.
+
+## Data shapes (frontend expectations)
+
+Organization (normalized)
+```ts
+{
+  id: string; // place_id or external id
   name: string;
-  description: string;
-  address: string;
+  description?: string;
+  address?: string;
   categories: string[];
   status: "ready" | "calling" | "completed" | "scheduled";
-  scheduledTime?: string;
-  callNotes?: {
-    summary: string;
-    contactName?: string;
-    nextSteps?: string[];
-    availability?: string;
-  };
+  scheduledTime?: string | null;
+  callNotes?: { summary: string; contactName?: string; nextSteps?: string[]; availability?: string } | null;
+  phone?: string | null;
+  rating?: number | null;
+  raw?: any;
 }
 ```
 
-### Note Entity (`app/notes/page.tsx`)
-```typescript
-interface OrgNote {
+OrgNote (notes dashboard)
+```ts
+{
   id: string;
   orgName: string;
   status: "interested" | "not_available" | "callback" | "pending";
@@ -86,18 +90,46 @@ interface OrgNote {
 }
 ```
 
+## Current agent/workflow direction
+
+1. Frontend captures `location` and `mission`.
+2. Frontend calls backend `POST /api/agents/refine` (or parent does it) with `{ mission, location }`. The refine endpoint will eventually call Claude/LangChain server-side to:
+   - produce a refined search query,
+   - optionally call internal tools (geocode, search, ranking),
+   - and request persistence to Supabase.
+3. Backend executes heavy searches (Places/Yelp/OSM), normalizes results, and persists to Supabase (future step). It returns `Organization[]` to the frontend.
+4. Frontend receives organizations and shows them in `ResultsView` using `OrganizationCard`.
+5. Calling/voice agent is deferred to a later phase — currently `OrganizationCard` simulates calls and call notes client-side.
+
+## Backend dev notes
+- Location: `backend/src`
+- Important files:
+  - `index.ts` — Express entry, routes added (`/api/organizations/search`, `/api/agents/refine`).
+  - `places.ts` — Google Places queries and normalization.
+  - `.env` — store `GOOGLE_PLACES_API_KEY`, `CLAUDE_API_KEY` (if used for server-side), `SUPABASE_SERVICE_ROLE_KEY` (for persistence).
+- Run dev server:
+  - `cd backend && npm install && npm run dev` (nodemon + ts-node). Frontend runs separately with `npm run dev` from repo root.
+
+## Short-term priorities (hackathon)
+- Implement server-side refine: replace debug `POST /api/agents/refine` with a Claude/LangChain orchestration that returns a refined search query and optional tool calls.
+- Wire `MissionStep`/parent to POST mission+location to refine endpoint and use the returned query to call `GET /api/organizations/search` (or let the backend do both steps).
+- Persist discovery results to Supabase and return persisted rows to the frontend so `ResultsView` and `/notes` read real data.
+- Add light caching/TTL in backend to reduce Places API quota hits.
+
+## Mid / long term (post-hackathon)
+- Replace discovery simulation with background workers for large crawls and phone-call orchestration with an isolated service for telephony.
+- Implement multi-agent orchestration and a job queue (Redis + Bull/Queue).
+- Add real-time status updates for calls (websockets or polling) and integrate voice services when ready.
+
+## Where to look in the repo
+- Frontend entry & flow: `app/page.tsx` and `app/notes/page.tsx`.
+- UI components: `components/*.tsx` (notably `mission-step.tsx`, `discovery-screen.tsx`, `organization-card.tsx`, `results-view.tsx`).
+- Backend: `backend/src/index.ts`, `backend/src/places.ts`.
+- Styles & theme: `app/globals.css`, `styles/globals.css`.
+
 ---
 
-## Design System & Aesthetics
-The project uses a **Sleek Dark Design System** defined in `globals.css`:
-- **Primary Color**: Soft Blue (`#3B82F6`)
-- **Secondary Color**: Success Green (`#22C55E`)
-- **Background**: Deep Zinc/Black (`#09090B`)
-- **Key UI Feature**: `GlowingEffect` — a custom component that adds proximity-based neon glow to cards and active elements, reinforcing the "Tactical" theme.
-
----
-
-## Future Roadmap & Agentic Features
-- **Real-time Voice Integration**: Replace the simulated calling state with actual VAPI or Retell AI integration.
-- **Multi-Agent Orchestration**: Deploying multiple agents to different categories of organizations simultaneously.
-- **Auto-Application**: Autonomous filing of volunteer application forms using browser-based agents.
+If you want I can now:
+- Patch `MissionStep` to POST refine requests and show loading state, or
+- Implement server-side Claude (LangChain) scaffold in the backend and wire it to `/api/agents/refine`.
+Which should I do next?

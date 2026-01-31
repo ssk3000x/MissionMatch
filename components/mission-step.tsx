@@ -19,9 +19,43 @@ interface MissionStepProps {
 export function MissionStep({ location, onComplete, onBack }: MissionStepProps) {
   const [mission, setMission] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (mission.trim()) {
+      // Aggregate user input data
+      const operationData = {
+        location: location,
+        mission: mission.trim(),
+        timestamp: new Date().toISOString()
+      }
+      
+      // Print to console
+      console.log("=== Operation Parameters ===")
+      console.log("Location:", operationData.location)
+      console.log("Mission:", operationData.mission)
+      console.log("Timestamp:", operationData.timestamp)
+      console.log("Full Data:", operationData)
+      
+      // Send to Node.js server
+      try {
+        const response = await fetch('http://localhost:4000/api/agents/refine', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(operationData)
+        })
+        
+        if (response.ok) {
+          const result = await response.json()
+          console.log("Server response:", result)
+        } else {
+          console.error("Server error:", response.status)
+        }
+      } catch (error) {
+        console.error("Failed to send data to server:", error)
+      }
+      
       onComplete(mission.trim())
     }
   }
