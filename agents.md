@@ -105,16 +105,18 @@ OrgNote (notes dashboard)
 - Location: `backend/src`
 - Important files:
   - `index.ts` — Express entry, routes added (`/api/organizations/search`, `/api/agents/refine`).
-  - `places.ts` — Google Places queries and normalization.
-  - `.env` — store `GOOGLE_PLACES_API_KEY`, `CLAUDE_API_KEY` (if used for server-side), `SUPABASE_SERVICE_ROLE_KEY` (for persistence).
+  - `tools/tavily.ts` — Tavily search and result normalization.
+  - `tools/tavilyTool.ts` — LangChain `DynamicTool` wrapper around `TavilySearch` for agent use.
+  - `.env` — store `TAVILY_API_KEY`, `CLAUDE_API_KEY` (if used for server-side), `SUPABASE_SERVICE_ROLE_KEY` (for persistence).
 - Run dev server:
   - `cd backend && npm install && npm run dev` (nodemon + ts-node). Frontend runs separately with `npm run dev` from repo root.
 
 ## Short-term priorities (hackathon)
-- Implement server-side refine: replace debug `POST /api/agents/refine` with a Claude/LangChain orchestration that returns a refined search query and optional tool calls.
-- Wire `MissionStep`/parent to POST mission+location to refine endpoint and use the returned query to call `GET /api/organizations/search` (or let the backend do both steps).
+- Implement server-side refine: ensure `POST /api/agents/refine` uses Claude/LangChain to produce refined queries and directly call Tavily (backend should orchestrate both refinement and search).
+- Wire `MissionStep`/parent to POST mission+location to `POST /api/agents/refine` and display returned `searchResults` (replace current client-side simulation).
 - Persist discovery results to Supabase and return persisted rows to the frontend so `ResultsView` and `/notes` read real data.
-- Add light caching/TTL in backend to reduce Places API quota hits.
+- Add light caching/TTL in backend to reduce Tavily API quota hits.
+- Resolve redundancy: decide whether to call `TavilySearch` directly in handlers or to invoke the LangChain agent (`tavilyTool`). Prefer a single server-side orchestration path.
 
 ## Mid / long term (post-hackathon)
 - Replace discovery simulation with background workers for large crawls and phone-call orchestration with an isolated service for telephony.

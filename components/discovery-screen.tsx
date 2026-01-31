@@ -11,6 +11,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect"
 interface DiscoveryScreenProps {
   location: string
   mission: string
+  organizations?: any[]
   onComplete: () => void
 }
 
@@ -42,10 +43,11 @@ const discoverySteps: DiscoveryStep[] = [
   },
 ]
 
-export function DiscoveryScreen({ location, mission, onComplete }: DiscoveryScreenProps) {
+export function DiscoveryScreen({ location, mission, organizations, onComplete }: DiscoveryScreenProps) {
   const [currentStep, setCurrentStep] = useState(0)
   const [completedSteps, setCompletedSteps] = useState<string[]>([])
   const [progress, setProgress] = useState(0)
+  const [animationComplete, setAnimationComplete] = useState(false)
 
   useEffect(() => {
     const runDiscovery = async () => {
@@ -74,11 +76,18 @@ export function DiscoveryScreen({ location, mission, onComplete }: DiscoveryScre
         await new Promise((resolve) => setTimeout(resolve, 300))
       }
 
-      setTimeout(onComplete, 500)
+      setAnimationComplete(true)
     }
 
     runDiscovery()
   }, [onComplete])
+
+  // Complete when organizations are loaded
+  useEffect(() => {
+    if (animationComplete && organizations && organizations.length > 0) {
+      setTimeout(onComplete, 500)
+    }
+  }, [animationComplete, organizations, onComplete])
 
   return (
     <motion.div

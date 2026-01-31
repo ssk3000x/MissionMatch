@@ -18,6 +18,8 @@ export interface Organization {
   categories: string[]
   status: "ready" | "calling" | "completed" | "scheduled"
   scheduledTime?: string
+  phone?: string
+  url?: string
   callNotes?: {
     summary: string
     contactName?: string
@@ -73,20 +75,29 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
         />
         <div className="relative flex flex-col h-full overflow-hidden rounded-[inherit] z-10">
           <CardHeader className="pb-3">
-
-
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <Building2 className="h-5 w-5 text-primary" />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="font-semibold leading-tight truncate">{organization.name}</h3>
-                <div className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
-                  <MapPin className="h-3.5 w-3.5 shrink-0" />
-                  <span className="truncate">{organization.address}</span>
-                </div>
+                <h3 className="font-semibold leading-tight line-clamp-2">{organization.name}</h3>
               </div>
             </div>
+            
+            {/* Contact Information Section */}
+            <div className="mt-3 space-y-2">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin className="h-3.5 w-3.5 shrink-0" />
+                <span className="truncate">{organization.address}</span>
+              </div>
+              {organization.phone && (
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Phone className="h-3.5 w-3.5 shrink-0" />
+                  <span className="font-mono">{organization.phone}</span>
+                </div>
+              )}
+            </div>
+
             {(organization.status === "completed" || organization.status === "scheduled") && (
               <div className="mt-3">
                 {organization.status === "completed" && (
@@ -106,7 +117,7 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
           </CardHeader>
 
           <CardContent className="space-y-4 flex-1 flex flex-col">
-            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
               {organization.description}
             </p>
 

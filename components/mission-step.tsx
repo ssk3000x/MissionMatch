@@ -12,7 +12,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect"
 
 interface MissionStepProps {
   location: string
-  onComplete: (mission: string) => void
+  onComplete: (mission: string, organizations?: any[]) => void
   onBack: () => void
 }
 
@@ -22,7 +22,7 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (mission.trim()) {
-      // Trigger navigation immediately
+      // Immediately trigger discovery screen
       onComplete(mission.trim())
 
       // Aggregate user input data
@@ -39,7 +39,7 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
       console.log("Timestamp:", operationData.timestamp)
       console.log("Full Data:", operationData)
       
-      // Send to Node.js server
+      // Send to Node.js server and get organizations in background
       try {
         const response = await fetch('http://localhost:4000/api/agents/refine', {
           method: 'POST',
@@ -52,6 +52,23 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
         if (response.ok) {
           const result = await response.json()
           console.log("Server response:", result)
+          
+          // Transform Tavily results to Organization format
+          const organizations = (result.searchResults || []).map((org: any, index: number) => ({
+            id: String(index + 1),
+            name: org.title,
+            description: org.content?.substring(0, 200) || "No description available",
+            address: org.address || "Address not available",
+            categories: ["Volunteer Opportunity"],
+            status: "ready" as const,
+            phone: org.phone,
+            url: org.url
+          }))
+          
+          // Update with organizations when ready
+          if (organizations.length > 0) {
+            onComplete(mission.trim(), organizations)
+          }
         } else {
           console.error("Server error:", response.status)
         }

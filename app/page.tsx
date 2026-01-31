@@ -133,9 +133,16 @@ export default function Home() {
     setStep("mission")
   }
 
-  const handleMissionComplete = (mis: string) => {
+  const handleMissionComplete = (mis: string, orgs?: Organization[]) => {
     setMission(mis)
-    setStep("discovery")
+    if (orgs && orgs.length > 0) {
+      // If we have organizations from the backend, use them
+      setOrganizations(orgs)
+      setStep("results")
+    } else {
+      // Otherwise go to discovery screen
+      setStep("discovery")
+    }
   }
 
   const handleDiscoveryComplete = useCallback(() => {
@@ -218,6 +225,7 @@ export default function Home() {
             key="discovery"
             location={location}
             mission={mission}
+            organizations={organizations}
             onComplete={handleDiscoveryComplete}
           />
         )}
