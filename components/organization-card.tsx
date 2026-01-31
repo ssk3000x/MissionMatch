@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
 
-
 export interface Organization {
   id: string
   name: string
