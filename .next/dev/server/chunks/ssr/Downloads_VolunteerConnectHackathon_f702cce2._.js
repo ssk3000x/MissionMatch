@@ -556,7 +556,7 @@ function MissionStep({ location, onComplete, onBack }) {
                     const organizations = (result.searchResults || []).map((org, index)=>({
                             id: String(index + 1),
                             name: org.title,
-                            description: org.content?.substring(0, 200) || "No description available",
+                            description: org.description || "No description available",
                             address: org.address || "Address not available",
                             categories: [
                                 "Volunteer Opportunity"
@@ -579,10 +579,9 @@ function MissionStep({ location, onComplete, onBack }) {
     };
     const suggestions = [
         "Help with food banks and meal distribution",
-        "Work with animals at local shelters",
-        "Tutor or mentor students",
-        "Environmental cleanup and conservation",
-        "Support elderly care facilities"
+        "Finding local shelters that can use help",
+        "Libraries that are open to partnerships",
+        "Environmental organizations needing tools"
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
         initial: {
@@ -614,14 +613,14 @@ function MissionStep({ location, onComplete, onBack }) {
                                     className: "mr-1 h-4 w-4"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 104,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this),
                                 "Back"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 98,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -644,20 +643,20 @@ function MissionStep({ location, onComplete, onBack }) {
                                         className: "h-8 w-8 text-secondary"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 114,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                     className: "text-3xl font-semibold tracking-tight text-balance",
-                                    children: "Describe your volunteering project!"
+                                    children: "Describe your community project or organization and what you need to find!"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -669,25 +668,25 @@ function MissionStep({ location, onComplete, onBack }) {
                                             children: location
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                            lineNumber: 121,
+                                            lineNumber: 120,
                                             columnNumber: 28
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 120,
+                                    lineNumber: 119,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 108,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                    lineNumber: 97,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -706,7 +705,7 @@ function MissionStep({ location, onComplete, onBack }) {
                                     borderWidth: 3
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 127,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -718,18 +717,18 @@ function MissionStep({ location, onComplete, onBack }) {
                                         className: "min-h-32 bg-background border-none text-lg placeholder:text-muted-foreground/60 resize-none focus-visible:ring-0"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                        lineNumber: 137,
+                                        lineNumber: 136,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 136,
+                                    lineNumber: 135,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 127,
+                            lineNumber: 126,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -740,7 +739,7 @@ function MissionStep({ location, onComplete, onBack }) {
                                     children: "Quick suggestions:"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 147,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -752,18 +751,18 @@ function MissionStep({ location, onComplete, onBack }) {
                                             children: suggestion
                                         }, suggestion, false, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                            lineNumber: 151,
+                                            lineNumber: 150,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 148,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 147,
+                            lineNumber: 146,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -773,24 +772,24 @@ function MissionStep({ location, onComplete, onBack }) {
                             children: "Find Organizations"
                         }, void 0, false, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                            lineNumber: 163,
+                            lineNumber: 162,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-                    lineNumber: 126,
+                    lineNumber: 125,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-            lineNumber: 96,
+            lineNumber: 95,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/mission-step.tsx",
-        lineNumber: 90,
+        lineNumber: 89,
         columnNumber: 5
     }, this);
 }
@@ -819,7 +818,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnec
 const discoverySteps = [
     {
         id: "search",
-        label: "Searching local databases",
+        label: "Analyzing your mission & needs with Claude",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__["Search"], {
             className: "h-5 w-5"
         }, void 0, false, {
@@ -831,7 +830,7 @@ const discoverySteps = [
     },
     {
         id: "web",
-        label: "Scanning community websites",
+        label: "Tailoring searches to your needs",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__["Globe"], {
             className: "h-5 w-5"
         }, void 0, false, {
@@ -843,7 +842,7 @@ const discoverySteps = [
     },
     {
         id: "orgs",
-        label: "Finding matching organizations",
+        label: "Deploying AI Agents to find relevant resources",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$building$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Building2$3e$__["Building2"], {
             className: "h-5 w-5"
         }, void 0, false, {
@@ -921,7 +920,7 @@ function DiscoveryScreen({ location, mission, organizations, onComplete }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             className: "text-2xl font-semibold tracking-tight",
-                            children: "Finding opportunities for you"
+                            children: "Finding help for you"
                         }, void 0, false, {
                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/discovery-screen.tsx",
                             lineNumber: 101,
@@ -1490,6 +1489,24 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
                                                 lineNumber: 94,
                                                 columnNumber: 17
+                                            }, this),
+                                            organization.url && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex items-center gap-2 text-sm",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                    href: organization.url,
+                                                    target: "_blank",
+                                                    rel: "noopener noreferrer",
+                                                    className: "text-primary hover:underline truncate",
+                                                    children: "Visit Website →"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
+                                                    lineNumber: 101,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
+                                                lineNumber: 100,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
@@ -1508,14 +1525,14 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "mr-1 h-3 w-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 105,
+                                                        lineNumber: 117,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Called"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 104,
+                                                lineNumber: 116,
                                                 columnNumber: 19
                                             }, this),
                                             organization.status === "scheduled" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1526,20 +1543,20 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "mr-1 h-3 w-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 111,
+                                                        lineNumber: 123,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Scheduled"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 110,
+                                                lineNumber: 122,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 102,
+                                        lineNumber: 114,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -1556,7 +1573,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                         children: organization.description
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1568,7 +1585,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     children: category
                                                 }, category, false, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 126,
+                                                    lineNumber: 138,
                                                     columnNumber: 17
                                                 }, this)),
                                             organization.categories.length > 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1580,13 +1597,13 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 147,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 136,
                                         columnNumber: 13
                                     }, this),
                                     organization.status === "calling" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1599,14 +1616,14 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "h-4 w-4 animate-pulse"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 147,
+                                                        lineNumber: 159,
                                                         columnNumber: 19
                                                     }, this),
                                                     "AI Agent is calling..."
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 146,
+                                                lineNumber: 158,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1621,18 +1638,18 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 151,
+                                                    lineNumber: 163,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 150,
+                                                lineNumber: 162,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 157,
                                         columnNumber: 15
                                     }, this),
                                     organization.status === "scheduled" && organization.scheduledTime && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1644,7 +1661,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 163,
+                                                    lineNumber: 175,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1654,18 +1671,18 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 176,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                            lineNumber: 162,
+                                            lineNumber: 174,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 161,
+                                        lineNumber: 173,
                                         columnNumber: 15
                                     }, this),
                                     organization.status === "completed" && organization.callNotes && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1678,14 +1695,14 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 172,
+                                                        lineNumber: 184,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Call completed"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 183,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1693,7 +1710,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                 children: organization.callNotes.summary
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 175,
+                                                lineNumber: 187,
                                                 columnNumber: 17
                                             }, this),
                                             organization.callNotes.availability && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1703,20 +1720,20 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "h-3.5 w-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 180,
+                                                        lineNumber: 192,
                                                         columnNumber: 21
                                                     }, this),
                                                     organization.callNotes.availability
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 191,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 182,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1730,14 +1747,14 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "mr-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 193,
+                                                        lineNumber: 205,
                                                         columnNumber: 19
                                                     }, this),
-                                                    "Deploy AI Agent"
+                                                    "Deploy Voice Agent & Call"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 201,
                                                 columnNumber: 17
                                             }, this),
                                             organization.status === "calling" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1749,14 +1766,14 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "mr-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 199,
+                                                        lineNumber: 211,
                                                         columnNumber: 19
                                                     }, this),
                                                     "In Progress..."
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 210,
                                                 columnNumber: 17
                                             }, this),
                                             organization.status === "scheduled" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1768,14 +1785,14 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "mr-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 209,
+                                                        lineNumber: 221,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Call Now Instead"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 204,
+                                                lineNumber: 216,
                                                 columnNumber: 17
                                             }, this),
                                             organization.status === "completed" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1785,19 +1802,19 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                 children: "View Notes"
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 214,
+                                                lineNumber: 226,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 199,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                lineNumber: 119,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -1851,7 +1868,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                 children: "Deploy AI Agent"
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 250,
+                                                lineNumber: 262,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1862,13 +1879,13 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 251,
+                                                lineNumber: 263,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 249,
+                                        lineNumber: 261,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1880,18 +1897,18 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 273,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 255,
+                                        lineNumber: 267,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                lineNumber: 248,
+                                lineNumber: 260,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1909,12 +1926,12 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 272,
+                                                        lineNumber: 284,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 283,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1922,10 +1939,13 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "font-medium",
-                                                            children: "Call Now"
-                                                        }, void 0, false, {
+                                                            children: [
+                                                                "Call ",
+                                                                organization.phone || "Now"
+                                                            ]
+                                                        }, void 0, true, {
                                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                            lineNumber: 275,
+                                                            lineNumber: 287,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1933,24 +1953,24 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                             children: "AI agent will call immediately"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                            lineNumber: 276,
+                                                            lineNumber: 290,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 274,
+                                                    lineNumber: 286,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                            lineNumber: 270,
+                                            lineNumber: 282,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 278,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1962,12 +1982,12 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     className: "w-full border-t border-border"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 283,
+                                                    lineNumber: 297,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 296,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1977,18 +1997,18 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                     children: "or schedule"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                    lineNumber: 286,
+                                                    lineNumber: 300,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 285,
+                                                lineNumber: 299,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 281,
+                                        lineNumber: 295,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2006,7 +2026,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                                 children: "Date"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                                lineNumber: 293,
+                                                                lineNumber: 307,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2018,13 +2038,13 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                                 className: "bg-background"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                                lineNumber: 294,
+                                                                lineNumber: 308,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 306,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2036,7 +2056,7 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                                 children: "Time"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                                lineNumber: 304,
+                                                                lineNumber: 318,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2047,19 +2067,19 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                                 className: "bg-background"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                                lineNumber: 305,
+                                                                lineNumber: 319,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 303,
+                                                        lineNumber: 317,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 291,
+                                                lineNumber: 305,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2072,42 +2092,42 @@ function OrganizationCard({ organization, onCall, onViewNotes }) {
                                                         className: "mr-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                        lineNumber: 320,
+                                                        lineNumber: 334,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Schedule Call"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                                lineNumber: 314,
+                                                lineNumber: 328,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                        lineNumber: 290,
+                                        lineNumber: 304,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                                lineNumber: 265,
+                                lineNumber: 277,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                        lineNumber: 241,
+                        lineNumber: 253,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                    lineNumber: 234,
+                    lineNumber: 246,
                     columnNumber: 13
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Downloads/VolunteerConnectHackathon/components/organization-card.tsx",
-                lineNumber: 231,
+                lineNumber: 243,
                 columnNumber: 7
             }, this)
         ]
@@ -2526,7 +2546,7 @@ function Home() {
         setOrganizations(mockOrganizations);
         setStep("results");
     }, []);
-    const handleCall = (orgId, scheduledTime)=>{
+    const handleCall = async (orgId, scheduledTime)=>{
         // If scheduled, set to scheduled status
         if (scheduledTime) {
             setOrganizations((prev)=>prev.map((org)=>org.id === orgId ? {
@@ -2536,28 +2556,67 @@ function Home() {
                     } : org));
             return;
         }
+        // Get organization details
+        const org = organizations.find((o)=>o.id === orgId);
+        if (!org || !org.phone) {
+            console.error("Organization or phone number not found");
+            return;
+        }
         // Set organization to calling status
         setOrganizations((prev)=>prev.map((org)=>org.id === orgId ? {
                     ...org,
                     status: "calling",
                     scheduledTime: undefined
                 } : org));
-        // Simulate call completion after 5 seconds
-        setTimeout(()=>{
+        // Make actual phone call via backend
+        try {
+            const callText = `Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting ${org.name}. They are looking to help with ${mission}. Please call them back to discuss volunteer opportunities. Thank you!`;
+            const response = await fetch('http://localhost:4000/api/voice/call', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    to: org.phone,
+                    text: callText,
+                    organizationName: org.name
+                })
+            });
+            const result = await response.json();
+            if (response.ok && result.ok) {
+                console.log("Call initiated:", result);
+                // Mark call as completed after a delay
+                setTimeout(()=>{
+                    setOrganizations((prev)=>prev.map((org)=>org.id === orgId ? {
+                                ...org,
+                                status: "completed",
+                                scheduledTime: undefined,
+                                callNotes: mockCallNotes[orgId] || {
+                                    summary: "Call completed successfully. AI agent left a message about volunteer interest.",
+                                    availability: "Awaiting callback",
+                                    nextSteps: [
+                                        "Wait for organization to return call",
+                                        "Follow up via email if no response"
+                                    ]
+                                }
+                            } : org));
+                }, 8000);
+            } else {
+                console.error("Call failed:", result);
+                // Reset to ready status on failure
+                setOrganizations((prev)=>prev.map((org)=>org.id === orgId ? {
+                            ...org,
+                            status: "ready"
+                        } : org));
+            }
+        } catch (error) {
+            console.error("Error making call:", error);
+            // Reset to ready status on error
             setOrganizations((prev)=>prev.map((org)=>org.id === orgId ? {
                         ...org,
-                        status: "completed",
-                        scheduledTime: undefined,
-                        callNotes: mockCallNotes[orgId] || {
-                            summary: "Call completed successfully. Organization is interested in new volunteers.",
-                            availability: "Contact for availability",
-                            nextSteps: [
-                                "Follow up via email",
-                                "Visit website for more info"
-                            ]
-                        }
+                        status: "ready"
                     } : org));
-        }, 5000);
+        }
     };
     const handleViewNotes = (orgId)=>{
         if (orgId === "all") {
@@ -2581,7 +2640,7 @@ function Home() {
                     onComplete: handleLocationComplete
                 }, "location", false, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/app/page.tsx",
-                    lineNumber: 213,
+                    lineNumber: 259,
                     columnNumber: 11
                 }, this),
                 step === "mission" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$mission$2d$step$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MissionStep"], {
@@ -2590,7 +2649,7 @@ function Home() {
                     onBack: ()=>setStep("location")
                 }, "mission", false, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/app/page.tsx",
-                    lineNumber: 216,
+                    lineNumber: 262,
                     columnNumber: 11
                 }, this),
                 step === "discovery" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$discovery$2d$screen$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DiscoveryScreen"], {
@@ -2600,7 +2659,7 @@ function Home() {
                     onComplete: handleDiscoveryComplete
                 }, "discovery", false, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/app/page.tsx",
-                    lineNumber: 224,
+                    lineNumber: 270,
                     columnNumber: 11
                 }, this),
                 step === "results" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnectHackathon$2f$components$2f$results$2d$view$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResultsView"], {
@@ -2612,18 +2671,18 @@ function Home() {
                     onViewNotes: handleViewNotes
                 }, "results", false, {
                     fileName: "[project]/Downloads/VolunteerConnectHackathon/app/page.tsx",
-                    lineNumber: 233,
+                    lineNumber: 279,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/VolunteerConnectHackathon/app/page.tsx",
-            lineNumber: 211,
+            lineNumber: 257,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/VolunteerConnectHackathon/app/page.tsx",
-        lineNumber: 210,
+        lineNumber: 256,
         columnNumber: 5
     }, this);
 }

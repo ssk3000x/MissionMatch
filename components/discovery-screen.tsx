@@ -25,19 +25,19 @@ interface DiscoveryStep {
 const discoverySteps: DiscoveryStep[] = [
   {
     id: "search",
-    label: "Searching local databases",
+    label: "Analyzing your mission & needs with Claude",
     icon: <Search className="h-5 w-5" />,
     duration: 2000,
   },
   {
     id: "web",
-    label: "Scanning community websites",
+    label: "Tailoring searches to your needs",
     icon: <Globe className="h-5 w-5" />,
     duration: 2500,
   },
   {
     id: "orgs",
-    label: "Finding matching organizations",
+    label: "Deploying AI Agents to find relevant resources",
     icon: <Building2 className="h-5 w-5" />,
     duration: 2000,
   },
@@ -99,7 +99,7 @@ export function DiscoveryScreen({ location, mission, organizations, onComplete }
       <div className="w-full max-w-md space-y-8">
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-semibold tracking-tight">
-            Finding opportunities for you
+            Finding help for you
           </h1>
           <p className="text-muted-foreground text-sm">
             Searching in {location}

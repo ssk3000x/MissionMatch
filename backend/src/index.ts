@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { searchOrganizations } from "./places";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import "dotenv/config";
 import { createAgent, createMiddleware } from "langchain";
 import { TavilySearch } from "./tools/tavily";
 import { tavilyTool } from "./tools/tavilyTool";
+import { makeAICall, waitForCallEnd } from "./tools/voiceagent";
 import { z } from "zod";
 
 dotenv.config();
@@ -70,28 +70,36 @@ app.post("/api/agents/refine", async (req, res) => {
     console.log("/api/agents/refine received:", JSON.stringify({ mission, location, timestamp }, null, 2));
 
     // Create the system prompt from the operation data
-    const systemPrompt = `You are a strategic volunteer placement analyst.
+    const systemPrompt = `You are an expert community resource analyst specializing in matching people's needs with relevant organizations and services.
 
 Location: ${location || "Not specified"}
-Mission: ${mission}
+User's Need/Mission: ${mission}
 
-Your task: Identify the best types of institutions/organizations for this mission. Be specific.
+Your task: Deeply analyze what the user is trying to accomplish and identify the MOST RELEVANT organizations, programs, and resources that can specifically help with their stated need.
 
-Examples:
-- Food assistance → food banks, homeless shelters, soup kitchens, Meals on Wheels
-- Animal care → animal shelters, rescue organizations, wildlife centers
-- Education → schools, tutoring centers, libraries, literacy programs
+Analysis Framework:
+1. Identify the core need or problem the user wants to address
+2. Consider who would benefit (vulnerable populations, age groups, specific communities)
+3. Determine what type of help is needed (direct service, resources, education, advocacy, etc.)
+4. Match to organizations that SPECIFICALLY provide this type of help
 
-OUTPUT FORMAT (3 lines max):
-Best institution types (max of 5): [comma-separated list]
-Search keywords (max of 5): [specific terms for finding these]`;
+Examples of need-based matching:
+- "help homeless youth" → youth homeless shelters, youth crisis centers, transitional housing programs, youth outreach services
+- "tutor at-risk students in math" → after-school tutoring programs, education nonprofits, community learning centers, Title I schools
+- "distribute food to elderly" → senior centers, Meals on Wheels, food banks with senior programs, elder care services
+- "environmental cleanup" → conservation organizations, park volunteer programs, environmental nonprofits, community cleanup initiatives
+
+OUTPUT FORMAT (be specific and actionable):
+Primary Need: [1 sentence describing what the user wants to accomplish]
+Best Organization Types: [5-7 specific types of organizations that address this exact need]
+Search Keywords: [6-8 precise terms that would find organizations doing this specific work]`;
 
     // Call Claude agent with the operation data as system prompt
     const agentResponse = await agent.invoke(
       { 
         messages: [{ 
           role: "user", 
-          content: `For mission "${mission}" in "${location || "unspecified"}", what are the 3-5 best types of institutions to search for? List them with specific keywords.` 
+          content: `Analyze this need: "${mission}" in "${location || "unspecified"}". What specific types of organizations and programs would best address this need? Focus on organizations that can actually provide this specific help or service.` 
         }] 
       },
       { 
@@ -121,21 +129,128 @@ Search keywords (max of 5): [specific terms for finding these]`;
 
       console.log(`\nFound ${searchResults.length} resources:\n`);
       
-      searchResults.forEach((result, index) => {
-        console.log(`--- Resource ${index + 1} ---`);
-        console.log("• Name:", result.title);
-        console.log("• Phone:", result.phone);
-        console.log("• Address:", result.address || "Not found");
-        console.log("• URL:", result.url);
-        console.log("• Score:", result.score);
-        console.log("");
-      });
+      // Use Claude to clean up descriptions and addresses, and filter by location
+      console.log("=== Cleaning descriptions and addresses with Claude ===");
+      const cleanedResults = await Promise.all(
+        searchResults.map(async (result, index) => {
+          try {
+            const cleanResponse = await agent.invoke(
+              {
+                messages: [{
+                  role: "user",
+                  content: `Analyze this organization and verify it is a REAL, DIRECT SERVICE organization (not an aggregate list or directory):
+
+Organization: ${result.title}
+URL: ${result.url}
+Raw content: ${result.content}
+User's Project/Need: ${mission}
+Target Location: ${location || "any"}
+
+First, determine if this is a real organization that directly provides services, or if it's an aggregate/directory site.
+
+REJECT if:
+- It's a PDF document or resource list
+- It's a directory/database of organizations
+- It's an aggregate site listing multiple organizations
+- It's a general volunteer matching platform
+- The title/content suggests it's a "list of" or "directory of" organizations
+
+ACCEPT only if:
+- It's a single, specific nonprofit or community organization
+- It directly provides services or programs
+- It has a physical location and operations
+
+Output format:
+IS_REAL_ORG: [YES or NO]
+MISSION: [Max 10 words, proper punctuation. Must start with "They can help you with..." or "Their efforts in [area] can help with..." addressing the user's project: "${mission}"]
+ADDRESS: [physical street address only, or "Not available" if no valid address found]
+IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
+                }]
+              },
+              {
+                context: {
+                  user_name: "Volunteer",
+                  systemPrompt: "You are a strict validator that filters out aggregate sites, PDFs, directories, and resource lists. Only accept real, direct service organizations. For MISSION field, use MAX 10 WORDS with proper punctuation. Start with 'They can help you with...' or 'Their efforts in [area] can help with...' to directly address the user's specific project needs."
+                }
+              }
+            );
+
+            const cleanData = getSummary(cleanResponse)?.trim() || "";
+            
+            // Parse the response
+            const isRealOrgMatch = cleanData.match(/IS_REAL_ORG:\s*(YES|NO)/i);
+            const missionMatch = cleanData.match(/MISSION:\s*(.+?)(?=\n|ADDRESS:|IN_AREA:|$)/is);
+            const addressMatch = cleanData.match(/ADDRESS:\s*(.+?)(?=\n|IN_AREA:|$)/is);
+            const inAreaMatch = cleanData.match(/IN_AREA:\s*(YES|NO)/i);
+            
+            const isRealOrg = isRealOrgMatch?.[1]?.toUpperCase() === "YES";
+            const cleanDescription = missionMatch?.[1]?.trim() || result.content.substring(0, 200);
+            const cleanAddress = addressMatch?.[1]?.trim() || result.address || "Address not available";
+            const isInArea = inAreaMatch?.[1]?.toUpperCase() !== "NO";
+            
+            console.log(`--- Resource ${index + 1} ---`);
+            console.log("• Name:", result.title);
+            console.log("• Is Real Org:", isRealOrg ? "✓" : "✗ REJECTED");
+            console.log("• Mission:", cleanDescription);
+            console.log("• Phone:", result.phone);
+            console.log("• Address:", cleanAddress);
+            console.log("• In Target Area:", isInArea ? "✓" : "✗");
+            console.log("");
+
+            return {
+              ...result,
+              description: cleanDescription,
+              address: cleanAddress,
+              rawContent: result.content,
+              isInArea,
+              isRealOrg
+            };
+          } catch (error) {
+            console.error(`Error cleaning data for ${result.title}:`, error);
+            return {
+              ...result,
+              description: result.content.substring(0, 200),
+              address: result.address || "Address not available",
+              rawContent: result.content,
+              isInArea: true, // Default to true on error
+              isRealOrg: true
+            };
+          }
+        })
+      );
+
+      // Filter to only real organizations, then prioritize by location
+      const realOrgs = cleanedResults.filter(r => r.isRealOrg);
+      const inAreaResults = realOrgs.filter(r => r.isInArea);
+      const outOfAreaResults = realOrgs.filter(r => !r.isInArea);
+      
+      // Return in-area results first, then out-of-area if we don't have enough
+      let finalResults = [...inAreaResults, ...outOfAreaResults].slice(0, 9);
+      
+      // Always prepend Kulkarni & Thomas Food Bank as the first result
+      const featuredOrg = {
+        title: "Kulkarni & Thomas Food Bank",
+        url: "N/A",
+        content: "Featured organization",
+        score: 1.0,
+        phone: "+16692229163",
+        address: "123 Story Road, San Jose",
+        description: "They can help with your volunteer organization's efforts greatly.",
+        rawContent: "Featured organization",
+        isInArea: true,
+        isRealOrg: true
+      };
+      
+      finalResults = [featuredOrg, ...finalResults];
+      
+      const rejected = cleanedResults.length - realOrgs.length;
+      console.log(`\n✓ Showing ${finalResults.length} real organizations (${rejected} aggregates/directories rejected)`);
 
       return res.json({
         ok: true,
         received: { mission, location, timestamp },
         agentResponse: agentSummary,
-        searchResults,
+        searchResults: finalResults,
       });
     } catch (tavilyError: any) {
       console.error("Tavily search error:", tavilyError?.message || tavilyError);
@@ -155,4 +270,64 @@ Search keywords (max of 5): [specific terms for finding these]`;
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Backend listening on http://localhost:${PORT}`);
+});
+
+// Voice + Telephony routes using VAPI
+app.post("/api/voice/call", async (req, res) => {
+  try {
+    const { to, text, organizationName } = req.body || {};
+    console.log('/api/voice/call request body:', JSON.stringify(req.body));
+    if (!to) return res.status(400).json({ error: "phone number (to) is required" });
+
+    // Extract mission from the text or use default
+    const mission = text || "volunteer opportunities";
+
+    // Initiate VAPI call
+    const callId = await makeAICall({
+      to: to,
+      organizationName: organizationName,
+      mission: mission
+    });
+
+    console.log('/api/voice/call created', { callId });
+    
+    // Start monitoring call status in background (don't await)
+    waitForCallEnd(callId)
+      .then((result: any) => {
+        console.log(`Call ${callId} ended:`, result.status);
+        if (result.analysis) {
+          console.log('Summary:', result.analysis.summary);
+        }
+      })
+      .catch((err: any) => {
+        console.error(`Error monitoring call ${callId}:`, err.message);
+      });
+
+    return res.json({ ok: true, callId: callId });
+  } catch (err: any) {
+    console.error("/api/voice/call error", err?.message || err);
+    return res.status(500).json({ error: "call_failed", details: err?.message });
+  }
+});
+
+// Get call status endpoint (optional - for checking call progress)
+app.get('/api/voice/call/:callId', async (req, res) => {
+  try {
+    const { callId } = req.params;
+    const result = await waitForCallEnd(callId);
+    res.json({
+      ok: true,
+      status: result.status,
+      summary: result.analysis?.summary,
+      transcript: result.transcript
+    });
+  } catch (err: any) {
+    console.error('call status error', err?.message || err);
+    return res.status(500).json({ error: 'status_check_failed', details: err?.message });
+  }
+});
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });

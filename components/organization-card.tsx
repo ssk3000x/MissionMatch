@@ -96,6 +96,18 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
                   <span className="font-mono">{organization.phone}</span>
                 </div>
               )}
+              {organization.url && (
+                <div className="flex items-center gap-2 text-sm">
+                  <a
+                    href={organization.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline truncate"
+                  >
+                    Visit Website →
+                  </a>
+                </div>
+              )}
             </div>
 
             {(organization.status === "completed" || organization.status === "scheduled") && (
@@ -191,7 +203,7 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
                   className="flex-1"
                 >
                   <Phone className="mr-2 h-4 w-4" />
-                  Deploy AI Agent
+                  Deploy Voice Agent & Call
                 </Button>
               )}
               {organization.status === "calling" && (
@@ -272,7 +284,9 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
                         <Phone className="h-5 w-5" />
                       </div>
                       <div className="text-left">
-                        <div className="font-medium">Call Now</div>
+                        <div className="font-medium">
+                          Call {organization.phone || "Now"}
+                        </div>
                         <div className="text-sm opacity-80">AI agent will call immediately</div>
                       </div>
                     </div>

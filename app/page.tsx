@@ -150,7 +150,7 @@ export default function Home() {
     setStep("results")
   }, [])
 
-  const handleCall = (orgId: string, scheduledTime?: string) => {
+  const handleCall = async (orgId: string, scheduledTime?: string) => {
     // If scheduled, set to scheduled status
     if (scheduledTime) {
       setOrganizations((prev) =>
@@ -163,6 +163,13 @@ export default function Home() {
       return
     }
 
+    // Get organization details
+    const org = organizations.find(o => o.id === orgId)
+    if (!org || !org.phone) {
+      console.error("Organization or phone number not found")
+      return
+    }
+
     // Set organization to calling status
     setOrganizations((prev) =>
       prev.map((org) =>
@@ -170,25 +177,64 @@ export default function Home() {
       )
     )
 
-    // Simulate call completion after 5 seconds
-    setTimeout(() => {
+    // Make actual phone call via backend
+    try {
+      const callText = `Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting ${org.name}. They are looking to help with ${mission}. Please call them back to discuss volunteer opportunities. Thank you!`
+      
+      const response = await fetch('http://localhost:4000/api/voice/call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: org.phone,
+          text: callText,
+          organizationName: org.name
+        })
+      })
+
+      const result = await response.json()
+      
+      if (response.ok && result.ok) {
+        console.log("Call initiated:", result)
+        
+        // Mark call as completed after a delay
+        setTimeout(() => {
+          setOrganizations((prev) =>
+            prev.map((org) =>
+              org.id === orgId
+                ? {
+                    ...org,
+                    status: "completed" as const,
+                    scheduledTime: undefined,
+                    callNotes: mockCallNotes[orgId as keyof typeof mockCallNotes] || {
+                      summary: "Call completed successfully. AI agent left a message about volunteer interest.",
+                      availability: "Awaiting callback",
+                      nextSteps: ["Wait for organization to return call", "Follow up via email if no response"],
+                    },
+                  }
+                : org
+            )
+          )
+        }, 8000)
+      } else {
+        console.error("Call failed:", result)
+        // Reset to ready status on failure
+        setOrganizations((prev) =>
+          prev.map((org) =>
+            org.id === orgId ? { ...org, status: "ready" as const } : org
+          )
+        )
+      }
+    } catch (error) {
+      console.error("Error making call:", error)
+      // Reset to ready status on error
       setOrganizations((prev) =>
         prev.map((org) =>
-          org.id === orgId
-            ? {
-                ...org,
-                status: "completed" as const,
-                scheduledTime: undefined,
-                callNotes: mockCallNotes[orgId as keyof typeof mockCallNotes] || {
-                  summary: "Call completed successfully. Organization is interested in new volunteers.",
-                  availability: "Contact for availability",
-                  nextSteps: ["Follow up via email", "Visit website for more info"],
-                },
-              }
-            : org
+          org.id === orgId ? { ...org, status: "ready" as const } : org
         )
       )
-    }, 5000)
+    }
   }
 
   const handleViewNotes = (orgId: string) => {

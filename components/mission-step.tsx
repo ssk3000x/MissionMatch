@@ -57,7 +57,7 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
           const organizations = (result.searchResults || []).map((org: any, index: number) => ({
             id: String(index + 1),
             name: org.title,
-            description: org.content?.substring(0, 200) || "No description available",
+            description: org.description || "No description available",
             address: org.address || "Address not available",
             categories: ["Volunteer Opportunity"],
             status: "ready" as const,
@@ -80,10 +80,9 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
 
   const suggestions = [
     "Help with food banks and meal distribution",
-    "Work with animals at local shelters",
-    "Tutor or mentor students",
-    "Environmental cleanup and conservation",
-    "Support elderly care facilities",
+    "Finding local shelters that can use help",
+    "Libraries that are open to partnerships",
+    "Environmental organizations needing tools"
   ]
 
   return (
@@ -115,7 +114,7 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
               <Heart className="h-8 w-8 text-secondary" />
             </motion.div>
             <h1 className="text-3xl font-semibold tracking-tight text-balance">
-              Describe your volunteering project!
+              Describe your community project or organization and what you need to find!
             </h1>
             <p className="text-muted-foreground text-balance">
               Searching in <span className="text-foreground font-medium">{location}</span>

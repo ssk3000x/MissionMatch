@@ -18,6 +18,8 @@ export interface TavilyResult {
   score?: number;
   phone: string;
   address?: string;
+  description?: string;
+  rawContent?: string;
 }
 
 /**
@@ -52,8 +54,9 @@ export async function TavilySearch(params: TavilySearchParams): Promise<TavilyRe
 
   const { mission, location } = params;
 
-  // Construct search query optimized for volunteer organizations with contact info
-  const searchQuery = `volunteer organizations ${mission} ${location ? `near ${location}` : ""} contact phone`.trim();
+  // Construct search query optimized for volunteer organizations with contact info and location
+  const locationPart = location ? `in ${location} ` : "";
+  const searchQuery = `volunteer ${mission} organizations ${locationPart}local community service contact phone address`.trim();
 
   console.log("Tavily Search Query:", searchQuery);
 
@@ -63,16 +66,28 @@ export async function TavilySearch(params: TavilySearchParams): Promise<TavilyRe
       {
         api_key: TAVILY_API_KEY,
         query: searchQuery,
-        max_results: 15,
+        max_results: 30,
         search_depth: "advanced",
         include_domains: [],
-        exclude_domains: []
+        exclude_domains: [
+          "guidestar.org",
+          "greatnonprofits.org",
+          "charitynavigator.org",
+          "idealist.org",
+          "volunteermatch.org",
+          "211.org",
+          "unitedway.org",
+          "facebook.com",
+          "linkedin.com",
+          "indeed.com",
+          "glassdoor.com"
+        ]
       },
       {
         headers: {
           "Content-Type": "application/json",
         },
-        timeout: 10000,
+        timeout: 15000,
       }
     );
 
@@ -82,18 +97,46 @@ export async function TavilySearch(params: TavilySearchParams): Promise<TavilyRe
           const content = result.content || result.snippet || "N/A";
           const phone = extractPhoneNumber(content);
           const address = extractAddress(content);
+          const url = result.url || "N/A";
           
           return {
             title: result.title || "N/A",
-            url: result.url || "N/A",
+            url,
             content,
             score: result.score || 0,
             phone,
             address,
           };
         })
-        .filter((result: any) => result.phone !== undefined)
-        .slice(0, 5);
+        // Filter out PDFs, aggregate lists, and directory sites
+        .filter((result: any) => {
+          const url = result.url.toLowerCase();
+          const title = result.title.toLowerCase();
+          const content = result.content.toLowerCase();
+          
+          // Exclude PDFs
+          if (url.includes('.pdf') || title.includes('[pdf]')) return false;
+          
+          // Exclude aggregate/directory keywords
+          const aggregateKeywords = [
+            'list of',
+            'directory of',
+            'database of',
+            'find organizations',
+            'search organizations',
+            'nonprofit directory',
+            'volunteer opportunities',
+            'resource guide',
+            'service directory'
+          ];
+          
+          if (aggregateKeywords.some(keyword => title.includes(keyword) || content.includes(keyword))) {
+            return false;
+          }
+          
+          return result.phone !== undefined;
+        })
+        .slice(0, 15);
       
       return resultsWithPhone;
     }
