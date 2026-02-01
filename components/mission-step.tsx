@@ -19,63 +19,35 @@ interface MissionStepProps {
 
 export function MissionStep({ location, onComplete, onBack }: MissionStepProps) {
   const [mission, setMission] = useState("")
+  const [clarifyMode, setClarifyMode] = useState(false)
+  const [questions, setQuestions] = useState<string[]>([])
+  const [answers, setAnswers] = useState<Record<number,string>>({})
+  const [loadingQuestions, setLoadingQuestions] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (mission.trim()) {
-      // Immediately trigger discovery screen
-      onComplete(mission.trim())
+    if (!mission.trim()) return
 
-      // Aggregate user input data
-      const operationData = {
-        location: location,
-        mission: mission.trim(),
-        timestamp: new Date().toISOString()
+    // Enter clarify mode and request follow-up questions
+    setClarifyMode(true)
+    setLoadingQuestions(true)
+    try {
+      const resp = await fetch('http://localhost:4000/api/agents/clarify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mission: mission.trim(), location }),
+      })
+      const body = await resp.json()
+      if (body?.ok && Array.isArray(body.questions)) {
+        setQuestions(body.questions)
+      } else {
+        setQuestions([])
       }
-      
-      // Print to console
-      console.log("=== Operation Parameters ===")
-      console.log("Location:", operationData.location)
-      console.log("Mission:", operationData.mission)
-      console.log("Timestamp:", operationData.timestamp)
-      console.log("Full Data:", operationData)
-      
-      // Send to Node.js server and get organizations in background
-      try {
-        const response = await fetch('http://localhost:4000/api/agents/refine', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(operationData)
-        })
-        
-        if (response.ok) {
-          const result = await response.json()
-          console.log("Server response:", result)
-          
-          // Transform Tavily results to Organization format
-          const organizations = (result.searchResults || []).map((org: any, index: number) => ({
-            id: String(index + 1),
-            name: org.title,
-            description: org.description || "No description available",
-            address: org.address || "Address not available",
-            categories: ["Volunteer Opportunity"],
-            status: "ready" as const,
-            phone: org.phone,
-            url: org.url
-          }))
-          
-          // Update with organizations when ready
-          if (organizations.length > 0) {
-            onComplete(mission.trim(), organizations)
-          }
-        } else {
-          console.error("Server error:", response.status)
-        }
-      } catch (error) {
-        console.error("Failed to send data to server:", error)
-      }
+    } catch (err) {
+      console.error('Clarify fetch failed', err)
+      setQuestions([])
+    } finally {
+      setLoadingQuestions(false)
     }
   }
 
@@ -198,40 +170,124 @@ your community project or organization and what you need to find!
               inactiveZone={0.01}
               borderWidth={3}
             />
+
             <div className="relative">
               <Textarea
                 placeholder="Describe what you'd like to help with..."
                 value={mission}
                 onChange={(e) => setMission(e.target.value)}
-                className="min-h-32 bg-background border-none text-lg placeholder:text-muted-foreground/60 resize-none focus-visible:ring-0"
+                className="min-h-28 md:min-h-32 bg-background border-none text-lg placeholder:text-muted-foreground/60 resize-none focus-visible:ring-0"
               />
             </div>
           </div>
 
+          {!clarifyMode && (
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">Quick suggestions:</p>
+              <div className="flex flex-wrap gap-2">
+                {suggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => setMission(suggestion)}
+                    className="rounded-full bg-muted px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/80 hover:text-foreground transition-colors"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
 
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">Quick suggestions:</p>
-            <div className="flex flex-wrap gap-2">
-              {suggestions.map((suggestion) => (
-                <button
-                  key={suggestion}
-                  type="button"
-                  onClick={() => setMission(suggestion)}
-                  className="rounded-full bg-muted px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted/80 hover:text-foreground transition-colors"
-                >
-                  {suggestion}
-                </button>
-              ))}
+              <Button
+                type="submit"
+                className="w-full h-14 text-lg font-medium"
+                disabled={!mission.trim()}
+              >
+                Continue
+              </Button>
             </div>
-          </div>
+          )}
 
-          <Button
-            type="submit"
-            className="w-full h-14 text-lg font-medium"
-            disabled={!mission.trim()}
-          >
-            Continue
-          </Button>
+          {/* Clarification UI */}
+          {clarifyMode && (
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-muted-foreground">A few quick questions</h4>
+              {loadingQuestions ? (
+                <p className="text-sm text-muted-foreground">Generating questions…</p>
+              ) : (
+                <div className="space-y-2">
+                  {questions.map((q, i) => (
+                    <div key={i} className="space-y-1">
+                      <label className="text-sm text-muted-foreground">{q}</label>
+                      <input
+                        type="text"
+                        value={answers[i] || ''}
+                        onChange={(e) => setAnswers((prev) => ({ ...prev, [i]: e.target.value }))}
+                        className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="flex gap-2">
+            {clarifyMode ? (
+              <>
+                <Button
+                  type="button"
+                  className="flex-1 h-14 text-lg font-medium"
+                  onClick={async () => {
+                    // Show discovery/loading screen immediately
+                    onComplete(mission.trim())
+
+                    // Then run the server-side search in background and update when ready
+                    const operationData = {
+                      location: location,
+                      mission: mission.trim(),
+                      timestamp: new Date().toISOString(),
+                      clarifications: Object.values(answers).filter(Boolean),
+                    }
+                    try {
+                      const response = await fetch('http://localhost:4000/api/agents/refine', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(operationData),
+                      })
+                      if (response.ok) {
+                        const result = await response.json()
+                        const organizations = (result.searchResults || []).map((org: any, index: number) => ({
+                          id: String(index + 1),
+                          name: org.title,
+                          description: org.description || 'No description available',
+                          address: org.address || 'Address not available',
+                          categories: ['Volunteer Opportunity'],
+                          status: 'ready' as const,
+                          phone: org.phone,
+                          url: org.url,
+                        }))
+                        if (organizations.length > 0) {
+                          // update parent with organizations to show results immediately
+                          onComplete(mission.trim(), organizations)
+                          return
+                        }
+                      }
+                    } catch (err) {
+                      console.error('Find organizations failed', err)
+                    }
+                  }}
+                >
+                  Find Organizations
+                </Button>
+
+                <Button type="button" variant="ghost" onClick={() => setClarifyMode(false)} className="h-14">
+                  Edit
+                </Button>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
         </form>
         </div>
       </div>

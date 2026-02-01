@@ -278,6 +278,72 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
   }
 });
 
+// Generate concise follow-up clarification questions using the agent
+app.post('/api/agents/clarify', async (req, res) => {
+  try {
+    const { mission, location } = req.body || {};
+    if (!mission) return res.status(400).json({ error: 'mission required' });
+
+    const prompt = `You are an assistant that writes 1-3 concise follow-up questions to clarify a user's project need. Keep questions short, actionable, and focused on missing details. Respond in JSON like: {"questions": ["...", "..."]}
+
+User mission: "${mission.replace(/"/g, '\\"')}"
+Location: "${(location||'unspecified').replace(/"/g, '\\"')}"`;
+
+    const response = await agent.invoke(
+      {
+        messages: [
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+      },
+      {
+        context: {
+          user_name: 'Volunteer',
+          systemPrompt: 'You are a concise clarifying question generator for community service matching. Output only valid JSON with an array `questions` containing 1-3 short questions.'
+        },
+      }
+    );
+
+    const text = getSummary(response) || '';
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    let questions: string[] = [];
+    if (jsonMatch) {
+      try {
+        const parsed = JSON.parse(jsonMatch[0]);
+        if (Array.isArray(parsed.questions)) questions = parsed.questions.slice(0,3);
+      } catch (e) {
+        // ignore parse
+      }
+    }
+
+    // fallback heuristics if LLM failed
+    if (questions.length === 0) {
+      const words = (mission || '').split(/\s+/).length;
+      if (words < 6) {
+        questions = [
+          'What specific outcome are you hoping to achieve?',
+          'Who are you trying to help (age group or population)?',
+          'Do you have any timing or scheduling constraints?'
+        ];
+      } else if (words < 20) {
+        questions = [
+          'Who specifically will benefit from this project?',
+          'What kind of help or resources are you looking for?'
+        ];
+      } else {
+        questions = ['Is there a preferred location radius or neighborhood?'];
+      }
+    }
+
+    return res.json({ ok: true, questions });
+  } catch (err: any) {
+    console.error('clarify error', err?.message || err);
+    return res.status(500).json({ error: 'clarify_failed' });
+  }
+});
+
 // In-memory store for completed calls (will reset on server restart)
 const completedCalls = new Map<string, any>();
 
