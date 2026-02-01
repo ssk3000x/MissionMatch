@@ -4,10 +4,11 @@ import React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Heart, ArrowLeft } from "lucide-react"
+import { MapPin, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { ElegantShape } from "@/components/ui/shape-landing-hero"
 
 
 interface MissionStepProps {
@@ -90,39 +91,104 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="flex min-h-screen flex-col items-center justify-center px-4"
+      className="relative flex min-h-screen flex-col px-4 py-8 overflow-hidden bg-[#030303]"
     >
-      <div className="w-full max-w-lg space-y-8">
-        <div className="space-y-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onBack}
-            className="mb-4 -ml-2 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            Back
-          </Button>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.12] via-blue-500/[0.12] to-blue-300/[0.10] blur-4xl" />
 
-          <div className="text-center space-y-3">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary/10"
-            >
-              <Heart className="h-8 w-8 text-secondary" />
-            </motion.div>
-            <h1 className="text-3xl font-semibold tracking-tight text-balance">
-              Describe your community project or organization and what you need to find!
-            </h1>
-            <p className="text-muted-foreground text-balance">
-              Searching in <span className="text-foreground font-medium">{location}</span>
-            </p>
-          </div>
-        </div>
+      {/* Animated geometric shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <ElegantShape
+          delay={0.3}
+          width={600}
+          height={140}
+          rotate={12}
+          gradient="from-blue-500/[0.15]"
+          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+        />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <ElegantShape
+          delay={0.5}
+          width={500}
+          height={120}
+          rotate={-15}
+          gradient="from-green-500/[0.12]"
+          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+        />
+
+        <ElegantShape
+          delay={0.4}
+          width={300}
+          height={80}
+          rotate={-8}
+          gradient="from-blue-400/[0.15]"
+          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+        />
+
+        <ElegantShape
+          delay={0.6}
+          width={200}
+          height={60}
+          rotate={20}
+          gradient="from-green-500/[0.10]"
+          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
+        />
+
+        <ElegantShape
+          delay={0.7}
+          width={150}
+          height={40}
+          rotate={-25}
+          gradient="from-blue-300/[0.15]"
+          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
+        />
+      </div>
+
+      {/* Vignette overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />
+
+      {/* Back button - top left */}
+      <div className="absolute top-8 left-4 z-20">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onBack}
+          className="text-white/60 hover:text-white"
+        >
+          <ArrowLeft className="mr-1 h-4 w-4" />
+          Back
+        </Button>
+      </div>
+
+      {/* Main content - centered */}
+      <div className="relative z-10 flex flex-1 items-center justify-center">
+        <div className="w-full max-w-2xl space-y-12">
+          <div className="space-y-6">
+            <div className="text-center space-y-4">
+              <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="text-center space-y-4"
+              >
+                <div className="flex items-center justify-center gap-4">
+                  <h1 className="text-5xl font-bold tracking-tight text-white">
+                    MissionMatch
+                  </h1>
+                  <MapPin className="h-12 w-12 text-white flex-shrink-0" />
+                </div>
+                <div className="h-[2px] w-40 mx-auto bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-50" />
+              </motion.div>
+              <h2 className="text-2xl font-semibold tracking-tight leading-tight px-4 text-white mt-8">
+your community project or organization and what you need to find!
+              </h2>
+              <p className="text-white/60 text-balance">
+                Searching in <span className="text-white font-medium">{location}</span>
+              </p>
+            </div>
+            </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative rounded-xl border border-border p-1 bg-card shadow-sm">
             <GlowingEffect
               spread={40}
@@ -164,9 +230,10 @@ export function MissionStep({ location, onComplete, onBack }: MissionStepProps) 
             className="w-full h-14 text-lg font-medium"
             disabled={!mission.trim()}
           >
-            Find Organizations
+            Continue
           </Button>
         </form>
+        </div>
       </div>
     </motion.div>
   )

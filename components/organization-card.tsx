@@ -97,7 +97,7 @@ export function OrganizationCard({ organization, onCall, onViewNotes }: Organiza
                 <Building2 className="h-5 w-5 text-primary" />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="font-semibold leading-tight line-clamp-2">{organization.name}</h3>
+                <h3 className="font-semibold leading-tight break-words">{organization.name}</h3>
               </div>
             </div>
             

@@ -25,15 +25,15 @@ interface DiscoveryStep {
 const discoverySteps: DiscoveryStep[] = [
   {
     id: "search",
-    label: "Analyzing your mission & needs with Claude",
+    label: "Analyzing your mission & needs extensively",
     icon: <Search className="h-5 w-5" />,
-    duration: 2000,
+    duration: 4000,
   },
   {
     id: "web",
     label: "Tailoring searches to your needs",
     icon: <Globe className="h-5 w-5" />,
-    duration: 4000,
+    duration: 5000,
   },
   {
     id: "orgs",
@@ -94,9 +94,12 @@ export function DiscoveryScreen({ location, mission, organizations, onComplete }
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex min-h-screen flex-col items-center justify-center px-4"
+      className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden"
     >
-      <div className="w-full max-w-md space-y-8">
+      {/* Background gradient (less prominent) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.06] via-blue-500/[0.06] to-blue-300/[0.05] blur-3xl pointer-events-none" />
+      
+      <div className="relative w-full max-w-md space-y-8">
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-semibold tracking-tight">
             Finding help for you

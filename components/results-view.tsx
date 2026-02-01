@@ -25,7 +25,9 @@ export function ResultsView({
   const completedCount = organizations.filter((o) => o.status === "completed").length
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
+      {/* Subtle background highlights */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.04] via-blue-500/[0.04] to-blue-300/[0.03] blur-3xl pointer-events-none" />
       {/* Header */}
       <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur-lg">
         <div className="mx-auto max-w-6xl px-4 py-4">
