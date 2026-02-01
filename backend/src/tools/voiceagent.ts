@@ -7,9 +7,14 @@ dotenv.config();
 const VAPI_API_KEY = process.env.VAPI_API_KEY;
 const VAPI_PHONE_NUMBER_ID = process.env.VAPI_PHONE_NUMBER_ID;
 const ELEVEN_LABS_VOICE_ID = "pVnrL6sighQX7hVz89cp"; // Professional
+const ELEVEN_LABS_API_KEY = process.env.ELEVEN_LABS_API_KEY;
 
 if (!VAPI_API_KEY) {
   console.warn('VAPI_API_KEY not configured');
+}
+
+if (!ELEVEN_LABS_API_KEY) {
+  console.warn('ELEVEN_LABS_API_KEY not configured; ElevenLabs voice may not work');
 }
 
 let vapiClient: VapiClient | null = null;
@@ -85,9 +90,12 @@ Be professional, friendly, and respectful of their time.`;
             model: 'gpt-4o',
             messages: [{ role: 'system', content: systemPrompt }]
           },
+          // Use ElevenLabs as the TTS provider while VAPI still orchestrates the phone call
           voice: {
-            voiceId: "Elliot",
-            provider: "vapi"
+            voiceId: ELEVEN_LABS_VOICE_ID,
+            provider: "elevenlabs",
+            // include API key so VAPI (or any proxy) can use ElevenLabs on our behalf
+            apiKey: ELEVEN_LABS_API_KEY || undefined
           },
         }
       }),

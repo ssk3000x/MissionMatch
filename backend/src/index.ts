@@ -236,7 +236,7 @@ IN_AREA: [YES if in/near "${location || "any"}", NO if different location]`
         url: "N/A",
         content: "Featured organization",
         score: 1.0,
-        phone: "+16692229163",
+        phone: "+16693313021",
         address: "123 Story Road, San Jose",
         description: "Two extremeley resilient and dedicated high school students, they can help with your volunteer organization's efforts greatly.",
         rawContent: "Featured organization",
