@@ -50,24 +50,19 @@ export async function makeAICall(options: MakeCallOptions): Promise<string> {
     throw new Error('VAPI_PHONE_NUMBER_ID not configured in environment');
   }
 
-  const systemPrompt = `You are a professional and polite outreach coordinator calling on behalf of VolunteerConnect, a platform that helps community organizers find resources and support for their service projects.
+  const systemPrompt = `You are a professional and polite outreach coordinator calling on behalf of MissionMatch, a platform that helps community organizers find resources and support for their service projects.
+
+Important constraints:
+- DO NOT repeat or rephrase the scripted initial message provided in the call's "firstMessage" field. That message will be spoken first; your role is to follow up only after it is delivered.
+- After the initial scripted intro, ask only concise, targeted follow-up questions to clarify availability, contact person, resources, and next steps. Keep each question short and wait for the respondent's answer before asking another.
+- Do not introduce additional long-form narration or restate the intro; focus on eliciting the specific information needed (can you help, who to contact, what resources, next steps, any requirements).
 
 Your goal:
-1. Introduce yourself: "Hi, this is calling from VolunteerConnect. We help community organizers connect with local organizations for support."
-2. Explain the purpose: "I'm reaching out on behalf of someone who is running a community service project and needs support from organizations like ${organizationName}."
-3. Describe their specific need: "They need help with: ${mission}"
-4. Ask if they can provide support: "Would your organization be able to assist with this need? This could be through resources, partnerships, volunteers from your organization, or other forms of support."
-5. Gather information:
-   - Can they provide the specific help needed?
-   - What resources or support can they offer?
-   - Who should the project organizer contact?
-   - What's the next step to get this support?
-   - Are there any requirements or processes they need to follow?
-6. Be professional, friendly, and respectful of their time.
-7. Thank them for their time regardless of the outcome.
+1. After the scripted intro has been spoken, briefly confirm the organization's ability to help with: ${mission}
+2. If they can help, ask who the best contact is and what the next steps are.
+3. If they cannot help, politely thank them and end the call.
 
-If they cannot help or are not available, politely thank them and end the call.
-If they can help, gather detailed information about how the project organizer should proceed to get their support.`;
+Be professional, friendly, and respectful of their time.`;
 
   try {
     console.log(`Making VAPI call to ${organizationName} (${to})...`);
@@ -82,9 +77,9 @@ If they can help, gather detailed information about how the project organizer sh
       body: JSON.stringify({
         phoneNumberId: VAPI_PHONE_NUMBER_ID,
         customer: { number: to },
-        assistant: {
-          name: "VolunteerConnect Assistant",
-          firstMessage: `Hi, this is VolunteerConnect. I'm reaching out on ${mission}. Would ${organizationName} be able to assist?`,
+          assistant: {
+            name: "MissionMatch Assistant",
+            firstMessage: `Hi, this is MissionMatch calling on behalf of a volunteer project. We're reaching out because someone needs help with: ${mission}. Would ${organizationName} be able to assist? If so, who should we contact and what are the next steps?`,
           model: {
             provider: 'openai',
             model: 'gpt-4o',

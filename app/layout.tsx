@@ -8,7 +8,7 @@ const _inter = Inter({ subsets: ["latin"] });
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Volunteer Connect',
+  title: 'MissionMatch',
   description: 'AI-Powered Community Service Discovery',
   generator: 'v0.app',
   icons: {

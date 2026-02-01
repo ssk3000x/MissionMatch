@@ -1300,10 +1300,6 @@
     max-height: var(--radix-select-content-available-height);
   }
 
-  .max-h-\[50vh\] {
-    max-height: 50vh;
-  }
-
   .max-h-\[90vh\] {
     max-height: 90vh;
   }
@@ -1326,10 +1322,6 @@
 
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
-  }
-
-  .min-h-20 {
-    min-height: calc(var(--spacing) * 20);
   }
 
   .min-h-28 {
@@ -5660,12 +5652,6 @@
   @media (min-width: 48rem) {
     .md\:flex {
       display: flex;
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:min-h-24 {
-      min-height: calc(var(--spacing) * 24);
     }
   }
 

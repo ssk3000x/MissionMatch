@@ -4145,7 +4145,8 @@ function Home() {
                 } : org));
         // Make actual phone call via backend
         try {
-            const callText = `Hello, this is an automated message from VolunteerConnect. We are reaching out on behalf of a volunteer interested in supporting ${org.name}. They are looking to help with ${mission}. Please call them back to discuss volunteer opportunities. Thank you!`;
+            // Send only the mission text to the backend; the backend/voice agent
+            // will handle the scripted intro (to avoid duplicate/stuttered intros).
             const response = await fetch('http://localhost:4000/api/voice/call', {
                 method: 'POST',
                 headers: {
@@ -4153,7 +4154,7 @@ function Home() {
                 },
                 body: JSON.stringify({
                     to: org.phone,
-                    text: callText,
+                    text: mission,
                     organizationName: org.name
                 })
             });

@@ -72,7 +72,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$VolunteerConnec
 ;
 ;
 const metadata = {
-    title: 'Volunteer Connect',
+    title: 'MissionMatch',
     description: 'AI-Powered Community Service Discovery',
     generator: 'v0.app',
     icons: {
