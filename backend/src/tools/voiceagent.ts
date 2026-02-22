@@ -94,7 +94,7 @@ Be professional, friendly, and respectful of their time.`;
           voice: {
             voiceId: ELEVEN_LABS_VOICE_ID,
             provider: "elevenlabs",
-            // include API key so VAPI (or any proxy) can use ElevenLabs on our behalf
+            // include API key so VAPI (or any proxy) can use ElevenLabs
             apiKey: ELEVEN_LABS_API_KEY || undefined
           },
         }
