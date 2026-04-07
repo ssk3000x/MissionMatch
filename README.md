@@ -1,4 +1,4 @@
-# VolunteerConnect
+# VolunteerConnect (3rd out of 1,800+ submissions @ Anora AI's 2026 Hackathon)
 ## Inspiration
 As seniors in high school, we've seen our peers (us included!) create non-profits and service-oriented projects. However, one of the most **difficult** parts of it is building it up - getting partnerships, finding places to hold local events, raising funding, etc. Additionally, having to call and reach out to all of these places is incredibly tedious. 
 
